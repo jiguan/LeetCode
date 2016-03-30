@@ -8,4 +8,8 @@ public class TreeNode {
 		val = x;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("TreeNode(%d)", val);
+	}
 }
