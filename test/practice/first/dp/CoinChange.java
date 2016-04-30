@@ -1,4 +1,4 @@
-package practice.first.array;
+package practice.first.dp;
 
 import static org.junit.Assert.assertEquals;
 
