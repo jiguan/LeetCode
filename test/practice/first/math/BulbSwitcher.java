@@ -8,12 +8,10 @@ public class BulbSwitcher {
 	public int bulbSwitch(int n) {
 		boolean[] bulbs = new boolean[n];
 		for(int i = 1;i<=n;i++) {
-			for(int j=0;j<n;j++) {
-				if((j+1)%i ==0) {
-					bulbs[j] = !bulbs[j];
-				}
+			for(int j=0;j<n;j=j+i) {
+				bulbs[j] = !bulbs[j];
 			}
-			System.out.print(String.format("Rount %d: ", i));
+			System.out.print(String.format("Rount %d: ", i+1));
 			print(bulbs);
 		}
 		int result = 0;
