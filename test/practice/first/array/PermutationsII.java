@@ -2,9 +2,7 @@ package practice.first.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -38,12 +36,12 @@ public class PermutationsII {
 		}
 		
 	}
-	
-	@Test
-	public void test0() {
-		int[] nums = new int[]{1,1,2};
-		for(List<Integer> list: permuteUnique(nums)) {
-			PrettyPrint.print(list);
-		}
-	}
+    @Test
+    public void test0() {
+        int[] nums = new int[]{1,1,3};
+        List<List<Integer>> result = permuteUnique(nums);
+        for(List<Integer> list : result) {
+            PrettyPrint.print(list);
+        }
+    }
 }
