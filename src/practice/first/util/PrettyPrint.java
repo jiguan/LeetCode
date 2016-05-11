@@ -19,6 +19,14 @@ public class PrettyPrint {
 		System.out.println("]");
 	}
 	
+	static public void print(String[] arr) {
+        System.out.print("[");
+        for(String str : arr) {
+            System.out.print(str+", ");
+        }
+        System.out.println("]");
+    }
+	
 	static public void print(List<Integer> arr) {
 		System.out.print("[");
 		for(int num : arr) {
