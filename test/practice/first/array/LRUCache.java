@@ -2,19 +2,10 @@ package practice.first.array;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
 import org.junit.Test;
-
-import com.oracle.webservices.internal.api.databinding.Databinding.Builder;
-
-import practice.first.util.PrettyPrint;
 
 public class LRUCache {
 	Map<Integer, Node> map;
