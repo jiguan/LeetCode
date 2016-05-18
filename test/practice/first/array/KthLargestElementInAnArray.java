@@ -44,8 +44,4 @@ public class KthLargestElementInAnArray {
         int k = 3;
         assertEquals(1, findKthLargest(nums, k));
     }
-	
-	@Test
-	public void test2() {
-	}
 }
