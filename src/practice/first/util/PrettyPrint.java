@@ -3,7 +3,6 @@ package practice.first.util;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class PrettyPrint {
 	static public void print(ListNode node) {
@@ -21,6 +20,14 @@ public class PrettyPrint {
 		}
 		System.out.println("]");
 	}
+	
+	static public void print(String[] arr) {
+        System.out.print("[");
+        for(String str : arr) {
+            System.out.print(str+", ");
+        }
+        System.out.println("]");
+    }
 
 	static public void print(List<Integer> arr) {
 		System.out.print("[");

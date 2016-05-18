@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -14,96 +15,66 @@ import java.util.Stack;
 import org.junit.Test;
 
 public class ReconstructItinerary {
-//	public List<String> findItinerary0(String[][] tickets) {
-//		Map<String, PriorityQueue<String>> map = new HashMap<>();
-//		for (String[] ticket : tickets) {
-//			if (!map.containsKey(ticket[0])) {
-//				map.put(ticket[0], new PriorityQueue<String>());
-//			}
-//			map.get(ticket[0]).offer(ticket[1]);
-//		}
-//		return find("JFK", map);
-//	}
-//
-//	public List<String> find(String current, Map<String, PriorityQueue<String>> map) {
-//		List<String> result = new ArrayList<>();
-//		if(map.containsKey(current) && !map.get(current).isEmpty()) {
-//			String next = map.get(current).peek();
-//			result = find(next, map);
-//		} else {
-//			result.add(map.get(current).poll());
-//		}
-//		return result;
-//	}
-//	
-	public List<String> findItinerary0(String[][] tickets) {
-		Map<String, List<String>> map = new HashMap<>();
-		for(String[] ticket : tickets) {
-			List<String> possibleCities = map.get(ticket[0]);
-			if(possibleCities == null) {
-				possibleCities = new ArrayList<>();
-				map.put(ticket[0], possibleCities);
-			}
-			possibleCities.add(ticket[1]);
-		}
-		return find("JFK", map, tickets.length);
-	}
-	
-	static List<String> find(String current, Map<String, List<String>> map, int ticketNum) {
-		List<String> result = new ArrayList<>();
-		if(ticketNum==0) {
-			result.add(current);
-			return result;
-		}
-		List<String> possibleCities = map.get(current);
-		if(possibleCities!=null) {
-			int size = possibleCities.size();
-			for(int i=0;i<size;i++) {
-				if (result.size() != 0 &&i>1) {
-					break;
-				}
-				String possibleCity = possibleCities.get(i);
-				int possibleCityIndex = possibleCities.indexOf(possibleCity);
-				possibleCities.remove(possibleCityIndex);
-				List<String> possiblePath = find(possibleCity, map, ticketNum-1);
-				if(possiblePath.size() == ticketNum) {
-					possiblePath.add(0, current);
-					result = result.size()==0 || (possiblePath.hashCode() < result.hashCode()) ? possiblePath : result;
-				}
-				possibleCities.add(possibleCityIndex, possibleCity);
-			}
-		}
-		return result;
-	}
-	
-	 public List<String> findItinerary(String[][] tickets) {
-	        List<String> ret = new ArrayList<String>();
-	        Map<String, PriorityQueue<String>> map = new HashMap<>();
-	        for(String[] ticket : tickets) {
-	            if(!map.containsKey(ticket[0])) {
-	                map.put(ticket[0], new PriorityQueue<String>());
-	            }
-	            map.get(ticket[0]).offer(ticket[1]);;
-	        }
-	        Stack<String> stack = new Stack<String>();
-	        stack.push("JFK");
-	        while(!stack.isEmpty()) {
-	            String next = stack.peek();
-	            if(map.containsKey(next) && !map.get(next).isEmpty()) {
-	                stack.push(map.get(next).poll());
-	            } else {
-	                ret.add(next);
-	                stack.pop();
-	            }
-	        }
-	        Collections.reverse(ret);
-	        return ret;
-	    }
+    public List<String> findItinerary(String[][] tickets) {
+        Map<String, ArrayList<String>> map = new HashMap<>();
+        for(String[] pair : tickets) {
+            map.computeIfAbsent(pair[0], k -> new ArrayList<>()).add(pair[1]);
+        }
+        for(ArrayList<String> value : map.values()) {
+            Collections.sort(value);
+        }
+        
+        List<String> route = new LinkedList<>();
+        String city = "JFK";
+        route.add(city);
+        find(city, map, route, 0, tickets.length);
+        return route;
+    }
+    
+    private boolean find(String city, Map<String, ArrayList<String>> map, List<String> route, int ticketNum, int total) {
+        if(ticketNum==total) {
+            return true;
+        }
+        if(!map.containsKey(city) || map.get(city).isEmpty()) {
+            return false;
+        }
+        int size = map.get(city).size();
+        for(int i=0;i<size;i++) {
+            String next = map.get(city).remove(i);
+            route.add(next);
+            if(find(next, map, route, ticketNum+1, total)) {
+                return true;
+            }
+            route.remove(route.size()-1);
+            map.get(city).add(i,next);
+        }
+        return false;
+    }
+    
+    public List<String> findItinerary0(String[][] tickets) {
+        Map<String, PriorityQueue<String>> map = new HashMap<>();
+        for(String[] ticket : tickets) {
+            if(!map.containsKey(ticket[0])) {
+                map.put(ticket[0], new PriorityQueue<String>());
+            }
+            map.get(ticket[0]).add(ticket[1]);
+        }
+        Stack<String> stack = new Stack<>();
+        List<String> route = new LinkedList<>();
+        stack.add("JFK");
+        while(!stack.isEmpty()) {
+            while(map.containsKey(stack.peek())&&!map.get(stack.peek()).isEmpty()) {
+                stack.add(map.get(stack.peek()).poll());
+            }
+            route.add(0, stack.pop());
+        }
+        return route;
+    }
 
 	@Test
 	public void test0() {
 		String[][] tickets = new String[][] { { "MUC", "LHR" }, { "JFK", "MUC" }, { "SFO", "SJC" }, { "LHR", "SFO" } };
-		List<String> result = findItinerary0(tickets);
+		List<String> result = findItinerary(tickets);
 		List<String> expect = Arrays.asList(new String[] { "JFK", "MUC", "LHR", "SFO", "SJC" });
 		assertEquals(expect, result);
 	}
@@ -112,7 +83,7 @@ public class ReconstructItinerary {
 	public void test1() {
 		String[][] tickets = new String[][] { { "JFK", "SFO" }, { "JFK", "ATL" }, { "SFO", "ATL" }, { "ATL", "JFK" },
 				{ "ATL", "SFO" } };
-		List<String> result = findItinerary0(tickets);
+		List<String> result = findItinerary(tickets);
 		List<String> expect = Arrays.asList(new String[] { "JFK", "ATL", "JFK", "SFO", "ATL", "SFO" });
 		assertEquals(expect, result);
 	}
@@ -140,13 +111,13 @@ public class ReconstructItinerary {
 				{ "ANU", "ADL" }, { "AXA", "TIA" }, { "ANU", "AUA" }, { "JFK", "EZE" }, { "AXA", "ADL" },
 				{ "TIA", "EZE" }, { "JFK", "AXA" }, { "AXA", "ADL" }, { "EZE", "AUA" }, { "AXA", "ANU" },
 				{ "ADL", "EZE" }, { "AUA", "EZE" } };
-		List<String> result = findItinerary0(tickets);
+		List<String> result = findItinerary(tickets);
 	}
 	
 	@Test
 	public void test3() {
 		String[][] tickets = new String[][] {{ "JFK","KUL"},{"JFK","NRT"},{"NRT","JFK"}};
-		List<String> result = findItinerary0(tickets);
+		List<String> result = findItinerary(tickets);
 		List<String> expect = Arrays.asList(new String[] {"JFK","NRT","JFK","KUL"} );
 		assertEquals(expect, result);
 	}
