@@ -84,22 +84,23 @@ class Trie {
         }
         return true;
     }
+    
+    class TrieNode {
+        public TrieNode[] nodes = new TrieNode[26];
+        public boolean leaf = false;
+
+        // Initialize your data structure here.
+        public TrieNode() {
+
+        }
+
+        @Override
+        public String toString() {
+            return "[nodes: " + Arrays.toString(nodes) + ", leaf: " + leaf + "]";
+        }
+    }
 }
 
 
 
-class TrieNode {
-    public TrieNode[] nodes = new TrieNode[26];
-    public boolean leaf = false;
 
-    // Initialize your data structure here.
-    public TrieNode() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "[nodes: " + Arrays.toString(nodes) + ", leaf: " + leaf + "]";
-    }
-
-}
