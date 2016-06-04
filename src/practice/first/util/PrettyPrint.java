@@ -51,6 +51,10 @@ public class PrettyPrint {
 	}
 
 	static public <T> void print(List<T> list) {
+		if(list==null) {
+			System.out.println("null");
+			return;
+		}
 		System.out.print("[");
 		for (T element : list) {
 			System.out.print(element + ", ");

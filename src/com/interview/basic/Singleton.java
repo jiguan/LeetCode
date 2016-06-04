@@ -1,4 +1,4 @@
-package com.rickyguan;
+package com.interview.basic;
 
 public class Singleton {
 	private volatile static Singleton _instance;
