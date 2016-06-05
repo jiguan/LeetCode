@@ -1,4 +1,4 @@
-package com.basic.java;
+package com.basic;
 
 public abstract class AbstractClass {
     static void print() {

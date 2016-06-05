@@ -1,4 +1,4 @@
-package com.interview.basic;
+package com.basic;
 public class NestClass {
 	
 	static class StaticClass {

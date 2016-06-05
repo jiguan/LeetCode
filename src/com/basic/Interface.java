@@ -1,4 +1,4 @@
-package com.basic.java;
+package com.basic;
 
 public interface Interface {
     default void print() {
