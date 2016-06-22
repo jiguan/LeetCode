@@ -20,6 +20,16 @@ public class PrettyPrint {
 		}
 		System.out.println("]");
 	}
+	
+	static public void print(int[][] arrs) {
+        for(int[] arr : arrs) {
+            System.out.print("[");
+            for(int num : arr) {
+                System.out.print(num + ", ");
+            }
+            System.out.println("]");
+        }
+    }
 
 	static public void print(String[] arr) {
 		System.out.print("[");
