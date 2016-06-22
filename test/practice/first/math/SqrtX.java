@@ -6,15 +6,18 @@ import org.junit.Test;
 
 public class SqrtX {
 	public int mySqrt(int x) {
-		if(x==0) return 0;
-		int i = x;
-		int count = 0;
-		while(i < x / i) {
-			count++;
-			i = (i + x / i) / 2;     
+		if(x<=1) return x;
+		int left = 1, right = x;
+		while(left<right) {
+		    int mid = (right - left >> 1) + left;
+		    // mid * mid > x
+		    if(mid > x / mid) {
+		        right = mid;
+		    } else {
+		        left = mid + 1;
+		    }
 		}
-		System.out.println(count);
-		return i;
+		return left - 1;
 	}
 	
 	@Test
@@ -28,4 +31,12 @@ public class SqrtX {
 		int x = 25;
 		assertEquals(5, mySqrt(x));
 	}
+	
+	@Test
+    public void test2() {
+	    int a = 1, b = 9;
+	    int mid = b - a >> 1 + a;
+	    assertEquals(5, mid);
+	}
+	
 }
