@@ -30,6 +30,16 @@ public class PrettyPrint {
             System.out.println("]");
         }
     }
+	
+	static public void print(boolean[][] arrs) {
+        for(boolean[] arr : arrs) {
+            System.out.print("[");
+            for(boolean bool : arr) {
+                System.out.print(bool ? "Y, " : "N, ");
+            }
+            System.out.println("]");
+        }
+    }
 
 	static public void print(String[] arr) {
 		System.out.print("[");
