@@ -29,7 +29,7 @@ public class PalindromePairs {
         List<List<Integer>> result = new LinkedList<>();
         for(int i=0;i<words.length;i++) {
             String word = words[i];
-            
+            //if we don't make j reach length, str1 cannot be the whole word
             for(int j=0;j<=word.length();j++) {
                 String str1 = word.substring(0,j);
                 String str2 = word.substring(j);
@@ -41,7 +41,7 @@ public class PalindromePairs {
                         result.add(Arrays.asList(map.get(reversedStr2), i));
                     }
                 }
-                //str2 is empty and str1 is the word has been handled by previous checking
+                //str2 is empty and str1 is the word, it is handled when j becomes the length
                 if(isPalindrome(str2)&&!str2.isEmpty()) {
                     String reversedStr1 = new StringBuilder(str1).reverse().toString();
                     if(map.containsKey(reversedStr1)&&map.get(reversedStr1)!=i) {
