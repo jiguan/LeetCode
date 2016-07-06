@@ -108,7 +108,8 @@ class Producer implements Runnable {
     public void run() {
         while (true) {
             try {
-                int num = (int) (Math.random() * 100);
+//                int num = (int) (Math.random() * 100);
+                int num = 1;
                 queue.enqueue(num);
             } catch (IllegalMonitorStateException | InterruptedException e) {
                 e.printStackTrace();
