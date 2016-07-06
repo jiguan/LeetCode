@@ -90,4 +90,18 @@ public class PrettyPrint {
 		System.out.print(Arrays.toString(map.entrySet().toArray()));
 	}
 
+    public static void print(TreeLinkNode root) {
+        TreeLinkNode fake = new TreeLinkNode(-1);
+        fake.next = root;
+        while(fake.next!=null) {
+            TreeLinkNode node = fake.next;
+            fake.next = node.left != null ? node.left : node.right;
+            while(node!=null) {
+                System.out.print(node.val + "->");
+                node = node.next;
+            }
+            System.out.println("null");
+        }
+    }
+
 }
