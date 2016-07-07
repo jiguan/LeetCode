@@ -5,7 +5,10 @@
       - Based on the solution, I can see why doing so can result the correct answer, but the reason behind it is unclear. 
  - 123. Binary Tree Maximum Path Sum
       - The solution seems reasonable, but I cannot guarantee I can come up with a solution when encountering similar questions. 
-
+ - 85. Maximal Rectangle (DP)
+      - The solution is understandable but I cannot guarantee I can solve it. This is different from regular DP solutions.
+        1. It saves lower bound, upper bound and height. If encounter an invalid element ('0'), update the array value to current position index
+        2. Calculate the result by multiply (upper - lower) * height
 
 ### Should-be-able-to-solve questions
  - 97. Interleaving String
