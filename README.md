@@ -9,6 +9,8 @@
       - The solution is understandable but I cannot guarantee I can solve it. This is different from regular DP solutions.
         1. It saves lower bound, upper bound and height. If encounter an invalid element ('0'), update the array value to current position index
         2. Calculate the result by multiply (upper - lower) * height
+  - 44. Wildcard Matching (DP, greedy)
+  	  - There are 3 solutions, 2 of them are DP approaches. I only can understand the one using 2D array for the status. Others are hard to understand. 
 
 ### Should-be-able-to-solve questions
  - 97. Interleaving String
