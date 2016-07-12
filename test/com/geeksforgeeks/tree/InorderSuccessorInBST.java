@@ -68,7 +68,7 @@ public class InorderSuccessorInBST {
         while(node.right!=null) {
         	node = node.right;
         }
-        assertEquals(root.val, inOrderSuccessor(node).val);
+        assertEquals(root, inOrderSuccessor(node));
 	}
 
 }

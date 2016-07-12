@@ -48,7 +48,8 @@
       - Inorder: Tricky. 
         1. Create a node variable outside while loop and do not push node to stack 
         2. `while(node!=null || !stack.isEmpty())`, keep pushing node's left to stack. 
-        3. Update node by pop up the stack, and record its value 4. node points to node.right
+        3. Update node by pop up the stack, and record its value 
+        4. node points to node.right
       - Postorder: Tricky. Similar to Preorder. 
         1. Push root to stack 
         2. Pop up the stack, if node'e left is not null, add left to stack, so as right node. Record node's val 
