@@ -8,26 +8,16 @@ import org.junit.Test;
 
 public class LargestRectangleInHistogram {
     public int largestRectangleArea(int[] heights) {
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<Integer>(); //store index
+        stack.push(-1);
         int max_area = 0;
 
-        for (int i = 0; i <= heights.length; ++i) {
-            int height_bound = (i == heights.length) ? 0 : heights[i];
+        for (int i = 0; i < heights.length; ++i) {
 
-            while (!stack.isEmpty()) {
+            while (stack.peek()!=-1 && heights[stack.peek()] >= heights[i]) {
                 // get previous height
-                int h = heights[stack.peek()];
-
-                // calculate the area for every ascending slope.
-                if (h < height_bound) {
-                    break;
-                }
-                stack.pop();
-
-                // at the end, the area with the height of the minimal element.
-                int index_bound = stack.isEmpty() ? -1 : stack.peek();
-                //i-1 previous one's index
-                max_area = Math.max(max_area, h * ((i - 1) - index_bound));
+                int height = heights[stack.pop()];
+                max_area = Math.max(max_area, height * (i - stack.peek() -1));
             }
 
             stack.push(i);
