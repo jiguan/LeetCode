@@ -38,5 +38,7 @@
    
   
 ## Medium questions
- - Review [trees](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/README.md)
-    
+  - Review [trees](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/README.md)
+  - Review [dynamic problems](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/dp/README.md)
+  - Review [math](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/math/README.md)
+  - Review [bit manipulation](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit/README.md)
