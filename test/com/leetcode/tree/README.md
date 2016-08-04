@@ -33,7 +33,7 @@ The basic idea is:
   3. The first element（`pre_start`） inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
     * First found the index of root element, then the `leftSubLen = in_root - in_start` 
     * Determine the `pre_start` for right subtree by `pre_start + leftSubLen + 1`
-  
+```
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
     }
@@ -53,3 +53,4 @@ The basic idea is:
         root.right = build(preorder, pre_start + leftSubLen +1, pre_end, inorder, in_root+1, in_end);
         return root;
     }
+```
