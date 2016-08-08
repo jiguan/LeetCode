@@ -31,7 +31,7 @@ The basic idea is:
   1. Create a builder function which takes `pre_start`, `pre_end`, `in_start`, `in_end`
   2. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right
   3. The first element（`pre_start`） inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
-    * First found the index of root element, then the `leftSubLen = in_root - in_start` 
+    * First find the index of root element in `inorder`, then the `leftSubLen = in_root - in_start` 
     * Determine the `pre_start` for right subtree by `pre_start + leftSubLen + 1`
 ```
     public TreeNode buildTree(int[] preorder, int[] inorder) {
