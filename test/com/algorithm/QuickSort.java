@@ -4,12 +4,7 @@ import org.junit.Test;
 
 public class QuickSort {
 	
-	@Test
-	public void test0() {
-		int[] nums = new int[]{8,4,2,0,0,6,7};
-		quickSort(nums, 0, nums.length-1);
-		print(nums);
-	}
+
 	
 	public void quickSort(int[] nums, int low, int high) {
 		if(low < high) {
@@ -42,5 +37,12 @@ public class QuickSort {
 			System.out.print(num+" ");
 		}
 		System.out.println();
+	}
+	
+	@Test
+	public void test0() {
+		int[] nums = new int[]{8,4,2,0,0,6,7};
+		quickSort(nums, 0, nums.length-1);
+		print(nums);
 	}
 }

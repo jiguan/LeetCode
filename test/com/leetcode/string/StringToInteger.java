@@ -6,21 +6,28 @@ import org.junit.Test;
 
 public class StringToInteger {
 	public int myAtoi(String str) {
-		int result = 0;
+		int result = 0, i=0, sign = 1;
 		if(str.length()==0) return result;
+		
 		char[] arr = str.toCharArray();
-		int i = 0;
-		if(arr[0]=='-'||arr[0]=='+') {
-			i=1;
+		while(arr[i]==' ') i++;
+		
+		if(arr[i]=='-'||arr[i]=='+') {
+			sign = arr[i++] == '-' ? -1 : 1;
 		}
 		for(;i<str.length();i++) {
 			char c = arr[i];
 			int tmp = c - '0';
 			if(tmp<0 || tmp>9) break;
+			if(sign == -1 && (result > Integer.MIN_VALUE / -10 || (result == Integer.MIN_VALUE / -10 && tmp > 8))){
+				return Integer.MIN_VALUE;
+			}
+			if(sign==1&& (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && tmp > 7))) {
+				return Integer.MAX_VALUE;
+			}
 			result = result * 10 + tmp;
 		}
-		if(arr[0]=='-') result = -result;
-		return result;
+		return result * sign;
 	}
 	
 	@Test
@@ -70,4 +77,17 @@ public class StringToInteger {
 		String str = "+-2";
 		assertEquals(0, myAtoi(str));
 	}
+	
+	@Test
+	public void test8() {
+		String str = "2147483648";
+		assertEquals(Integer.MAX_VALUE, myAtoi(str));
+	}
+	
+	@Test
+	public void test9() {
+		String str = "-2147483649";
+		assertEquals(Integer.MIN_VALUE, myAtoi(str));
+	}
+	
 }
