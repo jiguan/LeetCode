@@ -40,7 +40,10 @@
    
   
 ## Medium questions
+  - [Data structures and algorithm](https://github.com/jiguan/LeetCode/tree/master/test/com/algorithm)
   - [Trees](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree)
   - [Dynamic problems](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/dp)
   - [Math](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/math)
   - [Bit manipulation](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit)
+  
+  
