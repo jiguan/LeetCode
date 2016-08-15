@@ -2,6 +2,8 @@ package com.algorithm;
 
 import org.junit.Test;
 
+import com.leetcode.util.PrettyPrint;
+
 public class CountingSort {
 	int[] count; //element - times
 	
@@ -32,14 +34,8 @@ public class CountingSort {
 	@Test
 	public void test() {
 		int[] nums = new int[]{8,4,2,0,0,6,7};
-		print(sort(nums));
+		PrettyPrint.print(sort(nums));
 	}
 	
-	public void print(int [] nums) {
-		for(int num : nums) {
-			System.out.print(num+" ");
-		}
-		System.out.println();
-	}
 
 }

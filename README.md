@@ -11,6 +11,8 @@
         2. Calculate the result by multiply (upper - lower) * height
  - 44. Wildcard Matching (DP, greedy)
   	  - There are 3 solutions, 2 of them are DP approaches. I only can understand the one using 2D array for the status. Others are hard to understand. 
+ - 10. Regular Expression Matching (DP) 
+      - The code is not complicated. But the tricky part is how to deal '*' when . or match letter apear  
 
 ### Should-be-able-to-solve questions
  - 97. Interleaving String

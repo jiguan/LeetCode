@@ -83,7 +83,7 @@ public class PrettyPrint {
 	}
 
 	static public void print(TreeNode root) {
-		BTreePrinter.printNode(root);
+		TreePrinter.printNode(root);
 	}
 
 	static public <K, V> void print(Map<K, V> map) {
