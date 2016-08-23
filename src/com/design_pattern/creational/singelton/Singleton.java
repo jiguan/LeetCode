@@ -1,4 +1,4 @@
-package com.designpattern.creational.singelton;
+package com.design_pattern.creational.singelton;
 
 public class Singleton {
 	private volatile static Singleton _instance;

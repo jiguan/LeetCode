@@ -1,4 +1,4 @@
-package com.designpattern.creational.factory;
+package com.design_pattern.creational.factory;
 
 public class NYPepperoniPizza extends Pizza {
 	String name = "New York Pepperoni Pizza";

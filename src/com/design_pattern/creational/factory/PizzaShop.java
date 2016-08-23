@@ -1,4 +1,4 @@
-package com.designpattern.creational.factory;
+package com.design_pattern.creational.factory;
 
 public abstract class PizzaShop {
 
