@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.linkedlist;
 
 import org.junit.Test;
 
@@ -10,16 +10,16 @@ public class ReverseLinkNode {
     public ListNode reverse(ListNode node) {
         ListNode pre = null;
         while(node!=null) {
-            ListNode tmp = node.next;
+            ListNode next = node.next;
             node.next = pre;
             pre = node;
-            node = tmp;
+            node = next;
         }
         return pre;
     }
     
     @Test
-    public void test0() {
+    public void test() {
         ListNode root = ListNode.build(new int[]{1,2,3,4,5});
         PrettyPrint.print(reverse(root));
     }

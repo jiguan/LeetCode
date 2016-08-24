@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.priorityqueue;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 
 import org.junit.Test;
 
-public class KthSmallestElementInASortedMatrixPq {
+public class KthSmallestElementInASortedMatrix {
     public int kthSmallest(int[][] matrix, int k) {
         if (matrix.length == 0 || matrix[0].length == 0)
             return 0;
@@ -49,11 +49,11 @@ class Tuple implements Comparable<Tuple> {
     public int compareTo(Tuple that) {
         return this.val - that.val;
     }
-    
+
     @Override
     public String toString() {
         return String.format("Tuple(%d, %d, %d)", this.x, this.y, this.val);
     }
-    
+
 
 }
