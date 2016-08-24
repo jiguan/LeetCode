@@ -47,3 +47,8 @@
   - [Bit manipulation](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit)
   
   
+## Hints
+  - If there is some clue of a loop, try to use slow/fast pointers
+   - [202. Happy Number](https://leetcode.com/problems/happy-number/) 
+  - If it is about words and character, try to count character's times
+   - [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
