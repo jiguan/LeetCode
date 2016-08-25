@@ -22,6 +22,7 @@ Here's a list of all questions related to the tree data structure.
         4. Make node point to node.right
 
 **Pre-order and post-order are very similar** [Code](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java)
+
 | Pre-order        | Post-order      |
 | ---------------- | --------------- |
 | Push right first | Push left first |
