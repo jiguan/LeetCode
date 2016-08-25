@@ -1,7 +1,7 @@
 #Tree
 Here's a list of all questions related to the tree data structure. 
 
-####Tree traversal
+###Tree traversal
         3       Pre-order: 3 4 1 5 7
       4   7     Post-order: 1 5 4 7 3
     1  5        In-order: 1 4 5 3 7
@@ -22,7 +22,7 @@ Here's a list of all questions related to the tree data structure.
         4. Make node point to node.right
 
     
-#### Reconstruct 
+### Reconstruct 
 		1       Pre-order: 1 2 4 5 3
       2   3     Post-order: 4 5 2 3 1
     4  5        In-order: 4 2 5 1 3
@@ -54,3 +54,6 @@ The basic idea is:
         return root;
     }
 ```
+
+### Tree nodes/depth counting
+  1. [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive. 
