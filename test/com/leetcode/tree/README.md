@@ -6,22 +6,27 @@ Here's a list of all questions related to the tree data structure.
       4   7     Post-order: 1 5 4 7 3
     1  5        In-order: 1 4 5 3 7
  - Recursive solution is trivial. But it should be the first approach. 
- - Iteration [solution](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java) is tricky. 
-  - Pre-order: Easy. 
+ - Iteration is tricky. 
+  - Pre-order: Easy. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePreorderTraversal.java)
         1. Push root to stack 
         2. Inside while loop, pop out the node, and save its value to result list 
-        3. If node has left, push left to stack, so as right node  
-  - Post-order: Tricky. Similar to pre-order
+        3. If node has left, push right to stack, so as left node  
+  - Post-order: Tricky. Similar to pre-order. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePostorderTraversal.java)
         1. Push the root to the stack 
         2. Pop up the stack, if node'e left is not null, add left to the stack, so as the right node. Record the node's val 
         3. **Outside the while loop, reverse res**
-  - In-order: Tricky. 
+  - In-order: Tricky. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreeInorderTraversal.java)
         1. Create a node variable outside while loop and do not push node to the stack 
         2. `while(prev!=null || !stack.isEmpty())`, keep pushing node's left to the stack 
         3. Update the node by pop up the stack, and record its value 
         4. Make node point to node.right
 
-    
+**Pre-order and post-order are very similar** [Code](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java)
+| Pre-order        | Post-order      |
+| ---------------- | --------------- |
+| Push right first | Push left first |
+| Add to result    | Reverse result  |
+
 #### Reconstruct 
 		1       Pre-order: 1 2 4 5 3
       2   3     Post-order: 4 5 2 3 1

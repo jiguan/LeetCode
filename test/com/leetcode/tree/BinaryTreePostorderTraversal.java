@@ -34,14 +34,16 @@ public class BinaryTreePostorderTraversal {
     }
 
     @Test
-    public void test0() {
+    public void test() {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.right.right = new TreeNode(5);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
-        List<Integer> expected = Arrays.asList(4, 2, 5, 3, 1);
+        List<Integer> expected = Arrays.asList(3, 4, 2, 6, 7, 5, 1);
         assertEquals(expected, postorderTraversal(root));
     }
 }

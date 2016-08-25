@@ -24,24 +24,9 @@ public class Tree {
         System.out.println();
     }
 
-    public static void inorder(TreeNode root) {
-        if (root == null)
-            return;
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode prev = root;
-        
-        while(!stack.isEmpty()||prev!=null) {
-            while(prev!=null) {
-                stack.push(prev);
-                prev = prev.left;   
-            } 
-            
-            TreeNode node = stack.pop();
-            System.out.print(node.val + " ");
-            prev = node.right;
-        }
-    }
-
+    // Look closely, it is basically same with pre-order.
+    // The difference are: 1. t push to left
+    // first, right later; 2. reverse list in the end
     public static void postorder(TreeNode root) {
         if (root == null)
             return;
@@ -64,4 +49,23 @@ public class Tree {
         }
         System.out.println();
     }
+
+    public static void inorder(TreeNode root) {
+        if (root == null)
+            return;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode prev = root;
+
+        while (!stack.isEmpty() || prev != null) {
+            while (prev != null) {
+                stack.push(prev);
+                prev = prev.left;
+            }
+
+            TreeNode node = stack.pop();
+            System.out.print(node.val + " ");
+            prev = node.right;
+        }
+    }
+
 }

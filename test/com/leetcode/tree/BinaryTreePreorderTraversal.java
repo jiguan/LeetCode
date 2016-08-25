@@ -11,22 +11,25 @@ import org.junit.Test;
 
 import com.leetcode.util.TreeNode;
 
-public class BinaryTreeInorderTraversal {
-    public List<Integer> inorderTraversal(TreeNode root) {
+public class BinaryTreePreorderTraversal {
+    public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new LinkedList<>();
+        if (root == null)
+            return res;
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode node = root;
+        stack.push(root);
 
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                node = node.left;
-            }
-            node = stack.pop();
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
             res.add(node.val);
-            node = node.right;
-        }
 
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
         return res;
     }
 
@@ -40,7 +43,7 @@ public class BinaryTreeInorderTraversal {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
 
-        List<Integer> expected = Arrays.asList(3, 2, 4, 1, 6, 5, 7);
-        assertEquals(expected, inorderTraversal(root));
+        List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        assertEquals(expected, preorderTraversal(root));
     }
 }
