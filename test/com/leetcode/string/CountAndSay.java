@@ -6,43 +6,46 @@ import org.junit.Test;
 
 public class CountAndSay {
 	public String countAndSay(int n) {
-		if(n<=0) return "0";
+		if (n <= 0)
+			return "0";
 		String num = "1";
-		for(int i=1;i<n;i++) {
+		for (int i = 1; i < n; i++) {
 			num = getNext(num);
 		}
 		return num;
 	}
-	
+
 	private String getNext(String num) {
-		int digit = num.length();
-		StringBuffer buf = new StringBuffer();
-		int i = 0;
-		while(i<digit) {
-			char cur = num.charAt(i); 
-			int j = i+1;
-			while(j<digit && num.charAt(j)==cur) {
-				j++;
+		StringBuffer buffer = new StringBuffer();
+		char current = num.charAt(0);
+		int count = 1;
+		for (int i = 1; i < num.length(); i++) {
+			if (num.charAt(i) == current) {
+				count++;
+			} else {
+				buffer.append(count);
+				buffer.append(current);
+				current = num.charAt(i);
+				count = 1;
 			}
-			buf.append(j-i);
-			buf.append(cur);
-			i = j;
 		}
-		return buf.toString();
+		buffer.append(count);
+		buffer.append(current);
+		return buffer.toString();
 	}
-	
+
 	@Test
 	public void test0() {
 		int n = 1;
 		assertEquals("1", countAndSay(n));
 	}
-	
+
 	@Test
 	public void test1() {
 		int n = 2;
 		assertEquals("11", countAndSay(n));
 	}
-	
+
 	@Test
 	public void test2() {
 		int n = 5;
