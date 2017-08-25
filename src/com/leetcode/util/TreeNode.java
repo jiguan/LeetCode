@@ -16,7 +16,6 @@ public class TreeNode {
 	}
 	
 	public static TreeNode build(int[] nums) {
-	    Arrays.sort(nums);
 	    return build(0, nums.length-1, nums);
 	}
 	
