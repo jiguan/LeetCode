@@ -7,11 +7,11 @@ import org.junit.Test;
 
 import com.leetcode.util.PrettyPrint;
 
-public class Permutations {
+public class Permutations1 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums==null||nums.length==0) return result;
-        build(nums,0 , new ArrayList<Integer>(),result);
+        build(nums, 0, new ArrayList<Integer>(),result);
         return result;
     }
     
