@@ -2,9 +2,6 @@ package com.leetcode.array;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.LinkedList;
-import java.util.Stack;
-
 import org.junit.Test;
 
 public class NumberOfIslands {

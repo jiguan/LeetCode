@@ -1,12 +1,11 @@
 package com.leetcode.array;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-
-import com.leetcode.util.PrettyPrint;
 
 public class WiggleSortII {
 	public void wiggleSort(int[] nums) {

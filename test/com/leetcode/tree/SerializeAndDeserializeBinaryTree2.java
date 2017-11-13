@@ -2,9 +2,6 @@ package com.leetcode.tree;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import org.junit.Test;
 
 import com.leetcode.util.TreeNode;

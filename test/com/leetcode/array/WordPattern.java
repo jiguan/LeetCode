@@ -52,7 +52,7 @@ public class WordPattern {
 	
 	@Test
 	public void test() {
-		Map map = new HashMap();
+		Map<String, Integer> map = new HashMap<>();
 		System.out.println(map.put("dog", 1));
 		System.out.println(map.put("dog", 2));
 		System.out.println(map.put("dog", 3));

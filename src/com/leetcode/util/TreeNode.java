@@ -1,7 +1,5 @@
 package com.leetcode.util;
 
-import java.util.Arrays;
-
 public class TreeNode {
 	public int val;
 	public TreeNode left;
