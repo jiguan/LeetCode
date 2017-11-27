@@ -1,4 +1,4 @@
-package com.leetcode.two_pointer;
+package com.leetcode.stock;
 
 import static org.junit.Assert.assertEquals;
 

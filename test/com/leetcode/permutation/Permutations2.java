@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.permutation;
 
 import java.util.ArrayList;
 import java.util.Arrays;

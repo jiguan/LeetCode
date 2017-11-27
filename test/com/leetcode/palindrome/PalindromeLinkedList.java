@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.palindrome;
 
 import static org.junit.Assert.assertTrue;
 

@@ -45,7 +45,7 @@
   - [Dynamic problems](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/dp)
   - [Math](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/math)
   - [Bit manipulation](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit)
-  
+  - [Set problems](https://discuss.leetcode.com/topic/46161/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning)
   
 ## Hints
   - If there is some clue of a loop, try to use slow/fast pointers

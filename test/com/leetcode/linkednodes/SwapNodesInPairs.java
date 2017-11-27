@@ -1,4 +1,4 @@
-package com.leetcode.linkedlist;
+package com.leetcode.linkednodes;
 
 import org.junit.Test;
 
