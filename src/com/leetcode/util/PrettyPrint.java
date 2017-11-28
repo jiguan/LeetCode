@@ -3,6 +3,7 @@ package com.leetcode.util;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PrettyPrint {
 	static public void print(ListNode node) {
@@ -15,11 +16,8 @@ public class PrettyPrint {
 
 	static public void print(int[] arr) {
 		System.out.print("[");
-		StringBuilder builder = new StringBuilder();
-		for (int num : arr) {
-			builder.append(", " + num);
-		}
-		System.out.print(builder.toString());
+		String str = Arrays.stream(arr).mapToObj(Integer::toString).collect(Collectors.joining(", "));
+		System.out.print(str);
 		System.out.println("]");
 	}
 
