@@ -2,8 +2,6 @@ package com.leetcode.dp;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 

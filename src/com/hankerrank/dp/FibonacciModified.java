@@ -10,6 +10,7 @@ public class FibonacciModified {
         BigInteger t0 = in.nextBigInteger();
         BigInteger t1 = in.nextBigInteger();
         int n = in.nextInt();
+        in.close();
 
         for (int i = 2; i < n; i++) {
            BigInteger tmp = t1;

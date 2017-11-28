@@ -1,7 +1,8 @@
 package com.leetcode.array;
 
-import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
+
+import org.junit.Test;
 
 public class SortColors {
     public void sortColors(int[] nums) {

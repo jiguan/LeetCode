@@ -1,6 +1,7 @@
 package com.leetcode.tree;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;

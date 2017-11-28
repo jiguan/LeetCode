@@ -3,9 +3,6 @@ package com.leetcode.tree;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.LinkedList;
-import java.util.Stack;
-
 import org.junit.Test;
 
 import com.leetcode.util.TreeNode;

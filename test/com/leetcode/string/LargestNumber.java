@@ -34,17 +34,10 @@ public class LargestNumber {
 		for(String s : arr) {
 			buffer.append(s);
 		}
-		return buffer.toString();
+	    return buffer.toString();
 	}
-	
 
- 
-	private void prettyPrint(List<String> list) {
-		for(String s : list) {
-			System.out.print(s+' ');
-		}
-		System.out.println();
-	}
+	
 	@Test
 	public void test0() {
 		int[] nums = new int[]{11,22,33,44,55,66};

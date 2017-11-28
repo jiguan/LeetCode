@@ -1,10 +1,11 @@
 package com.leetcode.bit;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class SingleNumberIII {
 	public int[] singleNumber (int[] nums) {

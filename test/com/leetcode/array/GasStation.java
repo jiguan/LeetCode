@@ -1,13 +1,6 @@
-package com.leetcode.dp;
+package com.leetcode.array;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -32,19 +25,18 @@ import org.junit.Test;
 public class GasStation {
 	// the amount of gas at station i is gas[i]
 	public int canCompleteCircuit(int[] gas, int[] cost) {
+		int tank = 0, total = 0;
 		int start = 0;
-		int tank = 0;
-		int residue = 0;
 		for (int i = 0; i < gas.length; i++) {
 			// cost[i] is the cost i to i+1
 			tank += gas[i] - cost[i]; // tank left when arrive i+1
-			residue += gas[i] - cost[i];
+			total += gas[i] - cost[i];
 			if (tank < 0) { // cannot arrive i+1, reset start at i+1;
 				start = i + 1;
 				tank = 0;
 			}
 		}
-		if (residue < 0)
+		if (total < 0)
 			return -1;
 		return start % gas.length;
 	}
