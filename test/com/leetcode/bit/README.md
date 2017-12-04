@@ -1,10 +1,10 @@
 ## Bit manipulation
-
 ### Keynote
 - n & (n - 1) will eliminate the last bit [Hamming Distance](https://discuss.leetcode.com/topic/72317/java-solution)
 
 
 ### Questions
+
 #### Easy 
 - 318 [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) [Solution](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit/MaximumProductofWordLengths.java)
 ```  
