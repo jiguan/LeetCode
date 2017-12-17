@@ -61,19 +61,19 @@ public class ValidateBinarySearchTree {
 	
 	@Test
 	public void test0() {
-		TreeNode root = TreeNode.build(new int[]{1,2,3});
+		TreeNode root = TreeNode.build(new Integer[]{2,1,3});
 		assertTrue(isValidInorder(root));
 	}
 	
 	@Test
 	public void test2() {
-		TreeNode root = TreeNode.build(new int[]{2,1,3});
+		TreeNode root = TreeNode.build(new Integer[]{1,2,3});
 		assertFalse(isValidInorder(root));
 	}
 	
 	@Test
 	public void test1() {
-		TreeNode root = TreeNode.build(new int[]{Integer.MAX_VALUE});
+		TreeNode root = TreeNode.build(new Integer[]{Integer.MAX_VALUE});
 		assertTrue(isValidInorder(root));
 	}
 

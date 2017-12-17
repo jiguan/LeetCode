@@ -11,13 +11,13 @@ import com.leetcode.util.TreeNode;
 
 public class BinarySearchTreeIterator {
     Stack<TreeNode> stack = new Stack<>();
-    
+
     public void BSTIterator(TreeNode root) {
         push(root);
     }
-    
+
     private void push(TreeNode node) {
-        while(node!=null) {
+        while (node != null) {
             stack.push(node);
             node = node.left;
         }
@@ -34,24 +34,26 @@ public class BinarySearchTreeIterator {
         push(node.right);
         return node.val;
     }
-    
+
     @Test
     public void test0() {
-        int[] nums = new int[]{1,2,3,4,5,6,7};
+        Integer[] nums = new Integer[]{4, 2, 6, 1, 3, 5, 7};
+        int[] expect = new int[]{1, 2, 3, 4, 5, 6, 7};
         TreeNode root = TreeNode.build(nums);
         BSTIterator(root);
-        for(int num : nums) {
+        for (int num : expect) {
             assertEquals(num, next());
         }
         assertFalse(hasNext());
     }
-    
+
     @Test
     public void test1() {
-        int[] nums = new int[]{1,2,3,4,5,6};
+        Integer[] nums = new Integer[]{4, 2, 6, 1, 3, 5};
+        int[] expect = new int[]{1, 2, 3, 4, 5, 6};
         TreeNode root = TreeNode.build(nums);
         BSTIterator(root);
-        for(int num : nums) {
+        for (int num : expect) {
             assertEquals(num, next());
         }
         assertFalse(hasNext());
