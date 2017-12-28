@@ -13,6 +13,8 @@ public class SingleNumberIII {
 		for(int num : nums) {
 			diff ^= num;
 		}
+		// If every element occurs twice, diff will be 0,
+		// the last non-zero bit, is one of difference between two distinct elements
 		diff &= -diff; //get last non-zero bit
 		// if it is 1, then two distinct integers must be different at this position since XOR operation
 		
@@ -52,6 +54,7 @@ public class SingleNumberIII {
 	@Test
 	public void test1() {
 		int a = Integer.parseInt("1010100", 2);
+		System.out.println(Integer.toBinaryString(-a));
 		System.out.println(a & -a);
 	}
 }

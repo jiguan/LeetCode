@@ -6,7 +6,7 @@ import com.leetcode.util.ListNode;
 import com.leetcode.util.PrettyPrint;
 
 public class ReverseLinkedListII {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
+    public ListNode reverseBetween0(ListNode head, int m, int n) {
         ListNode fake = new ListNode(-1);
         fake.next = head;
         ListNode pre = fake;
@@ -25,6 +25,32 @@ public class ReverseLinkedListII {
             node = start.next;
          }
 
+        return fake.next;
+    }
+    
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(m == n) return head;
+        ListNode first = null, second = null;
+        ListNode fake = new ListNode(-1);
+        fake.next = head;
+        ListNode prefirst = null;;
+        ListNode pre = fake, node = head;
+        for(int i = 0;i<n;++i) {
+            if(i == m - 1) {
+            	prefirst = pre;
+                first = node;
+            }
+            pre = pre.next;
+            node = node.next;
+        }
+
+        for(int i = 0;i<n-m;++i){
+        	prefirst.next = first.next;
+            first.next = pre;
+            pre.next = first;
+            first = prefirst.next;
+        }
+        
         return fake.next;
     }
 
