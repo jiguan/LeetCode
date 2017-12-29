@@ -7,25 +7,17 @@ import com.leetcode.util.TreeLinkNode;
 
 public class PopulatingNextRightPointersInEachNode {
     public void connect(TreeLinkNode root) {
-        TreeLinkNode fakeHead = new TreeLinkNode(0);
-        fakeHead.next = root;
-        while(fakeHead.next!=null) {
-            TreeLinkNode prev = fakeHead;
-            TreeLinkNode node = fakeHead.next;
-            fakeHead.next = null;
-            //iterate current level
+        TreeLinkNode levelHead = root;
+        while(levelHead!=null) {
+            TreeLinkNode node = levelHead;
             while(node!=null) {
-                //assign fakeHead.next to node.left
-                if(node.left!=null) {
-                    prev.next = node.left;
-                    prev = prev.next;
-                } 
-                if(node.right!=null) {
-                    prev.next = node.right;
-                    prev = prev.next;
-                }
+                if(node.left!=null) node.left.next = node.right;
+                // if node has right children and node is not the last in current level
+                if(node.right!=null && node.next!=null) node.right.next = node.next.left;
+                
                 node = node.next;
             }
+            levelHead = levelHead.left;
         }
     }
     
