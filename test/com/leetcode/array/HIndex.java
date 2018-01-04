@@ -11,6 +11,8 @@ public class HIndex {
 		Arrays.sort(citations);
 		int res = citations.length;
 		for (int cite : citations) {
+		    // N − h papers have no more than h citations each
+		    // If there is one occur, minus 1
 			if (cite < res)
 				res--;
 		}

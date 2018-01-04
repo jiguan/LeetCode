@@ -9,39 +9,36 @@ import com.leetcode.util.TrieNode;
 
 public class TrieTree {
     private TrieNode root = new TrieNode();
-    
+
     public void insert(String word) {
-        char[] chars = word.toCharArray();
         TrieNode node = root;
-        for(char ch : chars) {
-            if(node.getNode(ch)==null) {
+        for (char ch : word.toCharArray()) {
+            if (node.getNode(ch) == null) {
                 node.setNode(ch, new TrieNode());
-            } 
+            }
             node = node.getNode(ch);
         }
         node.isEnd = true;
     }
-    
+
     public boolean search(String word) {
-        char[] chars = word.toCharArray();
         TrieNode node = root;
-        for(char ch : chars) {
+        for (char ch : word.toCharArray()) {
             node = node.getNode(ch);
-            if(node==null) return false;
+            if (node == null) return false;
         }
         return node.isEnd;
     }
-    
-    public boolean startsWith(String word) {
-        char[] chars = word.toCharArray();
+
+    public boolean startsWith(String prefix) {
         TrieNode node = root;
-        for(char ch : chars) {
+        for (char ch : prefix.toCharArray()) {
             node = node.getNode(ch);
-            if(node==null) return false;
+            if (node == null) return false;
         }
         return true;
     }
-    
+
     @Test
     public void test0() {
         insert("add");
@@ -49,5 +46,5 @@ public class TrieTree {
         assertTrue(startsWith("ad"));
         assertFalse(search("adb"));
     }
-    
+
 }

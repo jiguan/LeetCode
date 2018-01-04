@@ -18,7 +18,7 @@ public class BasicCalculatorII {
         for(int i=0;i<s.length();i++) {
             if(Character.isDigit(s.charAt(i))) {
                 num = num * 10 + s.charAt(i) - '0';
-            } else if(s.charAt(i)!=' '||i==s.length()-1) { //encounter next op, calculate previous one
+            } else if(s.charAt(i)!=' '||i==s.length()-1) {
                 if(sign=='-') {
                     stack.push(-num);
                 } else if(sign=='+') {
