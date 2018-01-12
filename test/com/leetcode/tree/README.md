@@ -28,18 +28,11 @@ Here's a list of all questions related to the tree data structure.
 | Push right first | Push left first |
 | Add to result    | Reverse result  |
 
-#### Reconstruct 
-=======
-    
-### Reconstruct 
-		1       Pre-order: 1 2 4 5 3
-      2   3     Post-order: 4 5 2 3 1
-    4  5        In-order: 4 2 5 1 3
 ####From in-order and pre-order arrays
 The basic idea is:
   1. Create a builder function which takes `pre_start`, `pre_end`, `in_start`, `in_end`
   2. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right
-  3. The first element（`pre_start`） inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
+  3. The first element `pre_start` inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
     * First find the index of root element in `inorder`, then the `leftSubLen = in_root - in_start` 
     * Determine the `pre_start` for right subtree by `pre_start + leftSubLen + 1`
 ```
@@ -65,4 +58,8 @@ The basic idea is:
 ```
 
 ### Tree nodes/depth counting
-  1. [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive. 
+  1. [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive.
+
+### BFS and DFS
+  - [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/description/)
+  - [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/)
