@@ -6,13 +6,15 @@ import org.junit.Test;
 
 public class HouseRobberII {
 	public int rob(int[] nums) {
-		if (nums == null || nums.length == 0)
-			return 0;
+		if (nums == null || nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
+
 		int[] zero = new int[nums.length];
 		int[] one = new int[nums.length];
 		// Rob house 0 to n - 1
 		zero[1] = nums[0];
 		// Rob house 1 to n
+		// The first house robbed is nums[1]
 		one[1] = nums[1];
 		// i is from 1 to n
 		for (int i = 2; i < nums.length; i++) {

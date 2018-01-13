@@ -1,5 +1,4 @@
 ## Math questions
-===================
 ### Keynote
 - How to get sqrt root
    1. Newton's method:
@@ -25,37 +24,35 @@
    }
    return left - 1;
    ```
-- Power of N
-   1. Power of Three
-      - Recursive
-      ```
-      public boolean isPowerOfThree(int n) {
-         return n > 0 && (n == 1 || (n % 3 == 0 && isPowerOfThree(n / 3)));
-      } 
-      ``` 
-      - Iterative
-      ```
-      public boolean isPowerOfThree(int n) {
-         if(n > 1)
-            while(n % 3 == 0) n /= 3;
-         return n==1;
+- Power of Three
+   - Recursive
+   ```
+   public boolean isPowerOfThree(int n) {
+      return n > 0 && (n == 1 || (n % 3 == 0 && isPowerOfThree(n / 3)));
+   } 
+   ``` 
+   - Iterative
+   ```
+   public boolean isPowerOfThree(int n) {
+      if(n > 1)
+         while(n % 3 == 0) n /= 3;
+      return n==1;
+   }
+   ```
+   - Log
+   ```
+   public boolean isPowerOfThree(int n) {
+      if(n <= 0) return false; 
+      double r = Math.log10(n) / Math.log10(3);
+      if(r % 1.0 == 0) {
+         return true;
+      } else {
+         return false;
       }
-      ```
-      - Log
-      ```
-      public boolean isPowerOfThree(int n) {
-         if(n <= 0) return false; 
-         double r = Math.log10(n) / Math.log10(3);
-         if(r % 1.0 == 0) {
-            return true;
-         } else {
-            return false;
-         }
-      }
+   }
       ```
 ### Questions
 #### Medium 
-  - 9 Palindrome Number [question](https://leetcode.com/problems/palindrome-number)
   - 118 Pascal's Triangle
   - 367 Valid Perfect Square [question](https://leetcode.com/problems/valid-perfect-square)
   
