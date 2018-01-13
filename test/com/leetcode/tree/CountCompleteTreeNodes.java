@@ -7,39 +7,58 @@ import org.junit.Test;
 import com.leetcode.util.TreeNode;
 
 public class CountCompleteTreeNodes {
-    public int countNodes(TreeNode root) {
-        if(root==null) return 0;
-        TreeNode leftNode = root;
-        int leftLen = 0;
-        while(leftNode.left!=null) {
-            leftLen++;
-            leftNode = leftNode.left;
-        }
-        int rightLen = 0;
-        TreeNode rightNode = root;
-        while(rightNode.right!=null) {
-            rightLen++;
-            rightNode = rightNode.right;
-        }
-        if(leftLen==rightLen) return (2 << leftLen) -1;
-        else {
-            return 1 + countNodes(root.left) + countNodes(root.right);
-        }
-    }
-    
-    @Test
-    public void test0() {
-        TreeNode root = new TreeNode(0);
-        TreeNode left = new TreeNode(1);
-        TreeNode right = new TreeNode(2);
-        root.left = left;
-        root.right = right;
-        assertEquals(3, countNodes(root));
-    }
-    
-    @Test
-    public void test1() {
-        TreeNode root = new TreeNode(0);
-        assertEquals(1, countNodes(root));
-    }
+	public int countNodes0(TreeNode root) {
+		if (root == null)
+			return 0;
+		TreeNode leftNode = root;
+		int leftLen = 0;
+		while (leftNode.left != null) {
+			leftLen++;
+			leftNode = leftNode.left;
+		}
+		int rightLen = 0;
+		TreeNode rightNode = root;
+		while (rightNode.right != null) {
+			rightLen++;
+			rightNode = rightNode.right;
+		}
+		if (leftLen == rightLen)
+			return (2 << leftLen) - 1;
+		else {
+			return 1 + countNodes(root.left) + countNodes(root.right);
+		}
+	}
+
+	public int countNodes(TreeNode root) {
+		int h = height(root);
+		int count = 0;
+		if (h >= 0) {
+			// root's right subtree is a complete tree
+			if (height(root.right) == h - 1) {
+				// count = left subtree: 2^h - 1 + root + right subtree
+				// Becase height only consider the left node, we don't know right subtree is complete or not
+				count = (1 << h) + countNodes(root.right);
+			} else {
+				count = (1 << h - 1) + countNodes(root.left);
+			}
+		}
+		return count;
+	}
+
+	// Calculate the height of complete tree
+	private int height(TreeNode node) {
+		return node == null ? -1 : 1 + height(node.left);
+	}
+
+	@Test
+	public void test0() {
+		TreeNode root = TreeNode.build(new Integer[] { 1, 2, 3, 4, 5, 6 });
+		assertEquals(6, countNodes(root));
+	}
+
+	@Test
+	public void test1() {
+		TreeNode root = new TreeNode(0);
+		assertEquals(1, countNodes(root));
+	}
 }
