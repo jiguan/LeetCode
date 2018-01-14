@@ -14,28 +14,28 @@
 	Question: 365. [Water and Jug Problem](WaterAndJugProblem.java)
 - How to get sqrt root
    1. Newton's method:
-   ```
-   long r = x;
-   while (r*r > x) {
-      r = (r + x/r) / 2;
-   }    
-   return (int) r;
-   ```
-   2. Binary  search
-   ```
-   if (x <= 1) return x;
-   int left = 1, right = x;
-   while (left < right) {
-      int mid = (right - left >> 1) + left;
-      // mid * mid > x
-      if (mid > x / mid) {
-         right = mid;
-      } else {
-         left = mid + 1;
-      }
-   }
-   return left - 1;
-   ```
+	```
+	long r = x;
+	while (r*r > x) {
+		r = (r + x/r) / 2;
+	}    
+	return (int) r;
+	```
+    2. Binary  search
+	```
+	if (x <= 1) return x;
+	int left = 1, right = x;
+	while (left < right) {
+		int mid = (right - left >> 1) + left;
+		// mid * mid > x
+		if (mid > x / mid) {
+			right = mid;
+		} else {
+			left = mid + 1;
+		}
+	}
+	return left - 1;
+	```
 - Power of N
    1. Power of Three
       - Recursive
@@ -66,6 +66,10 @@
       ```
 
 ### Questions
+- [Convert a Number to Hexadecimal](ConvertANumberToHexadecimal.java)
+    How to do division and consider all edge cases.
+
+
 #### Medium 
   - 9 Palindrome Number [question](https://leetcode.com/problems/palindrome-number)
   - 118 Pascal's Triangle
