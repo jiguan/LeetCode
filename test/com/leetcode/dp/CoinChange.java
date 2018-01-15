@@ -15,7 +15,6 @@ public class CoinChange {
         if (amount == 0) return 0;
         if (map.containsKey(amount)) return map.get(amount);
         int res = amount + 1;
-
         for (int coin : coins) {
             if (coin <= amount) {
                 int num = coinChange(coins, amount - coin);

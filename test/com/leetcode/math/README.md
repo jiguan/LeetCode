@@ -53,18 +53,22 @@
    ```
    - Log
    ```
-   public boolean isPowerOfThree(int n) {
-      if(n <= 0) return false; 
-      double r = Math.log10(n) / Math.log10(3);
-      if(r % 1.0 == 0) {
-         return true;
-      } else {
-         return false;
-      }
-   }
-      ```
+	public boolean isPowerOfThree(int n) {
+		if(n <= 0) return false; 
+		double r = Math.log10(n) / Math.log10(3);
+		if(r % 1.0 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	```
 
 ### Questions
+- [Convert a Number to Hexadecimal](ConvertANumberToHexadecimal.java)
+    How to do division and consider all edge cases.
+
+
 #### Medium 
   - 118 Pascal's Triangle
   - 367 Valid Perfect Square [question](https://leetcode.com/problems/valid-perfect-square)
