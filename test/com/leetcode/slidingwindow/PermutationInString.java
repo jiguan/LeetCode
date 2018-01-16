@@ -1,4 +1,4 @@
-package com.leetcode.substring;
+package com.leetcode.slidingwindow;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

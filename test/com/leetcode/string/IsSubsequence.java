@@ -2,8 +2,6 @@ package com.leetcode.string;
 
 import static org.junit.Assert.assertTrue;
 
-import java.math.BigInteger;
-
 import org.junit.Test;
 
 public class IsSubsequence {
