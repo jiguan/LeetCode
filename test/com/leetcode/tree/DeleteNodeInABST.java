@@ -41,11 +41,6 @@ public class DeleteNodeInABST {
         TreeNode root = TreeNode.build(new Integer[]{5, 3, 6, 2, 4, null, 7});
         TreeNode expect = TreeNode.build(new Integer[]{5, 4, 6, 2, null, null, 7});
         TreeNode actual = deleteNode(root, 3);
-        assertTrue(TreeNode.sameTree(expect, actual));
-    }
-    
-    @Test
-    public void test1() {
-        TreeNode root = TreeNode.build(new Integer[]{4,2,6,1,3,5});
+        assertTrue(TreeNode.isSameTree(expect, actual));
     }
 }

@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -59,6 +58,6 @@ public class LargestNumber {
 	@Test
 	public void test3() {
 		int[] nums = new int[]{824,938,1399,5607,6973,5703,9609,4398,8247};
-		assertEquals("9609938824824769735703560743981399", largestNumber(nums));
-	}
+        assertEquals("9609938824824769735703560743981399", largestNumber(nums));
+    }
 }

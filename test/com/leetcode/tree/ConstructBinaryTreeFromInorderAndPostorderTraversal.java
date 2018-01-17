@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.leetcode.util.PrettyPrint;
 import com.leetcode.util.TreeNode;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
@@ -19,7 +18,8 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
         return build(0, inorder.length - 1, inorder, postorder.length - 1, postorder, inMap);
     }
 
-    private TreeNode build(int inStart, int inEnd, int[] inorder, int postEnd, int[] postorder, Map<Integer, Integer> inMap) {
+    private TreeNode build(int inStart, int inEnd, int[] inorder, int postEnd, int[] postorder,
+            Map<Integer, Integer> inMap) {
         if (inStart > inEnd || postEnd < 0) return null;
         // Last element of postorder is the root
         TreeNode root = new TreeNode(postorder[postEnd]);
@@ -37,10 +37,10 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
 
     @Test
     public void test0() {
-        int[] inorder = new int[]{4, 10, 3, 1, 7, 11, 8, 2};
-        int[] postorder = new int[]{4, 1, 3, 10, 11, 8, 2, 7};
+        int[] inorder = new int[] { 4, 10, 3, 1, 7, 11, 8, 2 };
+        int[] postorder = new int[] { 4, 1, 3, 10, 11, 8, 2, 7 };
         TreeNode actual = buildTree(inorder, postorder);
-        TreeNode expected = TreeNode.build(new Integer[]{7, 10, 2, 4, 3, 8, null, null, null, null, 1, 11});
-        assertTrue(TreeNode.sameTree(expected, actual));
+        TreeNode expected = TreeNode.build(new Integer[] { 7, 10, 2, 4, 3, 8, null, null, null, null, 1, 11 });
+        assertTrue(TreeNode.isSameTree(expected, actual));
     }
 }

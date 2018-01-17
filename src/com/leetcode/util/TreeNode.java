@@ -36,12 +36,10 @@ public class TreeNode {
 		return root;
 	}
 
-	public static boolean sameTree(TreeNode expect, TreeNode actual) {
-		if (expect == null && actual == null)
-			return true;
-		if (expect == null || actual == null)
-			return false;
-		return expect.val == actual.val && sameTree(expect.left, actual.left) && sameTree(expect.right, actual.right);
+	public static boolean isSameTree(TreeNode expect, TreeNode actual) {
+		if (expect == null && actual == null) return true;
+		if (expect == null || actual == null) return false;
+		return expect.val == actual.val && isSameTree(expect.left, actual.left) && isSameTree(expect.right, actual.right);
 	}
 
 }

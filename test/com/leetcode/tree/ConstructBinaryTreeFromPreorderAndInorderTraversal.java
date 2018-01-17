@@ -37,6 +37,6 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         int[] inorder = new int[]{4, 10, 3, 1, 7, 11, 8, 2};
         TreeNode actual = buildTree(preorder, inorder);
         TreeNode expected = TreeNode.build(new Integer[]{7, 10, 2, 4, 3, 8, null, null, null, null, 1, 11});
-        assertTrue(TreeNode.sameTree(expected, actual));
+        assertTrue(TreeNode.isSameTree(expected, actual));
     }
 }
