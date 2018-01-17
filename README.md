@@ -1,5 +1,19 @@
 # LeetCode
-## Hard questions
+## Categories
+- [Tree](test/com/leetcode/tree/README.md)
+- [Math](test/com/leetcode/math/README.md)
+
+## Must do questions
+- Merge k Sorted Lists 
+    [Divide and Conquer](test/com/leetcode/divideandconquer/MergeKSortedLists.java), [Priority Queue](test/com/leetcode/priorityqueue/MergeKSortedLists.java)
+
+## Algorithms
+- [HeapSort](test/com/algorithm/HeapSort.java)
+- [InsertSort](test/com/algorithm/InsertSort.java)
+- [QuickSort](test/com/algorithm/QuickSort.java)
+- [SegmentTree](test/com/algorithm/SegmentTreeRangeSum.java)
+- [TrieTree](test/com/algorithm/TrieTree.java)
+
 ### Tricky questions
  - 214 Shortest Palindrome 
       - Based on the solution, I can see why doing so can result the correct answer, but the reason behind it is unclear. 
@@ -19,7 +33,7 @@
       -  A regular DP question. Each letters from S3 could be from S1 or S2 sequentially. Write a function to verify S3. 
  - 146 LRU Cache
       - The solution is not hard, but it needs extra attention. A good way to handle null pointer exception is by introducing fakeHead and fakeTail: fakeHead -> head -> ... -> tail -> fakeTail. Two helper functions make code concise: deleteNode, and moveToHead.
- - 138 Copy List with Random Pointer (Interesting， moderate) 
+ - 138 Copy List with Random Pointer (Interesting moderate) 
       - A straight forward solution is using a map to store (original node, new node). Since push and retrieve operation are time consuming, one optimization is append copied node behind the original node: node -> copy -> next node -> copy of next node
  - 295 Find Median from Data Stream (Data structure)
       - A PriorityQueue question. Two priorityQueues. One is from small to large, another one is from large to small. When a new element is input, push it to large queue, and push it back to small queue. If small queue's size is larger than large queue, push the largest element back to large queue. The idea is make these two queues has almost same size, therefore when we need median, just pop up the smallest one in large queue and biggest one from small queue. 
