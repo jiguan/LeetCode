@@ -23,7 +23,7 @@ public class ConvertBSTToGreaterTree {
         TreeNode root = TreeNode.build(new Integer[]{5, 2, 13});
         TreeNode actual = convertBST(root);
         TreeNode expect = TreeNode.build(new Integer[]{18, 20, 13});
-        assertTrue(TreeNode.sameTree(expect, actual));
+        assertTrue(TreeNode.isSameTree(expect, actual));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class ConvertBSTToGreaterTree {
         TreeNode root = TreeNode.build(new Integer[]{2, 0, 3, -4, 1});
         TreeNode actual = convertBST(root);
         TreeNode expect = TreeNode.build(new Integer[]{5, 6, 3, 2, 6});
-        assertTrue(TreeNode.sameTree(expect, actual));
+        assertTrue(TreeNode.isSameTree(expect, actual));
     }
 
     @Test
@@ -39,6 +39,6 @@ public class ConvertBSTToGreaterTree {
         TreeNode root = TreeNode.build(new Integer[]{1, 0, 4, -2, null, 3});
         TreeNode actual = convertBST(root);
         TreeNode expect = TreeNode.build(new Integer[]{8, 8, 4, 6, null, 7});
-        assertTrue(TreeNode.sameTree(expect, actual));
+        assertTrue(TreeNode.isSameTree(expect, actual));
     }
 }

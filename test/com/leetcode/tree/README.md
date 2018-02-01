@@ -1,7 +1,7 @@
-#Tree
+## Tree
 Here's a list of all questions related to the tree data structure. 
 
-###Tree traversal
+### Tree traversal
         3       Pre-order: 3 4 1 5 7
       4   7     Post-order: 1 5 4 7 3
     1  5        In-order: 1 4 5 3 7
@@ -28,7 +28,7 @@ Here's a list of all questions related to the tree data structure.
 | Push right first | Push left first |
 | Add to result    | Reverse result  |
 
-####From in-order and pre-order arrays
+### From in-order and pre-order arrays
 The basic idea is:
   1. Create a builder function which takes `pre_start`, `pre_end`, `in_start`, `in_end`
   2. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right

@@ -27,6 +27,6 @@ public class ConvertSortedArrayToBinarySearchTree {
         int[] nums = new int[]{-10, -3, 0, 5, 9};
         TreeNode actual = sortedArrayToBST(nums);
         TreeNode expected = TreeNode.build(new Integer[]{0, -3, 9, -10, null, 5});
-        assertTrue(TreeNode.sameTree(expected, actual));
+        assertTrue(TreeNode.isSameTree(expected, actual));
     }
 }
