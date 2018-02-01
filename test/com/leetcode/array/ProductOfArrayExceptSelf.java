@@ -14,42 +14,54 @@ import org.junit.Test;
 	Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)
  */
 
+/*
+Numbers:     2    3    4     5
+Lefts:            2  2*3 2*3*4
+Rights:  3*4*5  4*5    5      
+
+Let's fill the empty with 1:
+
+Numbers:     2    3    4     5
+Lefts:       1    2  2*3 2*3*4
+Rights:  3*4*5  4*5    5     1
+ */
+
 public class ProductOfArrayExceptSelf {
-	public int[] productExceptSelf(int[] nums) {
-		int[] outputs = new int[nums.length];
-		int left = 1;
-		for(int i = 0;i<nums.length;i++) {
-			left *= nums[i];
-			outputs[i] = left;
-		}
-		int right = 1;
-		for(int i=nums.length-1;i>0;i--) {
-			outputs[i] = right * outputs[i-1];
-			right *= nums[i];
-		}
-		outputs[0] = right;
-		return outputs;
-	}
-	
-	private void print(int[] arr) {
-		for(int i : arr) {
-			System.out.print(i+" ");
-		}
-		System.out.println();
-	}
-	
-	@Test
-	public void test0() {
-		int[] arr = new int[]{1,2,3,4};
-		int[] result = productExceptSelf(arr);
-		print(result);
-	}
-	
-	@Test
-	public void test1() {
-		int[] arr = new int[]{4,3,2,1,2};
-		int[] expected = new int[]{12,16,24,48,24};
-		int[] actual = productExceptSelf(arr);
-		assertTrue(Arrays.equals(expected, actual));
-	}
+    public int[] productExceptSelf(int[] nums) {
+        int[] res = new int[nums.length];
+        res[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            res[i] = res[i - 1] * nums[i - 1];
+        }
+        int right = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            res[i] *= right;
+            right *= nums[i];
+        }
+        return res;
+    }
+
+    @Test
+    public void test0() {
+        int[] arr = new int[]{1, 2, 3, 4};
+        int[] actual = productExceptSelf(arr);
+        int[] expected = new int[]{24, 12, 8, 6};
+        assertTrue(Arrays.equals(expected, actual));
+    }
+
+    @Test
+    public void test1() {
+        int[] arr = new int[]{4, 3, 2, 1, 2};
+        int[] expected = new int[]{12, 16, 24, 48, 24};
+        int[] actual = productExceptSelf(arr);
+        assertTrue(Arrays.equals(expected, actual));
+    }
+
+    @Test
+    public void test2() {
+        int[] arr = new int[]{1, 0};
+        int[] expected = new int[]{0, 1};
+        int[] actual = productExceptSelf(arr);
+        assertTrue(Arrays.equals(expected, actual));
+    }
 }
