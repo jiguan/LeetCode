@@ -1,5 +1,7 @@
 package com.leetcode.divideandconquer;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class FindTheDuplicateNumber {
@@ -23,6 +25,6 @@ public class FindTheDuplicateNumber {
     @Test
     public void test0() {
         int[] nums = new int[]{3, 4, 2, 1, 2};
-        System.out.println(findDuplicate(nums));
+        assertEquals(2, findDuplicate(nums));
     }
 }

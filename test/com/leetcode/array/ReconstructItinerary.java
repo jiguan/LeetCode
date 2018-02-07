@@ -63,6 +63,7 @@ public class ReconstructItinerary {
         List<String> route = new LinkedList<>();
         stack.add("JFK");
         while(!stack.isEmpty()) {
+            // If current city is not the final destination, keep searching
             while(map.containsKey(stack.peek())&&!map.get(stack.peek()).isEmpty()) {
                 stack.add(map.get(stack.peek()).poll());
             }
@@ -74,7 +75,7 @@ public class ReconstructItinerary {
 	@Test
 	public void test0() {
 		String[][] tickets = new String[][] { { "MUC", "LHR" }, { "JFK", "MUC" }, { "SFO", "SJC" }, { "LHR", "SFO" } };
-		List<String> result = findItinerary(tickets);
+		List<String> result = findItinerary0(tickets);
 		List<String> expect = Arrays.asList(new String[] { "JFK", "MUC", "LHR", "SFO", "SJC" });
 		assertEquals(expect, result);
 	}
@@ -117,9 +118,8 @@ public class ReconstructItinerary {
 	@Test
 	public void test3() {
 		String[][] tickets = new String[][] {{ "JFK","KUL"},{"JFK","NRT"},{"NRT","JFK"}};
-		List<String> result = findItinerary(tickets);
+		List<String> result = findItinerary0(tickets);
 		List<String> expect = Arrays.asList(new String[] {"JFK","NRT","JFK","KUL"} );
 		assertEquals(expect, result);
 	}
-
 }
