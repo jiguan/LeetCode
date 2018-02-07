@@ -21,6 +21,8 @@ Here's a list of all questions related to the tree data structure.
         3. Update the node by pop up the stack, and record its value 
         4. Make node point to node.right
 
+**BST inorder traversal generates a sorted array.**
+
 **Pre-order and post-order are very similar** [Code](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java)
 
 | Pre-order        | Post-order      |
