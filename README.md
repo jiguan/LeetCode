@@ -2,6 +2,7 @@
 ## Categories
 - [Tree](test/com/leetcode/tree/README.md)
 - [Math](test/com/leetcode/math/README.md)
+- [String](test/com/leetcode/string/README.md)
 
 ## Must do questions
 - Merge k Sorted Lists 

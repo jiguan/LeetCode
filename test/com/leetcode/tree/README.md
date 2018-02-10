@@ -17,11 +17,9 @@ Here's a list of all questions related to the tree data structure.
         3. **Outside the while loop, reverse res**
   - In-order: Tricky. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreeInorderTraversal.java)
         1. Create a node variable outside while loop and do not push node to the stack 
-        2. `while(prev!=null || !stack.isEmpty())`, keep pushing node's left to the stack 
-        3. Update the node by pop up the stack, and record its value 
-        4. Make node point to node.right
-
-**BST inorder traversal generates a sorted array.**
+        1. `while(prev!=null || !stack.isEmpty())`, keep pushing node's left to the stack 
+        1. Update the node by pop up the stack, and record its value 
+        1. Make node point to node.right
 
 **Pre-order and post-order are very similar** [Code](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java)
 
@@ -33,8 +31,8 @@ Here's a list of all questions related to the tree data structure.
 ### From in-order and pre-order arrays
 The basic idea is:
   1. Create a builder function which takes `pre_start`, `pre_end`, `in_start`, `in_end`
-  2. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right
-  3. The first element `pre_start` inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
+  1. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right
+  1. The first element `pre_start` inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
     * First find the index of root element in `inorder`, then the `leftSubLen = in_root - in_start` 
     * Determine the `pre_start` for right subtree by `pre_start + leftSubLen + 1`
 ```
@@ -59,9 +57,13 @@ The basic idea is:
     }
 ```
 
-### Tree nodes/depth counting
+### Questions
+#### BST inorder traversal generates a sorted array
+  1. [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/)
+
+#### Tree nodes/depth counting
   1. [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive.
 
-### BFS and DFS
-  - [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/description/)
-  - [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/)
+#### BFS and DFS
+  1. [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/description/)
+  1. [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/)
