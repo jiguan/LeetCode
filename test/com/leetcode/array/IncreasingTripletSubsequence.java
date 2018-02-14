@@ -13,6 +13,7 @@ public class IncreasingTripletSubsequence {
 			if(B!=null && nums[i] > B) {
 				return true;
 			}
+			// = assign same value to A, rather than B
 			if(nums[i] <= A) {
 				A = nums[i];
 			} else if(B==null || nums[i] < B) {

@@ -5,36 +5,44 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
+/**
+ * In the post
+ * https://leetcode.com/discuss/76965/3-lines-python-with-explanation-proof, we
+ * have learned that , to get wiggle sort, you want to put the number in the
+ * following way such that
+ * 
+ * (1) elements smaller than the ‘median’ are put into the last even slots
+ * 
+ * (2) elements larger than the ‘median’ are put into the first odd slots
+ * 
+ * (3) the medians are put into the remaining slots.
+ * 
+Index :       0   1   2   3   4   5
+Small half:   M       S       S    
+Large half:       L       L       M
+ */
 
 public class WiggleSortII {
-    public void wiggleSort0(int[] nums) {
+    public void wiggleSort(int[] nums) {
         if (nums.length < 2) return;
         Arrays.sort(nums);
-        int median = nums[(nums.length - 1) / 2 + 1] ;
+        int median = nums[(nums.length + 1) / 2];
 
-        int i = 0, end = nums.length - 1;
         int n = nums.length;
-        int lw = 1, mw = 1, rw = (1 + 2 * (n - 1)) % (n | 1);
-        while (i <= end) {
-            if (nums[mw] > median) {
-                swap(nums, lw, mw);
-                mw = (mw + 2) % (n | 1);
-                lw = (lw + 2) % (n | 1);
-                ++i;
-            } else if (nums[mw] < median) {
-                swap(nums, mw, rw);
-                rw = (rw - 2 + (n | 1)) % (n | 1);
-                --end;
+        int left = 0, i = 0, right = n - 1;
+        while (i <= right) {
+            if (nums[newIndex(i, n)] > median) {
+                swap(nums, newIndex(left++, n), newIndex(i++, n));
+            } else if (nums[newIndex(i, n)] < median) {
+                swap(nums, newIndex(i, n), newIndex(right--, n));
             } else {
-                mw = (mw + 2) % (n | 1);
                 i++;
             }
         }
     }
-    
-    public void wiggleSort(int[] nums) {
-        Arrays.sort(nums);
-        int median = nums[(nums.length - 1) / 2 + 1] ;
+
+    private int newIndex(int index, int n) {
+        return (1 + 2 * index) % (n | 1);
     }
 
     private void swap(int[] nums, int i, int j) {
