@@ -88,8 +88,7 @@ public class Arrays {
 
         // recurse on the appropriate list
 
-        if (n < underPivot.size())
-            result = nth(underPivot, n, comp);
+        if (n < underPivot.size()) result = nth(underPivot, n, comp);
         // fall into the set equalPivot
         else if (n < underPivot.size() + equalPivot.size()) // equal to pivot;
                                                             // just return it
@@ -100,4 +99,5 @@ public class Arrays {
 
         return result;
     } // nth(coll, n)
+
 }
