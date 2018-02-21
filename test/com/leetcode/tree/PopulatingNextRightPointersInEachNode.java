@@ -7,20 +7,34 @@ import com.leetcode.util.TreeLinkNode;
 
 public class PopulatingNextRightPointersInEachNode {
     public void connect(TreeLinkNode root) {
-        TreeLinkNode levelHead = root;
-        while(levelHead!=null) {
-            TreeLinkNode node = levelHead;
-            while(node!=null) {
-                if(node.left!=null) node.left.next = node.right;
-                // if node has right children and node is not the last in current level
-                if(node.right!=null && node.next!=null) node.right.next = node.next.left;
-                
+        TreeLinkNode node = root;
+        while (node != null) {
+            TreeLinkNode head = null;
+            TreeLinkNode pre = null;
+            while (node != null) {
+                if (node.left != null) {
+                    if (pre != null) {
+                        pre.next = node.left;
+                    } else {
+                        head = node.left;
+                    }
+                    pre = node.left;
+                }
+
+                if (node.right != null) {
+                    if (pre != null) {
+                        pre.next = node.right;
+                    } else {
+                        head = node.right;
+                    }
+                    pre = node.right;
+                }
                 node = node.next;
             }
-            levelHead = levelHead.left;
+            node = head;
         }
     }
-    
+
     @Test
     public void test0() {
         TreeLinkNode root = new TreeLinkNode(0);
@@ -32,5 +46,23 @@ public class PopulatingNextRightPointersInEachNode {
         connect(root);
         PrettyPrint.print(root);
     }
-    
+
+    @Test
+    public void test1() {
+        TreeLinkNode root = new TreeLinkNode(1);
+        root.left = new TreeLinkNode(2);
+        root.right = new TreeLinkNode(3);
+        root.left.left = new TreeLinkNode(4);
+        root.right.right = new TreeLinkNode(5);
+        connect(root);
+        PrettyPrint.print(root);
+    }
+
+    @Test
+    public void test2() {
+        TreeLinkNode root = new TreeLinkNode(0);
+        connect(root);
+        PrettyPrint.print(root);
+    }
+
 }
