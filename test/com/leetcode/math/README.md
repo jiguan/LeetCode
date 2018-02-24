@@ -1,16 +1,16 @@
 ## Math questions
 ### Keynote
 - Greatest common divisor
-	```
-	private int gcd(int a, int b) {
-		while (b != 0) {
-			int tmp = b;
-			b = a % b;
-			a = tmp;
-		}
-		return a;
-	}
-	```
+   ```
+   private int gcd(int a, int b) {
+      while (b != 0) {
+         int tmp = b;
+         b = a % b;
+         a = tmp;
+      }
+      return a;
+   }
+   ```
 	Question: 365. [Water and Jug Problem](WaterAndJugProblem.java)
 - How to get sqrt root
    1. Newton's method:
@@ -63,6 +63,11 @@
 		}
 	}
 	```
+   - Amount of combinations
+   ```
+      int num = same * diff
+   ```
+   [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/description/)
 
 ### Questions
 - [Convert a Number to Hexadecimal](ConvertANumberToHexadecimal.java)
