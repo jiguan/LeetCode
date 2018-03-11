@@ -9,7 +9,6 @@ public class OneThreeTwoPattern {
             while (top < n && nums[i] > nums[top]) third = nums[top++];
             nums[--top] = nums[i];
         }
-        
         return false;
     }
     

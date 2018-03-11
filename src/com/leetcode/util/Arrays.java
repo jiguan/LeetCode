@@ -17,6 +17,23 @@ public class Arrays {
         return true;
     }
 
+    public static void assertEquals(int[] expected, int[] actual) {
+        if (expected == null && actual == null) return;
+        boolean flag = true;
+        if ((expected == null || actual == null) || (expected.length != actual.length)) {
+            flag = false;
+        }
+
+        for (int i = 0; i < expected.length && flag; i++) {
+            if (expected[i] != actual[i]) flag = false;
+        }
+
+        if (flag == false) {
+            throw new AssertionError(String.format("expected:<%s> but was <%s>", PrettyPrint.format(expected), PrettyPrint.format(actual)));
+        }
+
+    }
+
     public static boolean equals(char[] expected, char[] actual) {
         if (expected == null && actual == null) return true;
         if (expected == null || actual == null) return false;
