@@ -14,25 +14,26 @@ public class CheapestFlightsWithinKStops {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         // src - [dst - price]
         Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
-        for(int[] flight : flights) {
+        for (int[] flight : flights) {
             graph.put(flight[0], graph.getOrDefault(flight[0], new HashMap<>()));
-            graph.put(flight[1], graph.getOrDefault(flight[1], new HashMap<>()));
             graph.get(flight[0]).put(flight[1], flight[2]);
         }
         // price, k
         Queue<int[]> pq = new PriorityQueue<>((a, b) -> (Integer.compare(a[0], b[0])));
-        pq.add(new int[]{0, src, K+1});
-        while(!pq.isEmpty()) {
+        pq.add(new int[]{0, src, K + 1});
+        while (!pq.isEmpty()) {
             int[] flight = pq.remove();
             int price = flight[0];
             int city = flight[1];
             int stops = flight[2];
-            if(city == dst) return price;
-            if(stops > 0 ) {
+            if (city == dst) return price;
+            if (stops > 0) {
                 // dst - price
                 Map<Integer, Integer> adj = graph.get(city);
-                for(int dest : graph.keySet()) {
-                    pq.add(new int[]{price + adj.get(dest), dest, stops - 1});
+                if (adj != null) {
+                    for (int dest : adj.keySet()) {
+                        pq.add(new int[]{price + adj.get(dest), dest, stops - 1});
+                    }
                 }
             }
         }
