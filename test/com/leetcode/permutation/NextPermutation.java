@@ -6,20 +6,21 @@ import org.junit.Test;
 
 public class NextPermutation {
     public void nextPermutation0(int[] nums) {
-        // find two elements which first is smaller than the second
-        int first = nums.length - 2;
-        while (first >= 0 && nums[first] >= nums[first + 1]) {
-            first--;
+        // find an element that breaks descending order
+        int index = nums.length - 2;
+        while (index >= 0 && nums[index] >= nums[index + 1]) {
+            index--;
         }
-        // search from tail to head, find first element larger than first
-        for (int i = nums.length - 1; first >= 0 && i >= 0; i--) {
-            if (nums[i] > nums[first]) {
-                swap(i, first, nums);
+        // search from tail to head, find an element larger than nums[index]
+        for (int i = nums.length - 1; index >= 0 && i >= 0; i--) {
+            if (nums[i] > nums[index]) {
+                swap(i, index, nums);
                 break;
             }
         }
-        // reverse first + 1 to tail
-        int start = first + 1, end = nums.length - 1;
+        
+        // since index + 1 to tail is in descending order, reverse index + 1 to tail
+        int start = index + 1, end = nums.length - 1;
         while (start <= end) {
             swap(start, end, nums);
             start++;
@@ -57,7 +58,7 @@ public class NextPermutation {
     @Test
     public void test0() {
         int[] nums = new int[]{1, 2, 3};
-        nextPermutation(nums);
+        nextPermutation0(nums);
         assertArrayEquals(new int[]{1, 3, 2}, nums);
     }
 

@@ -6,13 +6,15 @@ import org.junit.Test;
 
 public class HouseRobber {
     public int rob(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        int[] money = new int[nums.length + 1];
-        money[1] = nums[0];
-        for (int i = 2; i <= nums.length; i++) {
-            money[i] = Math.max(money[i - 2] + nums[i - 1], money[i - 1]);
+        int n = nums.length;
+        if (n < 2) return n == 0 ? 0 : nums[0];
+        int[] cache = new int[n];
+        cache[0] = nums[0];
+        cache[1] = nums[0] > nums[1] ? nums[0] : nums[1];
+        for (int i = 2; i < n; i++) {
+            cache[i] = Math.max(cache[i - 2] + nums[i], cache[i - 1]);
         }
-        return money[money.length - 1];
+        return cache[n - 1];
     }
 
     public int rob0(int[] nums) {
