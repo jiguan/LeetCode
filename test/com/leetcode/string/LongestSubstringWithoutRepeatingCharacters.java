@@ -9,8 +9,7 @@ import org.junit.Test;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstring1(String s) {
-        if (s.length() <= 1)
-            return s.length();
+        if (s.length() <= 1) return s.length();
         char[] let = s.toCharArray();
         int[] prevOccur = new int[256];
         prevOccur[let[0]] = 1;
@@ -23,13 +22,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
             }
             prevOccur[cur] = j + 1;
             int len = j - i + 1;
-            if (len > max)
-                max = len;
+            if (len > max) max = len;
         }
         return max;
     }
 
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring2(String s) {
         int longest = 0, current = 0;
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); ++i) {
@@ -46,6 +44,23 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return longest;
     }
 
+    public int lengthOfLongestSubstring(String s) {
+        int begin = 0;
+        int res = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            Character c = s.charAt(i);
+            if (map.containsKey(c) && map.get(c) >= begin) {
+                begin = map.get(c) + 1;
+                map.put(c, i);
+            } else {
+                map.put(c, i);
+                res = Math.max(res, i - begin + 1);
+            }
+        }
+        return res;
+
+    }
     @Test
     public void test0() {
         String s = "abcab";
@@ -72,8 +87,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     @Test
     public void test4() {
-        String s = "c";
-        assertEquals(1, lengthOfLongestSubstring(s));
+        String s = "tmmzuxt";
+        assertEquals(5, lengthOfLongestSubstring(s));
     }
 
     @Test
@@ -81,7 +96,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         String s = "aab";
         assertEquals(2, lengthOfLongestSubstring(s));
     }
-    
+
     @Test
     public void test6() {
         String s = "dvdf";

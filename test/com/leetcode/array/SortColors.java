@@ -6,17 +6,17 @@ import org.junit.Test;
 
 public class SortColors {
     public void sortColors(int[] nums) {
-        int zeroPointer = 0, twoPointer = nums.length - 1;
-        int onePointer = 0;
-        while (onePointer <= twoPointer) {
-            if (nums[onePointer] == 0) {
-                nums[onePointer++] = 1;
-                nums[zeroPointer++] = 0;
-            } else if (nums[onePointer] == 2) {
-                nums[onePointer] = nums[twoPointer];
-                nums[twoPointer--] = 2;
+        int zero = 0, one = 0, two = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] == 0) {
+                nums[two++] = 2;
+                nums[one++] = 1;
+                nums[zero++] = 0;
+            } else if (nums[i] == 1) {
+                nums[two++] = 2;
+                nums[one++] = 1;
             } else {
-                nums[onePointer++] = 1;
+                nums[two++] = 2;
             }
         }
     }

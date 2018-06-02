@@ -21,20 +21,10 @@ public class JumpGame {
     }
 
     public boolean canJump0(int[] nums) {
-        if (nums.length < 2)
-            return true;
-
-        for (int i = nums.length - 2; i >= 0; --i) {
-            // Only need to consider '0' situation
-            if (nums[i] == 0) {
-                int jump = 1;
-                while (jump > nums[i]) {
-                    ++jump;
-                    --i;
-                    if (i < 0)
-                        return false;
-                }
-            }
+        int jump = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > jump) return false;
+            jump = Math.max(jump, i);
         }
         return true;
     }

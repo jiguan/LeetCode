@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class PatchingArray {
     public int minPatches(int[] nums, int n) {
-        // minSum is smallest sum we want to reach, right now we can build sum in [0, miss)
-        long minSum = 1;
+        // unreachable is the minimum number we cannot reach, [0, unreachable)
+        long unreachable = 1;
         int patch = 0, i = 0;
-        while (minSum <= n) {
-            if (i < nums.length && nums[i] <= minSum) {
-                minSum += nums[i++];
+        while (unreachable <= n) {
+            if (i < nums.length && nums[i] <= unreachable) {
+                unreachable += nums[i++];
             } else {
-                minSum += minSum;
+                unreachable += unreachable;
                 patch++;
             }
         }
@@ -33,7 +33,7 @@ public class PatchingArray {
         int n = 6;
         assertEquals(1, minPatches(nums, n));
     }
-    
+
     @Test
     public void test2() {
         int[] nums = new int[]{};

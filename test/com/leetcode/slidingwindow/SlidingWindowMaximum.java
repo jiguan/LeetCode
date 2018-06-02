@@ -22,6 +22,7 @@ public class SlidingWindowMaximum {
             while (!deque.isEmpty() && i - deque.peek() >= k) {
                 deque.poll();
             }
+            // if we are about to add is larger than previous added one, then remove previous added small nums
             while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
                 deque.pollLast();
             }

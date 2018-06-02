@@ -61,7 +61,7 @@ public class PermutationsII {
         for (int i = index; i < nums.length; ++i) {
             if (visited.add(nums[i])) {
                 swap(nums, i, index);
-                traverse(nums, i + 1, res);
+                traverse(nums, index + 1, res);
                 swap(nums, i, index);
             }
         }
@@ -78,6 +78,16 @@ public class PermutationsII {
         int[] nums = new int[]{1, 1, 3};
         List<List<Integer>> result = permuteUnique0(nums);
         assertEquals(Integer.valueOf(3), Integer.valueOf(result.size()));
+        for (List<Integer> list : result) {
+            PrettyPrint.print(list);
+        }
+    }
+    
+    @Test
+    public void test1() {
+        int[] nums = new int[]{1, 2, 3};
+        List<List<Integer>> result = permuteUnique0(nums);
+        assertEquals(Integer.valueOf(6), Integer.valueOf(result.size()));
         for (List<Integer> list : result) {
             PrettyPrint.print(list);
         }

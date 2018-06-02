@@ -1,4 +1,4 @@
-package com.leetcode.string;
+package com.leetcode.bfs;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,10 +21,9 @@ public class WordLadder {
         List<String> toVisit = new ArrayList<>();
         while (!queue.isEmpty()) {
             String word = queue.poll();
-            if (word.equals(endWord))
-                return count;
+            if (word.equals(endWord)) return count;
             toVisit.addAll(find(word, wordList));
-            if(queue.isEmpty()) {
+            if (queue.isEmpty()) {
                 count++;
                 queue.addAll(toVisit);
                 toVisit = new ArrayList<>();
@@ -41,12 +40,12 @@ public class WordLadder {
             for (int j = 0; j < 26; j++) {
                 chars[i] = (char) ('a' + j);
                 String cand = new String(chars);
-                if (!word.equals(cand)&&wordList.contains(cand)) {
+                if (!word.equals(cand) && wordList.contains(cand)) {
                     toVisit.add(cand);
                     wordList.remove(cand);
                 }
             }
-            chars = word.toCharArray(); //recover
+            chars = word.toCharArray(); // recover
         }
         return toVisit;
     }

@@ -21,7 +21,7 @@ public class PartitionList {
         }
         large.next = null;
         less.next = fakeLarge.next;;
-        
+
         return fakeLess.next;
     }
 

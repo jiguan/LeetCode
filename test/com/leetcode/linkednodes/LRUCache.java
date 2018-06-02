@@ -47,15 +47,17 @@ public class LRUCache {
             node = map.get(key);
             node.value = value;
         } else {
+            if (map.size() >= capacity) {
+                map.remove(tail.key);
+                delete(tail);
+            }
+            
             node = new Node(key, value);
         }
 
         reorder(node);
         map.put(key, node);
-        if (map.size() > capacity) {
-            map.remove(tail.key);
-            delete(tail);
-        }
+
     }
 
     // Clean up node's relationship, don't manipulate the map.

@@ -8,24 +8,26 @@ import org.junit.Test;
 public class EditDistance {
     public int getDistance0(String word1, String word2) {
         int m = word1.length(), n = word2.length();
-        int[][] mat = new int[m + 1][n + 1];
-        for (int i = 1; i < m + 1; i++) {
-            mat[i][0] = i;
-        }
-        for (int i = 1; i < n + 1; i++) {
-            mat[0][i] = i;
-        }
+        int[][] distance = new int[m + 1][n + 1];
 
         for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
-                    mat[i][j] = mat[i - 1][j - 1];
+            distance[i][0] = i;
+        }
+        for (int j = 1; j <= n; j++) {
+            distance[0][j] = j;
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (word1.charAt(i) == word2.charAt(j)) {
+                    distance[i + 1][j + 1] = distance[i][j];
                 } else {
-                    mat[i][j] = Math.min(Math.min(mat[i - 1][j - 1], mat[i][j - 1]), mat[i - 1][j]) + 1;
+                    distance[i + 1][j + 1] = Math.min(distance[i][j], Math.min(distance[i][j + 1], distance[i + 1][j])) + 1;
                 }
             }
         }
-        return mat[m][n];
+
+        return distance[m][n];
     }
 
     public int getDistance(String word1, String word2) {
