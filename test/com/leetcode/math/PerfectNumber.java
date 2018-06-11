@@ -8,13 +8,12 @@ public class PerfectNumber {
     public boolean checkPerfectNumber(int num) {
         if (num == 1) return false;
 
-        int sum = 0;
+        int sum = 1;
         for (int i = 2; i <= Math.sqrt(num); ++i) {
             if (num % i == 0) {
                 sum += num / i + i;
             }
         }
-        sum += 1;
         return sum == num;
     }
 

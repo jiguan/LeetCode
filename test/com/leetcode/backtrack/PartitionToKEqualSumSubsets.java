@@ -1,4 +1,4 @@
-package com.leetcode.backtracking;
+package com.leetcode.backtrack;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

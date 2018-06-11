@@ -7,25 +7,26 @@ import org.junit.Test;
 
 public class PartitionEqualSubsetSum {
     public boolean canPartition(int[] nums) {
-        int sum = 0;
+        int half = 0;
         for (int num : nums) {
-            sum += num;
+            half += num;
         }
-        if (sum % 2 != 0) return false;
+        if (half % 2 != 0) return false;
 
         // since we are going to use all nums, the sum of each partition must be sum / 2
-        sum /= 2;
-        boolean[] dp = new boolean[sum + 1];
+        half /= 2;
+        boolean[] dp = new boolean[half + 1];
         dp[0] = true;
 
         // Each num can only be used once, outer loop
         for (int num : nums) {
             // From right to left, to prevent computing later one uses early result
-            for (int i = sum; i >= num; --i) {
+            for (int i = half; i >= num; --i) {
+                // don't take num into sum || take current num into sum
                 dp[i] = dp[i] || dp[i - num];
             }
         }
-        return dp[sum];
+        return dp[half];
     }
 
     // Time Limit exceed

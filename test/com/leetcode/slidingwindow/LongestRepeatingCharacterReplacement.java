@@ -12,19 +12,19 @@ import org.junit.Test;
  */
 public class LongestRepeatingCharacterReplacement {
 	public int characterReplacement(String s, int k) {
-		int[] count = new int[26];
-
-		int maxCount = 0;
-		int start = 0;
-		for (int end = 0; end < s.length(); ++end) {
-			// current char's count within window
-			maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
-			if (maxCount + k <= end - start) {
-				count[s.charAt(start) - 'A']--;
-				start++;
-			}
-		}
-		return s.length() - start;
+	    int len = s.length();
+        int[] count = new int[26];
+        int start = 0, maxCount = 0, maxLength = 0;
+        for (int end = 0; end < len; end++) {
+            // within the range from start to end, maxCount
+            maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
+            while (end - start + 1 - maxCount > k) {
+                count[s.charAt(start) - 'A']--;
+                start++;
+            }
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+        return maxLength;
 	}
 
 	@Test
@@ -36,8 +36,8 @@ public class LongestRepeatingCharacterReplacement {
 	
 	@Test
 	public void test1() {
-		String s = "AABABBA";
+		String s = "ABCADEA";
 		int k = 1;
-		assertEquals(4, characterReplacement(s, k));
+		assertEquals(2, characterReplacement(s, k));
 	}
 }
