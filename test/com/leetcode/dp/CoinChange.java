@@ -2,6 +2,7 @@ package com.leetcode.dp;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class CoinChange {
         return res;
     }
 
-    public int coinChange(int[] coins, int amount) {
+    public int coinChange1(int[] coins, int amount) {
         int[] arr = new int[amount + 1];
         for (int i = 1; i <= amount; i++) {
             arr[i] = Integer.MAX_VALUE;
@@ -44,30 +45,50 @@ public class CoinChange {
         int result = arr[amount] == Integer.MAX_VALUE ? -1 : arr[amount];
         return result;
     }
+
+    public int coinChange(int[] coins, int amount) {
+        Arrays.sort(coins);
+
+        int[] nums = new int[amount + 1];
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] = -1;
+        }
+
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < coins.length && coins[j] <= i; j++) {
+                int coin = coins[j];
+                if (nums[i - coin] != -1) {
+                    nums[i] = Math.min(nums[i - coin] + 1, nums[i] == -1 ? Integer.MAX_VALUE : nums[i]);
+                }
+            }
+        }
+        return nums[amount];
+    }
+
     @Test
     public void test0() {
-        int[] coins = new int[]{2, 5, 1};
+        int[] coins = new int[] { 2, 5 };
         int amount = 11;
-        assertEquals(3, coinChange0(coins, amount));
+        assertEquals(4, coinChange0(coins, amount));
     }
 
     @Test
     public void test1() {
-        int[] coins = new int[]{2};
+        int[] coins = new int[] { 2 };
         int amount = 3;
         assertEquals(-1, coinChange0(coins, amount));
     }
 
     @Test
     public void test2() {
-        int[] coins = new int[]{3, 5, 7};
+        int[] coins = new int[] { 3, 5, 7 };
         int amount = 18;
         assertEquals(4, coinChange0(coins, amount));
     }
 
     @Test
     public void test3() {
-        int[] coins = new int[]{186, 419, 83, 408};
+        int[] coins = new int[] { 186, 419, 83, 408 };
         int amount = 6249;
         assertEquals(20, coinChange0(coins, amount));
     }
