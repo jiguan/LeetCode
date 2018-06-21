@@ -46,7 +46,7 @@ public class Permutations1 {
 
     @Test
     public void test0() {
-        int[] nums = new int[]{1, 2, 3};
+        int[] nums = new int[] { 1, 2, 3 };
         List<List<Integer>> result = permute(nums);
         for (List<Integer> list : result) {
             PrettyPrint.print(list);
