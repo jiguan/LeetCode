@@ -1,4 +1,4 @@
-package com.leetcode.tree;
+package com.leetcode.graph;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,7 +21,6 @@ public class MinumumHeightTrees {
 
         for (int[] edge : edges) {
             int i = edge[0], j = edge[1];
-
             if (!adjacent.containsKey(i)) {
                 adjacent.put(i, new HashSet<>());
             }
@@ -41,16 +40,18 @@ public class MinumumHeightTrees {
 
         while (n > 2) {
             n -= leaves.size();
-
-            List<Integer> newLeaves = new ArrayList<>();
-            for (int i : leaves) {
-                int j = adjacent.get(i).iterator().next();
-                adjacent.get(j).remove(i);
-                if (adjacent.get(j).size() == 1) newLeaves.add(j);
+            List<Integer> tmp = new ArrayList<>();
+            for (int leave : leaves) {
+                Set<Integer> accessible = adjacent.get(leave);
+                for (int neighbor : accessible) {
+                    adjacent.get(neighbor).remove(leave);
+                    if (adjacent.get(neighbor).size() == 1) {
+                        tmp.add(neighbor);
+                    }
+                }
             }
-            leaves = newLeaves;
+            leaves = tmp;
         }
-
         return leaves;
     }
 

@@ -44,15 +44,21 @@ public class KnuthMorrisPratt {
     // longest suffix-prefix
     // As a whole, storing the next index where we should start searching
     // If there is a mismatch, then go to previous one (j-1) since it is the last matched
-    // Get its should-start index and compare with current char
+    // Get its should-start index and compare with current char. e.g. 
+    // a b c d a b c a
+    // 0 0 0 0 1 2 3 1
     public int[] computeLspTable(String pattern) {
         int[] lsp = new int[pattern.length()];
+        // start from 1, since lsp[0] is always 0
         for (int i = 1; i < pattern.length(); i++) {
             // Start by assuming we're extending the previous LSP
             int j = lsp[i - 1];
+            
+            // if there is a mismatch, take the matching index of previous one (j - 1) and compare it again
             while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
                 j = lsp[j - 1];
             }
+            // If there is a match, both i and j get incremented
             if (pattern.charAt(i) == pattern.charAt(j)) j++;
             lsp[i] = j;
         }

@@ -15,7 +15,7 @@ public class PrettyPrint {
     }
 
     static public void print(int[] arr) {
-        System.out.print(format(arr));
+        System.out.println(format(arr));
     }
 
     static public void print(int[][] arrs) {

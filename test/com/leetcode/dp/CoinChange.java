@@ -2,6 +2,7 @@ package com.leetcode.dp;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,26 @@ public class CoinChange {
     }
 
     public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.sort(coins);
+        for (int i = 1; i <= amount; i++) {
+            dp[i] = Integer.MAX_VALUE;
+            for (int j = 0; j < coins.length && i >= coins[j]; j++) {
+                int coin = coins[j];
+                if (dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+
+        if(dp[amount] == Integer.MAX_VALUE) {
+            return -1;
+        } else {
+            return dp[amount];
+        }
+    }
+
+    public int coinChange1(int[] coins, int amount) {
         int[] arr = new int[amount + 1];
         for (int i = 1; i <= amount; i++) {
             arr[i] = Integer.MAX_VALUE;
