@@ -11,7 +11,6 @@ public interface BankAccount {
     public String getName();
 
     public static void main(String[] args) {
-
         List<BankAccount> accounts = new ArrayList<BankAccount>();
         accounts.add(new SavingsAccount("USD", 3));// Savings
         accounts.add(new SavingsAccount("EUR", 2));// Savings

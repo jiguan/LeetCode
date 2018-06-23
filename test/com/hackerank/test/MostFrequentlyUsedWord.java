@@ -23,7 +23,8 @@ public class MostFrequentlyUsedWord {
         }
         int max = 0;
         Map<String, Integer> map = new HashMap<>();
-        for (String word : literatureText.toLowerCase().split("\\s+")) {
+        // May need to replace all digit with space, s = s.replaceAll("\\d", "")
+        for (String word : literatureText.toLowerCase().split("\\W+")) {
             if (exclude.contains(word)) continue;
             int times = map.getOrDefault(word, 0) + 1;
             map.put(word, times);
@@ -42,6 +43,13 @@ public class MostFrequentlyUsedWord {
     @Test
     public void test0() {
         String literatureText = "remeo  remeo remeo";
+        List<String> wordsToExclude = Arrays.asList("");
+        assertEquals(Arrays.asList("remeo"), retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude));
+    }
+    
+    @Test
+    public void test1() {
+        String literatureText = "2 2 remeo";
         List<String> wordsToExclude = Arrays.asList("");
         assertEquals(Arrays.asList("remeo"), retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude));
     }

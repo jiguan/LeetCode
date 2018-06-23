@@ -30,22 +30,22 @@ public class ReorderLog {
         List<String> numericList = new ArrayList<>();
 
         for (String line : logLines) {
-            String content = line.split(" ", 2)[1];
-            if (content.matches("[0-9 ]+")) {
+            char c = line.charAt(line.length() - 1);
+            if (Character.isDigit(c)) {
                 numericList.add(line);
-            } else if (content.matches("[a-zA-Z ]+")) {
+            } else if (Character.isAlphabetic(c)) {
                 alphaList.add(line);
             }
         }
 
-        Collections.sort(alphaList, new LogComparater());
-        Collections.sort(numericList, new LogComparater());
+        Collections.sort(alphaList, new LogComparator());
+        // Collections.sort(numericList, new LogComparator());
 
         alphaList.addAll(numericList);
         return alphaList;
     }
 
-    class LogComparater implements Comparator<String> {
+    class LogComparator implements Comparator<String> {
         @Override
         public int compare(String s1, String s2) {
             String[] arr1 = s1.split(" ", 2);
