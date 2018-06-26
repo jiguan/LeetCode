@@ -16,6 +16,8 @@ public class BinaryTreePreorderTraversal {
         List<Integer> res = new LinkedList<>();
         if (root == null)
             return res;
+        // using stack to make sure root's left children is traversed first
+        // use stack to accomplish recursive effect
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 

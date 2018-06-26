@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +14,7 @@ import java.util.Set;
 import org.junit.Test;
 
 public class MinumumHeightTrees {
-    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+    public List<Integer> findMinHeightTrees1(int n, int[][] edges) {
         if (n == 1) return Arrays.asList(0);
 
         // node - adjacent nodes
@@ -53,6 +54,46 @@ public class MinumumHeightTrees {
             leaves = tmp;
         }
         return leaves;
+    }
+
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        Set<Integer>[] sets = new Set[n];
+        for (int[] edge : edges) {
+            int i = edge[0], j = edge[1];
+            if (sets[i] == null) {
+                sets[i] = new HashSet<Integer>();
+            }
+            sets[i].add(j);
+            if (sets[j] == null) {
+                sets[j] = new HashSet<Integer>();
+            }
+            sets[j].add(i);
+        }
+
+        List<Integer> leaves = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            Set<Integer> set = sets[i];
+            if (set.size() == 1) {
+                leaves.add(i);
+            }
+        }
+
+        while (n > 2) {
+            n -= leaves.size();
+            List<Integer> tmp = new LinkedList<>();
+            for (int leave : leaves) {
+                Set<Integer> accessible = sets[leave];
+                for (int i : accessible) {
+                    sets[i].remove(leave);
+                    if (sets[i].size() == 1) {
+                        tmp.add(i);
+                    }
+                }
+            }
+            leaves = tmp;
+        }
+        return leaves;
+
     }
 
     @Test

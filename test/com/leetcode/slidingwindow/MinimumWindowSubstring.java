@@ -12,16 +12,19 @@ public class MinimumWindowSubstring {
             ++times[c];
         }
 
-        int begin = 0, end = 0, diff = t.length();
-        int i = 0, minLength = Integer.MAX_VALUE;
-        while (end < s.length()) {
-            char c = s.charAt(end++);
-            if (--times[c] >= 0) --diff;
+        int begin = 0, diff = t.length();
+        int minLength = Integer.MAX_VALUE;
+        String res = "";
+        for (int end = 0; end < s.length(); end++) {
+            char c = s.charAt(end);
+            // this character exists in t
+            if(times[c] > 0) --diff;
+            --times[c];
 
             while (diff == 0) {
                 if (end - begin < minLength) {
                     minLength = end - begin;
-                    i = begin;
+                    res = s.substring(begin, end + 1);
                 }
                 char kickout = s.charAt(begin++);
                 if (++times[kickout] == 1) {
@@ -29,7 +32,7 @@ public class MinimumWindowSubstring {
                 }
             }
         }
-        return minLength == Integer.MAX_VALUE ? "" : s.substring(i, i + minLength);
+        return res;
     }
 
     @Test

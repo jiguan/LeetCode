@@ -14,15 +14,19 @@ import com.leetcode.util.TreeNode;
 public class BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new LinkedList<>();
+        // store current node's left children
+        // Initially it is unknown
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
 
         while (node != null || !stack.isEmpty()) {
+            // as long as there is a valid node, we need to explore its left children
             while (node != null) {
                 stack.push(node);
                 node = node.left;
             }
             node = stack.pop();
+            // all its left children have been traversed
             res.add(node.val);
             node = node.right;
         }

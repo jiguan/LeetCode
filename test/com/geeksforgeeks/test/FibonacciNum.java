@@ -1,4 +1,4 @@
-package com.geeksforgeeks.dp;
+package com.geeksforgeeks.test;
 
 import static org.junit.Assert.assertTrue;
 

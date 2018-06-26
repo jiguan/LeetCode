@@ -1,4 +1,4 @@
-package com.geeksforgeeks.tree;
+package com.geeksforgeeks.test;
 
 import static org.junit.Assert.assertEquals;
 

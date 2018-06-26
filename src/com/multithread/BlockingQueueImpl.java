@@ -3,7 +3,6 @@ package com.multithread;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class BlockingQueueImpl {
     public static void main(String[] args) throws Exception {
         BlockingQueue queue = new BlockingQueue();
@@ -15,34 +14,20 @@ public class BlockingQueueImpl {
         producer2.start();
         producer3.start();
         consummer.start();
-        
+
         /**
-         * Even though there are three producers, 'Queue is empty' happens a lot. 
+         * Even though there are three producers, 'Queue is empty' happens a lot.
          * 
-            Queue is empty
-            Thread-0 adds 38, queue size: 1
-            Thread-0 adds 4, queue size: 2
-            Thread-3 removes 38, queue size: 2
-            Thread-3 removes 4, queue size: 1
-            Queue is empty
-            Thread-1 adds 49, queue size: 1
-            Thread-1 adds 49, queue size: 2
-            Thread-2 adds 87, queue size: 3
-            Thread-1 adds 41, queue size: 4
-            Thread-1 adds 41, queue size: 5
-            Thread-3 removes 49, queue size: 5
-            Thread-3 removes 49, queue size: 4
-            Thread-3 removes 87, queue size: 3
-            Thread-3 removes 41, queue size: 2
-            Thread-3 removes 41, queue size: 1
-            Queue is empty
-            Thread-0 adds 95, queue size: 1
-            Thread-3 removes 95, queue size: 1
+         * Queue is empty Thread-0 adds 38, queue size: 1 Thread-0 adds 4, queue size: 2 Thread-3 removes 38, queue
+         * size: 2 Thread-3 removes 4, queue size: 1 Queue is empty Thread-1 adds 49, queue size: 1 Thread-1 adds 49,
+         * queue size: 2 Thread-2 adds 87, queue size: 3 Thread-1 adds 41, queue size: 4 Thread-1 adds 41, queue size: 5
+         * Thread-3 removes 49, queue size: 5 Thread-3 removes 49, queue size: 4 Thread-3 removes 87, queue size: 3
+         * Thread-3 removes 41, queue size: 2 Thread-3 removes 41, queue size: 1 Queue is empty Thread-0 adds 95, queue
+         * size: 1 Thread-3 removes 95, queue size: 1
          * 
          */
     }
 }
-
 
 class BlockingQueue {
 
@@ -66,15 +51,14 @@ class BlockingQueue {
             System.out.println("Queue is empty");
             this.wait();
         }
-        System.out.println(Thread.currentThread().getName() + " removes " + queue.get(0) + ", queue size: " + queue.size());
+        System.out.println(
+                Thread.currentThread().getName() + " removes " + queue.get(0) + ", queue size: " + queue.size());
         Thread.sleep(wait);
         this.notifyAll(); // notify waiting enqueue threads if any, after exiting this dequeue(), it is ok to compete
         return queue.remove(0);
     }
 
 }
-
-
 
 class Consummer implements Runnable {
     private BlockingQueue queue;
@@ -93,9 +77,7 @@ class Consummer implements Runnable {
             }
         }
     }
-
 }
-
 
 class Producer implements Runnable {
     private BlockingQueue queue;
@@ -108,7 +90,7 @@ class Producer implements Runnable {
     public void run() {
         while (true) {
             try {
-//                int num = (int) (Math.random() * 100);
+                // int num = (int) (Math.random() * 100);
                 int num = 1;
                 queue.enqueue(num);
             } catch (IllegalMonitorStateException | InterruptedException e) {
@@ -116,5 +98,4 @@ class Producer implements Runnable {
             }
         }
     }
-
 }

@@ -25,6 +25,13 @@ public class SqrtX {
         return right;
     }
 
+    public int mySqrt1(int x) {
+        long r = x;
+        while (r*r > x)
+            r = (r + x/r) / 2;
+        return (int) r;
+    }
+    
     @Test
     public void test0() {
         int x = 9;

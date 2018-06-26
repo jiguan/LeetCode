@@ -1,4 +1,4 @@
-package com.geeksforgeeks.string;
+package com.geeksforgeeks.test;
 
 import java.util.LinkedList;
 import java.util.List;

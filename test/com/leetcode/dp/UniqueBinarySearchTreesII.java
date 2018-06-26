@@ -19,13 +19,14 @@ public class UniqueBinarySearchTreesII {
         // start from tree with len 1
         for (int len = 1; len <= n; ++len) {
             result[len] = new ArrayList<>();
+            // i is the divider, split the len into two parts
             for (int i = 0; i < len; i++) {
                 for (TreeNode left : result[i]) {
                     for (TreeNode right : result[len - i - 1]) {
+                        // left is i, current node val is i + 1
                         TreeNode node = new TreeNode(i + 1);
                         node.left = left;
-                        // current root is node, right side is taken from
-                        // previous tree but (root's val) larger than the root
+                        // create a new TreeNode with value: prev.val +  node.val
                         node.right = clone(right, i + 1);
                         result[len].add(node);
                     }
