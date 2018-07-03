@@ -5,85 +5,80 @@ import java.util.Stack;
 import org.junit.Test;
 
 public class ImplementQueueUsingStacks {
-	
-	
-	@Test
-	public void test0() {
-		MyQueue2 queue = new MyQueue2();
-		int[] nums = new int[]{1,2,3,4};
-		for(int num : nums) {
-			queue.push(num);
-		}
-		while(!queue.empty()) {
-			System.out.print(queue.peek());
-			queue.pop();
-		}
-		
-	}
+    Stack<Integer> input = new Stack<Integer>();
+    Stack<Integer> output = new Stack<Integer>();
+
+    public void push(int x) {
+        input.push(x);
+    }
+
+    // Removes the element from in front of queue.
+    public int pop() {
+        peek();
+        return output.pop();
+    }
+
+    // Get the front element.
+    public int peek() {
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
+                output.push(input.pop());
+            }
+        }
+        return output.peek();
+    }
+
+    // Return whether the queue is empty.
+    public boolean empty() {
+        return input.isEmpty() && output.isEmpty();
+    }
+
+    @Test
+    public void test0() {
+        ImplementQueueUsingStacks queue = new ImplementQueueUsingStacks();
+        int[] nums = new int[]{1, 2, 3, 4};
+        for (int num : nums) {
+            queue.push(num);
+        }
+        while (!queue.empty()) {
+            System.out.print(queue.peek());
+            queue.pop();
+        }
+    }
+
 }
 
-class MyQueue2 {
-	Stack<Integer> stack = new Stack<Integer>();
-	public void push(int x) {
-		Stack<Integer> tmp = new Stack<Integer>();
-		while(!stack.empty()) {
-			tmp.push(stack.pop());
-		}
-		tmp.push(x);
-		while(!tmp.isEmpty()) {
-			stack.push(tmp.pop());
-		}
-	}
+class MyQueue1 {
+    Stack<Integer> main = new Stack<Integer>();
+    Stack<Integer> backup = new Stack<Integer>();
 
-	// Removes the element from in front of queue.
-	public void pop() {
-		stack.pop();
-	}
+    public void push(int x) {
+        backup.push(x);
+    }
 
-	// Get the front element.
-	public int peek() {
-		return stack.peek();
-	}
+    // Removes the element from in front of queue.
+    public void pop() {
+        check();
+        main.pop();
+    }
 
-	// Return whether the queue is empty.
-	public boolean empty() {
-		return stack.isEmpty();
-	}
-	
-}
+    // Get the front element.
+    public int peek() {
+        check();
+        return main.peek();
+    }
 
+    // Return whether the queue is empty.
+    public boolean empty() {
+        return main.isEmpty() && backup.isEmpty();
+    }
 
-class MyQueue1{
-	Stack<Integer> main = new Stack<Integer>();
-	Stack<Integer> backup = new Stack<Integer>();
-	
-	public void push(int x) {
-		backup.push(x);
-	}
+    private void check() {
+        if (main.isEmpty()) {
+            while (!backup.isEmpty()) {
+                main.push(backup.pop());
+            }
+        }
+    }
 
-	// Removes the element from in front of queue.
-	public void pop() {
-		check();
-		main.pop();
-	}
-
-	// Get the front element.
-	public int peek() {
-		check();
-		return main.peek();
-	}
-
-	// Return whether the queue is empty.
-	public boolean empty() {
-		return main.isEmpty() && backup.isEmpty();
-	}
-	
-	private void check() {
-		if(main.isEmpty()) {
-			while(!backup.isEmpty()) {
-				main.push(backup.pop());
-			}
-		}
-	}
-	
 }

@@ -49,7 +49,10 @@ public class TargetNum {
                                 tmp = num1 * num2;
                                 break;
                             case '^' :
-                                tmp = num1 ^ num2;
+                                double pow = Math.pow(num1, num2);
+                                if (pow <= Integer.MAX_VALUE) {
+                                    tmp = (int) pow;
+                                }
                                 break;
                         }
                         String expression = expr1 + op + expr2;
@@ -68,6 +71,13 @@ public class TargetNum {
     public void test0() {
         int[] nums = new int[]{4, 1, 3, 2};
         int target = 32;
+        PrettyPrint.print(getExpression(nums, target));
+    }
+    
+    @Test
+    public void test1() {
+        int[] nums = new int[]{1,3,6,8};
+        int target = 5840;
         PrettyPrint.print(getExpression(nums, target));
     }
 }
