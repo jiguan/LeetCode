@@ -1,7 +1,7 @@
 package com.leetcode.util;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -69,7 +69,7 @@ public class PrettyPrint {
 
     }
 
-    static public <T> void print(List<T> list) {
+    static public <T> void print(Collection<T> list) {
         if (list == null) {
             System.out.println("null");
             return;
