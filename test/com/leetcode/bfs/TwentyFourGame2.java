@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TwentyFourGame2 {
     final double eps = 0.001;
-
+    
     public boolean judgePoint24(int[] nums) {
         return calc(new double[]{nums[0], nums[1], nums[2], nums[3]});
     }
