@@ -61,7 +61,7 @@ public class WordSearchII {
         node = node.next[c - 'a'];
         if (node.word != null) {
             res.add(node.word);
-            // avoid duplicates
+            // avoid duplicates, like duplicated characters in matrix
             node.word = null;
         }
 
