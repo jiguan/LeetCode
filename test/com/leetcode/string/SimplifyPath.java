@@ -2,30 +2,31 @@ package com.leetcode.string;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.Stack;
 
 import org.junit.Test;
 
 public class SimplifyPath {
     public String simplifyPath(String path) {
-        LinkedList<String> list = new LinkedList<>();
-        Set<String> set = new HashSet<>(Arrays.asList(".", "..", ""));
-        for (String str : path.split("/")) {
-            if (str.equals("..") && !list.isEmpty()) {
-               list.removeLast();
-            } else if(!set.contains(str)){
-                list.add(str);
+        String[] dirs = path.split("\\/+");
+        Stack<String> stack = new Stack<>();
+        for (String dir : dirs) {
+            if (dir.equals("..")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+            } else if (dir.equals(".") || dir.isEmpty()) {
+                continue;
+            } else {
+                stack.push(dir);
             }
         }
-        String res = "";
-        for(String str : list) {
-            res = res + "/" + str;
+        StringBuffer sb = new StringBuffer();
+        while (!stack.isEmpty()) {
+            sb.insert(0, stack.pop());
+            sb.insert(0, "/");
         }
-        if(res.isEmpty()) return "/";
-        return res;
+        return sb.length() == 0 ? "/" : sb.toString();
     }
 
     @Test
@@ -55,7 +56,7 @@ public class SimplifyPath {
         String expected = "/";
         assertEquals(expected, simplifyPath(path));
     }
-    
+
     @Test
     public void test6() {
         String path = "///";
@@ -73,6 +74,13 @@ public class SimplifyPath {
     @Test
     public void test3() {
         String path = "/../";
+        String expected = "/";
+        assertEquals(expected, simplifyPath(path));
+    }
+    
+    @Test
+    public void test7() {
+        String path = "/..";
         String expected = "/";
         assertEquals(expected, simplifyPath(path));
     }

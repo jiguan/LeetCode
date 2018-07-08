@@ -1,4 +1,4 @@
-package com.leetcode.bfs;
+package com.leetcode.binearysearch;
 
 import java.util.LinkedList;
 import java.util.List;

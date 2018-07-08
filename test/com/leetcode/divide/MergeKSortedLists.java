@@ -15,7 +15,7 @@ public class MergeKSortedLists {
         if (start == end) return lists[start];
         if (start < end) {
             int mid = (end - start) / 2 + start;
-            ListNode l1 = partion(lists, 0, mid);
+            ListNode l1 = partion(lists, start, mid);
             ListNode l2 = partion(lists, mid + 1, end);
             return merge(l1, l2);
         }

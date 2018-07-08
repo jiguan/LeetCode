@@ -6,28 +6,15 @@ import org.junit.Test;
 
 public class HouseRobber {
     public int rob(int[] nums) {
-        int n = nums.length;
-        if (n < 2) return n == 0 ? 0 : nums[0];
-        int[] cache = new int[n];
-        cache[0] = nums[0];
-        cache[1] = nums[0] > nums[1] ? nums[0] : nums[1];
-        for (int i = 2; i < n; i++) {
-            cache[i] = Math.max(cache[i - 2] + nums[i], cache[i - 1]);
+        int yes = 0, no = 0;
+        for (int num : nums) {
+            int tmp = no;
+            // last house not rob, last house robbed
+            no = Math.max(no, yes);
+            // If decide to rob, num + last house not rob
+            yes = num + tmp;
         }
-        return cache[n - 1];
-    }
-
-    public int rob0(int[] nums) {
-        int odd = 0, even = 0;
-        for (int i = 0; i < nums.length; ++i) {
-            if (i % 2 == 0) {
-                even = Math.max(odd, even + nums[i]);
-            } else {
-                odd = Math.max(even, odd + nums[i]);
-            }
-        }
-
-        return Math.max(odd, even);
+        return Math.max(yes, no);
     }
 
     @Test
