@@ -12,14 +12,14 @@ public class NonOverlappingIntervals {
     public int eraseOverlapIntervals(Interval[] intervals) {
         if (intervals.length == 0) return 0;
         Arrays.sort(intervals, (a, b) -> a.end - b.end);
-        int cur = intervals[0].end;
+        int end = intervals[0].end;
 
         // non-overlap intervals
         int nonoverlap = 1;
         for (int i = 1; i < intervals.length; ++i) {
-            if (cur <= intervals[i].start) {
+            if (end <= intervals[i].start) {
                 nonoverlap++;
-                cur = intervals[i].end;
+                end = intervals[i].end;
             }
         }
         return intervals.length - nonoverlap;

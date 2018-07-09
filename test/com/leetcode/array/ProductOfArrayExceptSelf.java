@@ -29,12 +29,13 @@ Rights:  3*4*5  4*5    5     1
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int[] res = new int[nums.length];
+        // need to set to 1, otherwise when traverse from right to left, res[0] is 0
         res[0] = 1;
         for (int i = 1; i < nums.length; i++) {
             res[i] = res[i - 1] * nums[i - 1];
         }
-        int right = 1;
-        for (int i = nums.length - 1; i >= 0; i--) {
+        int right = nums[nums.length - 1];
+        for (int i = nums.length - 2; i >= 0; i--) {
             res[i] *= right;
             right *= nums[i];
         }
