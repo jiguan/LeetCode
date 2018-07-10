@@ -24,9 +24,7 @@ public class IntegerReplacement {
 
     // we want to erase as many 1 as possible
     public int integerReplacement(int n) {
-        // 
         // if not check (n == Integer.MAX_VALUE), ++n result overflow -> -2147483648 
-        
         int res = 0;
         while (n != 1) {
             // last bit is 0, even number
