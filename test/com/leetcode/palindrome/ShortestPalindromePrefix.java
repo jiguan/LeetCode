@@ -1,14 +1,15 @@
-package com.leetcode.string;
+package com.leetcode.palindrome;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 // adding characters in front of it only
-public class ShortestPalindrome {
+public class ShortestPalindromePrefix {
     public String shortestPalindrome(String s) {
         int start = 0;
         for (int end = s.length() - 1; end >= 0; end--) {
+            // if there is no palindrome, it will execute at the last letter
             if (s.charAt(start) == s.charAt(end)) {
                 start++;
             }
@@ -76,5 +77,11 @@ public class ShortestPalindrome {
     public void test4() {
         String s = "abcdabca";
         assertEquals("acbadcbabcdabca", shortestPalindrome(s));
+    }
+    
+    @Test
+    public void test5() {
+        String s = "abcd";
+        assertEquals("dcbabcd", shortestPalindrome(s));
     }
 }

@@ -15,15 +15,14 @@ public class ReverseLinkedListII {
         }
 
         ListNode node = pre.next; // beginning of the sub-list
-        ListNode next = node.next; // node is going to be reversed
 
         // start is fixed on its node, always the last one
-        for (int i = 0; i < n - m; ++i) {
+        for (int i = m; i < n; ++i) {
+            ListNode next = node.next;
             node.next = next.next;
             next.next = pre.next; // not node!
             pre.next = next;
-            next = node.next; // node always remind the same
-         }
+        }
 
         return fake.next;
     }
