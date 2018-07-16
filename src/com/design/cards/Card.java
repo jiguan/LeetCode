@@ -1,16 +1,25 @@
 package com.design.cards;
 
 public class Card {
-    private int value;
-    private SUITE suite;
+    protected FACE face;
+    protected SUITE suite;
 
-    public Card(int value, SUITE suite) {
-        this.value = value;
+    public Card(FACE face, SUITE suite) {
+        this.face = face;
         this.suite = suite;
     }
 
-    public int getValue() {
-        return value;
+    public Card(int value, SUITE suite) {
+        this(FACE.getFace(value), suite);
+    }
+    
+    public String getValue() {
+        return face.getLetter();
+    }
+    
+    // subclass may have a different rule to calculate the value for certain cards
+    public int getNum() {
+        return face.value;
     }
 
     public SUITE getSuite() {
@@ -19,6 +28,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" + "value=" + value + ", suite=" + suite.toString() + '}';
+        return "Card{" + "value=" + face.value + ", suite=" + suite.toString() + '}';
     }
 }
