@@ -14,6 +14,7 @@ import org.junit.Test;
 import com.leetcode.util.PrettyPrint;
 
 public class PermutationsII {
+    // O(n * n!)
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null || nums.length == 0) return result;
