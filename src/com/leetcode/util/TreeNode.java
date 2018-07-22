@@ -6,8 +6,7 @@ import java.util.Queue;
 
 public class TreeNode {
     public int val;
-    public TreeNode left;
-    public TreeNode right;
+    public TreeNode left, right, parent;
 
     public TreeNode(int x) {
         val = x;
@@ -27,10 +26,12 @@ public class TreeNode {
             TreeNode node = queue.poll();
             if (++i < nums.length && nums[i] != null) {
                 node.left = new TreeNode(nums[i]);
+                node.left.parent = node;
                 queue.add(node.left);
             }
             if (++i < nums.length && nums[i] != null) {
                 node.right = new TreeNode(nums[i]);
+                node.right.parent = node;
                 queue.add(node.right);
             }
         }

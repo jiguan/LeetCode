@@ -3,12 +3,30 @@ package com.interview.mustdo;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
+// zillow
 public class FirstUniqueCharacterInAString {
     public int firstUniqChar(String s) {
+        Set<Character> set = new HashSet<>();
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < s.length(); ++i) {
+            Character c = s.charAt(i);
+            if (set.add(c)) {
+                map.put(c, i);
+            } else {
+                map.remove(c);
+            }
+        }
+        return map.isEmpty() ? -1 : map.entrySet().iterator().next().getValue();
+    }
+
+    public int firstUniqChar0(String s) {
         Map<Character, Node> map = new HashMap<>();
         Node head = new Node('0', -1), tail = new Node('0', -1);
         head.next = tail;
