@@ -13,7 +13,8 @@ import org.junit.Test;
 import com.leetcode.util.TreeNode;
 
 public class LowestCommonAncestorOfABinaryTree {
-
+    // In general, the computational time required for this algorithm is O(h) where h is the height of the tree (length
+    // of longest path from a leaf to the root)
     public TreeNode lowestCommonAncestor0(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || p == root || q == root) return root;
 

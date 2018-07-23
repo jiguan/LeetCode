@@ -2,16 +2,24 @@ package com.leetcode.util;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PrettyPrint {
     static public void print(ListNode node) {
-        while (node != null) {
+        Set<ListNode> set = new HashSet<>();
+        while (node != null && !set.contains(node)) {
             System.out.print(node.val + "->");
+            set.add(node);
             node = node.next;
         }
-        System.out.println("null");
+        if (node == null) {
+            System.out.println("null");
+        } else {
+            System.out.println(node.val);
+        }
     }
 
     static public void print(int[] arr) {
@@ -66,7 +74,6 @@ public class PrettyPrint {
                 System.out.println("]");
             }
         }
-
     }
 
     static public <T> void print(Collection<T> list) {
