@@ -1,4 +1,4 @@
-package com.leetcode.dp;
+package com.leetcode.dp.lookback;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

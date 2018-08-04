@@ -1,4 +1,4 @@
-package com.geeksforgeeks.test;
+package com.interview.mustdo;
 
 import static org.junit.Assert.assertTrue;
 

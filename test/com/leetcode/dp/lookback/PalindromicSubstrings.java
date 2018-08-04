@@ -1,4 +1,4 @@
-package com.leetcode.palindrome;
+package com.leetcode.dp.lookback;
 
 import static org.junit.Assert.assertEquals;
 

@@ -265,11 +265,15 @@ class TernaryTree {
                     node.val = getMax(node.left).val;
                     node.left = delete(node.left, node.val);
                     // check any node from the left subtree has the same value, if so, move it under node.middle
-                    TernaryNode tmp = getMax(node.left);
-                    while (tmp != null && node.val == tmp.val) {
-                        node.mid = new TernaryNode(node.val);
+                    TernaryNode leftMax = getMax(node.left);
+                    while (leftMax != null && node.val == leftMax.val) {
+                        TernaryNode tmp = node;
+                        while(tmp.mid != null) {
+                            tmp = tmp.mid;
+                        }
+                        tmp.mid = new TernaryNode(node.val);
                         node.left = delete(node.left, node.val);
-                        tmp = getMax(node.left);
+                        leftMax = getMax(node.left);
                     }
                 }
             }

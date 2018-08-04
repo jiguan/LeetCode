@@ -19,9 +19,9 @@ public class TwentyFourGame2 {
             for (int j = i + 1; j < nums.length; j++) {
                 // retrieve nums[i] and nums[j], and save their result
                 double[] next = new double[nums.length - 1];
-                for (int k = 0, l = 0; k < nums.length; k++) {
+                for (int k = 0, index = 0; k < nums.length; k++) {
                     if (k != i && k != j) {
-                        next[l++] = nums[k];
+                        next[index++] = nums[k];
                     }
                 }
                 for (double k : compute(nums[i], nums[j])) {

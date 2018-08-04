@@ -37,7 +37,7 @@ public class ProductOfArrayExceptSelf {
         int right = nums[nums.length - 1];
         for (int i = nums.length - 2; i >= 0; i--) {
             res[i] *= right;
-            right *= nums[i];
+            right = right * nums[i];
         }
         return res;
     }
