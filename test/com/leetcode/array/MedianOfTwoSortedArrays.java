@@ -3,6 +3,7 @@ package com.leetcode.array;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+// https://www.youtube.com/watch?v=LPFhl65R7ww&feature=youtu.be
 
 public class MedianOfTwoSortedArrays {
     private static final double DELTA = 1e-15;
@@ -13,8 +14,7 @@ public class MedianOfTwoSortedArrays {
             return kthSmallest(nums1, nums1.length, 0, nums2, nums2.length, 0,
                     totalLen / 2 + 1);
         } else {
-            return (kthSmallest(nums1, nums1.length, 0, nums2, nums2.length, 0,
-                    totalLen / 2)
+            return (kthSmallest(nums1, nums1.length, 0, nums2, nums2.length, 0, totalLen / 2)
                     + kthSmallest(nums1, nums1.length, 0, nums2, nums2.length,
                             0, totalLen / 2 + 1))
                     / 2.0;
