@@ -13,17 +13,18 @@ public class MinimumWindowSubstring {
         }
 
         int begin = 0, diff = t.length();
-        int minLength = Integer.MAX_VALUE;
         String res = "";
         for (int end = 0; end < s.length(); end++) {
             char c = s.charAt(end);
             // this character exists in t
-            if(times[c] > 0) --diff;
+            if(times[c] > 0) {
+            	--diff;
+            }
+            // for characters not in t, always negative
             --times[c];
 
             while (diff == 0) {
-                if (end - begin < minLength) {
-                    minLength = end - begin;
+                if(res.equals("") || res.length() > end - begin + 1) {
                     res = s.substring(begin, end + 1);
                 }
                 char kickout = s.charAt(begin++);
@@ -40,5 +41,13 @@ public class MinimumWindowSubstring {
         String S = "ADOBECODEBANC";
         String T = "ABC";
         assertEquals("BANC", minWindow(S, T));
+    }
+    
+    @Test
+    public void test1() {
+    	// http://www.asciitable.com/
+    	int a = 'a';
+    	int A = 'A';
+    	System.out.println("a is " + a +", A is " + A);
     }
 }

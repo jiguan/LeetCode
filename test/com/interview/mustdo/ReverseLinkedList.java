@@ -8,19 +8,14 @@ import com.leetcode.util.PrettyPrint;
 public class ReverseLinkedList {
     // A -> B -> C -> D -> A
     public ListNode reverseList(ListNode head) {
-        // Point to the last one
-        ListNode prev = head;
-        while (prev.next != head)
-            prev = prev.next;
-
-        ListNode node = head;
-        do {
+    	ListNode pre = null;
+        while (head != null) {
             ListNode next = head.next;
-            head.next = prev;
-            prev = head;
+            head.next = pre;
+            pre = head;
             head = next;
-        } while (node != head);
-        return prev;
+        }
+        return pre;
     }
 
     @Test

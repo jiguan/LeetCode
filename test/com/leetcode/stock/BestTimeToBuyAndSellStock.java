@@ -5,9 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class BestTimeToBuyAndSellStock {
+	// price cannot be negative
 	public int maxProfit(int[] prices) {
 		int current = 0, profit = 0;
 		for (int i = 1; i < prices.length; i++) {
+			// continuously hold it
 			current = Math.max(0, current + (prices[i] - prices[i - 1]));
 			profit = Math.max(profit, current);
 		}
