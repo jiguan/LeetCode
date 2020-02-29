@@ -29,19 +29,21 @@ public class NextPermutation {
     }
 
     public void nextPermutation(int[] nums) {
-        // get index of num smaller than the number after it.
+        // get index of num smaller than the number after it. e.g. 1465
         int i = nums.length - 2;
+        // find first nums[i] < nums[i+1], i = 1, val = 4
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             --i;
         }
         if (i >= 0) {
             int j = nums.length - 1;
+            // find first nums[j] > nums[i], j = 3, val = 5
             while (j > i && nums[j] <= nums[i]) {
                 --j;
             }
-            swap(nums, i, j);
+            swap(nums, i, j); // 1564
         }
-        reverse(nums, i + 1, nums.length - 1);
+        reverse(nums, i + 1, nums.length - 1); // 1546
     }
 
     private void reverse(int[] nums, int i, int j) {

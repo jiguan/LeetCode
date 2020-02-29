@@ -3,12 +3,14 @@
 - [Tree](test/com/leetcode/tree/README.md)
 - [Math](test/com/leetcode/math/README.md)
 - [String](test/com/leetcode/string/README.md)
+- [DP](test/com/leetcode/dp/REAEME.md)
 
 ## Must do questions
 - Merge k Sorted Lists 
     [Divide and Conquer](test/com/leetcode/divideandconquer/MergeKSortedLists.java), [Priority Queue](test/com/leetcode/priorityqueue/MergeKSortedLists.java)
 
-## Algorithms
+## General knowledge
+### Algorithms
 - [HeapSort](test/com/algorithm/HeapSort.java)
 - [InsertSort](test/com/algorithm/InsertSort.java)
 - [QuickSort](test/com/algorithm/QuickSort.java)

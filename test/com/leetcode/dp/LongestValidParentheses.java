@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class LongestValidParentheses {
-    public int longestValidParentheses(String s) {
+    public int longestValidParentheses0(String s) {
         if (s == null || s.length() < 2) return 0;
         // store the length of valid parentheses at position i
         int[] longest = new int[s.length()];
@@ -32,6 +32,25 @@ public class LongestValidParentheses {
         return res;
     }
 
+    public int longestValidParentheses(String s) {
+    	int[] dp = new int[s.length()];
+    	int open = 0;
+    	int max = 0;
+    	for(int i=0; i<s.length();++i) {
+    		if(s.charAt(i) == '(') open++;
+    		else if (s.charAt(i) == ')' && open > 0) {
+    			dp[i] = 2 + dp[i -1];
+    			if(i - dp[i] > 0) {
+    				// jump to first ( to handle ()() situation
+    				dp[i] += dp[i - dp[i]];
+    			}
+    			open--;
+    		}
+    		max = Math.max(max, dp[i]);
+    	}
+    	return max;
+    }
+    
     @Test
     public void test0() {
         String s = ")()())";
