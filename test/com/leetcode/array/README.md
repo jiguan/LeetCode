@@ -1,8 +1,24 @@
 ## Arrays
 
+### Tricks
+- Sorting an array `Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
+
+### Questions category
+#### Intervals
+- 56. [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
+- 253. [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium, need some thoughts
+
+#### Stack
+- 1130. Minimum Cost Tree From Leaf Values
+- 907. Sum of Subarray Minimums
+- 901. Online Stock Span
+- 856. Score of Parentheses
+- 503. Next Greater Element II
+- 496. Next Greater Element I
+- 84. Largest Rectangle in Histogram
+- 42. Trapping Rain Water
 
 
-  
 ### PriorityQueue
 Priority queue can be used to solve kth smallest questions. A key feature is given input is sorted or can be sorted. 
   1. Create a tuple class which stores indexes and val and implements Comparable interface
