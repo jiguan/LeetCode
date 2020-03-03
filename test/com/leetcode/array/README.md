@@ -5,6 +5,9 @@
 - 56. [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
 - 253. [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium, need some thoughts
 
+### Backtrack
+- 46. [Permutations](https://leetcode.com/problems/permutations/) - Medium, Must Do
+
 ### Stack
 - 1130. Minimum Cost Tree From Leaf Values
 - 907. Sum of Subarray Minimums
@@ -17,6 +20,7 @@
 
 ### BFS/DFS
 - 269. [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) - Hard
+- 301. [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
 
 ### First K elements
 #### PriorityQueue

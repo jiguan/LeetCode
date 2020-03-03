@@ -1,53 +1,39 @@
 package com.leetcode.binearysearch;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.Set;
-
 import org.junit.Test;
 
 public class WordLadder {
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
-        Queue<String> queue = new LinkedList<>();
-        queue.add(beginWord);
-        int count = 1;
-        wordList.add(endWord);
-        List<String> toVisit = new ArrayList<>();
-        while (!queue.isEmpty()) {
-            String word = queue.poll();
-            if (word.equals(endWord)) return count;
-            toVisit.addAll(find(word, wordList));
-            if (queue.isEmpty()) {
-                count++;
-                queue.addAll(toVisit);
-                toVisit = new ArrayList<>();
-            }
-        }
+        Set<String> dict = new HashSet<>(wordList);
+        if(!dict.contains(endWord)) return 0;
+        Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
+        int res = 1;
 
-        return 0;
-    }
-
-    private List<String> find(String word, Set<String> wordList) {
-        List<String> toVisit = new ArrayList<>();
-        char[] chars = word.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            for (int j = 0; j < 26; j++) {
-                chars[i] = (char) ('a' + j);
-                String cand = new String(chars);
-                if (!word.equals(cand) && wordList.contains(cand)) {
-                    toVisit.add(cand);
-                    wordList.remove(cand);
+        while (!visited.contains(endWord)) {
+            Set<String> nextLevel = new HashSet<>();
+            for (String word : visited) {
+                for (int i = 0; i < word.length(); ++i) {
+                    char[] chs = word.toCharArray();
+                    for (char ch = 'a'; ch <= 'z'; ++ch) {
+                        chs[i] = ch;
+                        String tmp = new String(chs);
+                        if (dict.contains(tmp)) {
+                            nextLevel.add(tmp);
+                            dict.remove(tmp);
+                        }
+                    }
                 }
             }
-            chars = word.toCharArray(); // recover
+            if (nextLevel.isEmpty()) return 0;
+            res++;
+            visited = nextLevel;
         }
-        return toVisit;
+        return res;
     }
 
     @Test

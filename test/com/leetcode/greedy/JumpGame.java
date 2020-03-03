@@ -21,10 +21,10 @@ public class JumpGame {
     }
 
     public boolean canJump0(int[] nums) {
-        int jump = 0;
+        int reach = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (i > jump) return false;
-            jump = Math.max(jump, i);
+            if (i > reach) return false;
+            reach = Math.max(reach, i);
         }
         return true;
     }

@@ -20,8 +20,8 @@ public class WordSearch {
     }
 
     private boolean search(int i, int j, int index, char[] chars, char[][] board) {
-        if (index==chars.length)
-            return true;
+        // need to place first, for [[A]], A situation. Any move will exceed the boundary
+        if (index==chars.length)  return true;
         if (i < 0 || i == board.length || j < 0 || j == board[0].length || board[i][j] != chars[index])
             return false;
         board[i][j] ^= 256;
