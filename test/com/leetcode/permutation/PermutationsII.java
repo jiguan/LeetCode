@@ -23,9 +23,9 @@ public class PermutationsII {
         return result;
     }
 
-    private void backtrack(int[] nums, boolean[] visited, List<Integer> current, List<List<Integer>> result) {
-        if (current.size() == nums.length) {
-            result.add(new ArrayList<Integer>(current));
+    private void backtrack(int[] nums, boolean[] visited, List<Integer> curr, List<List<Integer>> res) {
+        if (curr.size() == nums.length) {
+            res.add(new ArrayList<Integer>(curr));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
@@ -33,16 +33,39 @@ public class PermutationsII {
                 if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1]) {
                     continue;
                 }
-                current.add(nums[i]);
+                curr.add(nums[i]);
                 visited[i] = true;
-                backtrack(nums, visited, current, result);
-                current.remove(current.size() - 1);
+                backtrack(nums, visited, curr, res);
+                curr.remove(curr.size() - 1);
                 visited[i] = false;
             }
         }
 
     }
 
+    public List<List<Integer>> permuteUnique1(int[] nums) {
+        Arrays.sort(nums);
+       List<List<Integer>> res = new LinkedList<>();
+        dfs(nums, 0, new ArrayList<Integer>(), res);
+        return res;
+    }
+    
+    private void dfs(int[] nums, int index, List<Integer> curr, List<List<Integer>> res) {
+        if(index == nums.length) {
+            res.add(new ArrayList<>(curr));
+            return;
+        }
+        
+        for(int i = 0; i<=curr.size(); ++i) {
+            
+            curr.add(i, nums[index]);
+            dfs(nums, index + 1, curr, res);
+            curr.remove(i);
+        }
+        
+    }
+    
+    
     public List<List<Integer>> permuteUnique0(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         traverse(nums, 0, res);
@@ -77,7 +100,7 @@ public class PermutationsII {
     @Test
     public void test0() {
         int[] nums = new int[]{1, 1, 3};
-        List<List<Integer>> result = permuteUnique0(nums);
+        List<List<Integer>> result = permuteUnique1(nums);
         assertEquals(Integer.valueOf(3), Integer.valueOf(result.size()));
         for (List<Integer> list : result) {
             PrettyPrint.print(list);

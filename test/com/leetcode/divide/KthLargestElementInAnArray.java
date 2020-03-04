@@ -1,7 +1,6 @@
 package com.leetcode.divide;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class KthLargestElementInAnArray {
@@ -11,26 +10,25 @@ public class KthLargestElementInAnArray {
 
     private int partition(int start, int end, int nums[], int k) {
         int i = start, j = end, pivot = start;
-        // j is not guaranteed to be larger than i
+        // we need to have equals, since we may not to swap
         while (i <= j) {
-            // since pivot is initialized to i, this will be executed at least once
-            while (i <= j && nums[i] <= nums[pivot]) {
-                i++;
-            }
-            while (i <= j && nums[j] > nums[pivot]) {
-                j--;
-            }
-            if (i < j) {
+            if (nums[i] >= nums[pivot]) {
+                ++i;
+            } else if (nums[j] < nums[pivot]) {
+                --j;
+            } else {
+                // encounter nums[i] < nums[j] situation, swap and continue;
                 swap(nums, i, j);
             }
         }
-        // pivot, s, s, s (j), l (i), l, l
-        // have to swap with j
+        // since i must be + 1, j smallest is 0
+        // while i could be out of boundary
         swap(nums, j, pivot);
         pivot = j;
-        if (pivot > nums.length - k) {
+        // since pivot is index, need to +1
+        if (pivot + 1 > k) {
             return partition(start, pivot - 1, nums, k);
-        } else if (pivot < nums.length - k) {
+        } else if (pivot + 1 < k) {
             return partition(pivot + 1, end, nums, k);
         } else {
             return nums[pivot];
@@ -46,21 +44,21 @@ public class KthLargestElementInAnArray {
 
     @Test
     public void test0() {
-        int[] nums = new int[]{6, 5, 4, 3, 2, 1};
+        int[] nums = new int[] {6, 5, 4, 3, 2, 1};
         int k = 2;
         assertEquals(5, findKthLargest(nums, k));
     }
 
     @Test
     public void test1() {
-        int[] nums = new int[]{1, 2, 3};
+        int[] nums = new int[] {1, 2, 3};
         int k = 3;
         assertEquals(1, findKthLargest(nums, k));
     }
 
     @Test
     public void test2() {
-        int[] nums = new int[]{3, 1, 2, 3, 4, 5, 6};
+        int[] nums = new int[] {3, 1, 2, 3, 4, 5, 6};
         int k = 2;
         assertEquals(5, findKthLargest(nums, k));
     }

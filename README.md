@@ -6,8 +6,9 @@
 - [DP](test/com/leetcode/dp/REAEME.md)
 
 ## Must do questions
-- Merge k Sorted Lists 
-    [Divide and Conquer](test/com/leetcode/divideandconquer/MergeKSortedLists.java), [Priority Queue](test/com/leetcode/priorityqueue/MergeKSortedLists.java)
+- 146. [LRU Cache](https://leetcode.com/problems/lru-cache/)
+- 208. [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+
 
 ## General knowledge
 ### Algorithms

@@ -1,4 +1,4 @@
-package com.leetcode.tree;
+package com.leetcode.implement;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -40,13 +40,8 @@ public class ImplementTrie {
 
 }
 
-
 class Trie {
-    private TrieNode root;
-
-    public Trie() {
-        root = new TrieNode();
-    }
+    private TrieNode root = new TrieNode();
 
     // Inserts a word into the trie.
     public void insert(String word) {
@@ -67,8 +62,7 @@ class Trie {
         TrieNode node = root;
         for (char w : word.toCharArray()) {
             node = node.nodes[w - 'a'];
-            if (node == null)
-                return false;
+            if (node == null) return false;
         }
         return node.leaf;
     }
