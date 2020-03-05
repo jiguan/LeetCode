@@ -11,6 +11,8 @@
 
 
 ## General knowledge
+ * If the cases the limited,  __bucket sort__  is a good option
+
 ### Algorithms
 - [HeapSort](test/com/algorithm/HeapSort.java)
 - [InsertSort](test/com/algorithm/InsertSort.java)

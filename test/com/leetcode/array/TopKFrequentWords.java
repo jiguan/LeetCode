@@ -19,7 +19,8 @@ public class TopKFrequentWords {
             map.put(word, map.getOrDefault(word, 0) + 1);
         }
 
-        List<String>[] times = new List[words.length];
+        // 1 element, 1 times
+        List<String>[] times = new List[words.length + 1];
 
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             int freq = entry.getValue();
@@ -75,5 +76,13 @@ public class TopKFrequentWords {
         int k = 2;
         List<String> expected = Arrays.asList("i", "love");
         assertEquals(expected, topKFrequent1(words, k));
+    }
+    
+    @Test
+    public void test1() {
+        String[] words = new String[] {"i"};
+        int k = 1;
+        List<String> expected = Arrays.asList("i");
+        assertEquals(expected, topKFrequent(words, k));
     }
 }

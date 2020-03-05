@@ -1,4 +1,4 @@
-package com.leetcode.graph;
+package com.leetcode.graph.prerequisite;
 
 import static org.junit.Assert.assertTrue;
 

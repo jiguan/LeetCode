@@ -16,22 +16,22 @@ public class CountAndSay {
 	}
 
 	private String getNext(String num) {
-		StringBuffer buffer = new StringBuffer();
-		char current = num.charAt(0);
-		int count = 1;
-		for (int i = 1; i < num.length(); i++) {
-			if (num.charAt(i) == current) {
-				count++;
-			} else {
-				buffer.append(count);
-				buffer.append(current);
-				current = num.charAt(i);
-				count = 1;
-			}
-		}
-		buffer.append(count);
-		buffer.append(current);
-		return buffer.toString();
+	    int count = 0;
+        char prev = num.charAt(0);
+        StringBuilder sb = new StringBuilder();
+        for(char ch : num.toCharArray()) {
+            if(prev == ch) {
+                count++;
+            } else {
+                sb.append(count);
+                sb.append(prev);
+                count = 1;
+                prev = ch;
+            }
+        }
+        sb.append(count);
+        sb.append(prev);
+        return sb.toString();
 	}
 
 	@Test
@@ -46,6 +46,12 @@ public class CountAndSay {
 		assertEquals("11", countAndSay(n));
 	}
 
+	@Test
+    public void test3() {
+        int n = 4;
+        assertEquals("1211", countAndSay(n));
+    }
+	
 	@Test
 	public void test2() {
 		int n = 5;

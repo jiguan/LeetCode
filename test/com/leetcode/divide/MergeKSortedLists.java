@@ -8,15 +8,15 @@ import com.leetcode.util.ListNode;
 
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
-        return partion(lists, 0, lists.length - 1);
+        return partition(lists, 0, lists.length - 1);
     }
 
-    private ListNode partion(ListNode[] lists, int start, int end) {
+    private ListNode partition(ListNode[] lists, int start, int end) {
         if (start == end) return lists[start];
         if (start < end) {
             int mid = (end - start) / 2 + start;
-            ListNode l1 = partion(lists, start, mid);
-            ListNode l2 = partion(lists, mid + 1, end);
+            ListNode l1 = partition(lists, start, mid);
+            ListNode l2 = partition(lists, mid + 1, end);
             return merge(l1, l2);
         }
         return null;

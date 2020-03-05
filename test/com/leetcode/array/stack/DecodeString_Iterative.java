@@ -1,10 +1,10 @@
-package com.leetcode.string;
+package com.leetcode.array.stack;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Stack;
 import org.junit.Test;
 
-public class DecodeString {
+public class DecodeString_Iterative {
     public String decodeString(String s) {
         Stack<Integer> intStack = new Stack<>();
         Stack<StringBuilder> strStack = new Stack<>();

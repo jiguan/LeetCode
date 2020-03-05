@@ -1,10 +1,11 @@
-package com.leetcode.string;
+package com.leetcode.array.stack;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class BasicCalculator {
+public class BasicCalculator_Recursive {
+    // global var is needed since we just go through once, with recursive
 	int i = 0;
 
 	public int calculate(String s) {
