@@ -56,6 +56,7 @@ public class CourseScheduleII {
     public void test1() {
         int numCourses = 4;
         int[][] prerequisites = new int[][] {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
-        assertArrayEquals(new int[] {0, 2, 1, 3}, findOrder(numCourses, prerequisites));
+        int[] actual = findOrder(numCourses, prerequisites);
+        assertArrayEquals(new int[] {0, 1, 2, 3}, actual);
     }
 }

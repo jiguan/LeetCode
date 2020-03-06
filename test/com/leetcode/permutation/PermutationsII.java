@@ -1,16 +1,13 @@
 package com.leetcode.permutation;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
 import org.junit.Test;
-
 import com.leetcode.util.PrettyPrint;
 
 public class PermutationsII {
@@ -23,7 +20,8 @@ public class PermutationsII {
         return result;
     }
 
-    private void backtrack(int[] nums, boolean[] visited, List<Integer> curr, List<List<Integer>> res) {
+    private void backtrack(int[] nums, boolean[] visited, List<Integer> curr,
+            List<List<Integer>> res) {
         if (curr.size() == nums.length) {
             res.add(new ArrayList<Integer>(curr));
             return;
@@ -43,29 +41,6 @@ public class PermutationsII {
 
     }
 
-    public List<List<Integer>> permuteUnique1(int[] nums) {
-        Arrays.sort(nums);
-       List<List<Integer>> res = new LinkedList<>();
-        dfs(nums, 0, new ArrayList<Integer>(), res);
-        return res;
-    }
-    
-    private void dfs(int[] nums, int index, List<Integer> curr, List<List<Integer>> res) {
-        if(index == nums.length) {
-            res.add(new ArrayList<>(curr));
-            return;
-        }
-        
-        for(int i = 0; i<=curr.size(); ++i) {
-            
-            curr.add(i, nums[index]);
-            dfs(nums, index + 1, curr, res);
-            curr.remove(i);
-        }
-        
-    }
-    
-    
     public List<List<Integer>> permuteUnique0(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         traverse(nums, 0, res);
@@ -99,17 +74,17 @@ public class PermutationsII {
 
     @Test
     public void test0() {
-        int[] nums = new int[]{1, 1, 3};
-        List<List<Integer>> result = permuteUnique1(nums);
+        int[] nums = new int[] {1, 1, 3};
+        List<List<Integer>> result = permuteUnique0(nums);
         assertEquals(Integer.valueOf(3), Integer.valueOf(result.size()));
         for (List<Integer> list : result) {
             PrettyPrint.print(list);
         }
     }
-    
+
     @Test
     public void test1() {
-        int[] nums = new int[]{1, 2, 3};
+        int[] nums = new int[] {1, 2, 3};
         List<List<Integer>> result = permuteUnique0(nums);
         assertEquals(Integer.valueOf(6), Integer.valueOf(result.size()));
         for (List<Integer> list : result) {

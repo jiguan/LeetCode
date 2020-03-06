@@ -1,4 +1,4 @@
-package com.leetcode.divide;
+package com.leetcode.array.divide;
 
 public class FindSmallestLetterGreaterThanTarget {
     public char nextGreatestLetter(char[] letters, char target) {

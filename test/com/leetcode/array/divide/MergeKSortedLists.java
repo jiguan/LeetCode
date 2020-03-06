@@ -1,4 +1,4 @@
-package com.leetcode.divide;
+package com.leetcode.array.divide;
 
 import static org.junit.Assert.assertTrue;
 

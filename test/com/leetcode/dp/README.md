@@ -1,5 +1,8 @@
 ### Dynamic Programming
 #### Easy
+- 53. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/), follow up: try divide and conquer approach
+- 198. [House Robber](https://leetcode.com/problems/house-robber/)
+- 256. [Paint House](https://leetcode.com/problems/paint-house/)
 - 62. [Unique Paths](https://leetcode.com/problems/unique-paths/)
 - 70. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
 - 91. [Decode Ways](https://leetcode.com/problems/decode-ways)

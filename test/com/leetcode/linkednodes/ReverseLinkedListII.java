@@ -1,36 +1,35 @@
 package com.leetcode.linkednodes;
 
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
 import com.leetcode.util.ListNode;
-import com.leetcode.util.PrettyPrint;
 
 public class ReverseLinkedListII {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode fake = new ListNode(-1);
         fake.next = head;
-        ListNode pre = fake;
+        ListNode stop = fake;
         for (int i = 1; i < m; ++i) {
-            pre = pre.next;
+            stop = stop.next;
         }
-
-        ListNode node = pre.next; // beginning of the sub-list
-
-        // start is fixed on its node, always the last one
-        for (int i = m; i < n; ++i) {
+        ListNode node = stop.next;
+        ListNode prev = stop;
+        for (int i = m; i <= n; ++i) {
             ListNode next = node.next;
-            node.next = next.next;
-            next.next = pre.next; // not node!
-            pre.next = next;
+            node.next = prev;
+            prev = node;
+            node = next;
         }
 
+        stop.next.next = node;
+        stop.next = prev;
         return fake.next;
     }
 
     @Test
     public void test0() {
-        ListNode head = ListNode.build(new int[]{1, 2, 3, 4, 5});
-        // Expect 1->4->3->2-5
-        PrettyPrint.print(reverseBetween(head, 2, 4));
+        ListNode head = ListNode.build(new int[] {1, 2, 3, 4, 5});
+        ListNode expected = ListNode.build(new int[] {1, 4, 3, 2, 5});
+        assertTrue(ListNode.sameList(expected, reverseBetween(head, 2, 4)));
     }
 }

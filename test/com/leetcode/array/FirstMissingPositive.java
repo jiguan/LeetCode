@@ -10,9 +10,9 @@ public class FirstMissingPositive {
     public int firstMissingPositive(int[] nums) {
         int len = nums.length;
         for (int i = 0; i < len; i++) {
-            // need to make sure nums[num - 1] == num
+            // need to make sure nums[num - 1] == num, e.g [1, 2, ..]
             // note, always use nums[i] to retrieve the current value
-            while (nums[i] > 0 && nums[i] <= len && nums[nums[i] - 1] != nums[i]) {
+            while (nums[i]> 0 && nums[i] <= len && nums[nums[i] - 1] != nums[i]) {
                 // although we don't find the right number for the index i, at least we find one for the index num - 1
                 // A[num - 1] = num
                 swap(nums[i] - 1, i, nums);
