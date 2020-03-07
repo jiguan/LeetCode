@@ -12,6 +12,14 @@
 
 ## General knowledge
  * If the cases the limited,  __bucket sort__  is a good option
+ * Use this code to determine if the intervals have an overlap
+``` 
+// find the overlap... if there is any...
+int startMax = Math.max(a.start, b.start);
+int endMin = Math.min(a.end, b.end);
+            
+if (endMin >= startMax) {
+```
 
 ### Algorithms
 - [HeapSort](test/com/algorithm/HeapSort.java)

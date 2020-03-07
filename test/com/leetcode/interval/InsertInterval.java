@@ -1,41 +1,40 @@
 package com.leetcode.interval;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.LinkedList;
+import static org.junit.Assert.assertArrayEquals;
+import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 
-import com.leetcode.util.Interval;
-
 public class InsertInterval {
-    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        List<Interval> res = new LinkedList<>();
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> res = new ArrayList<>();
+
         int index = 0;
-        while (index < intervals.size() && intervals.get(index).end < newInterval.start) {
-            res.add(intervals.get(index++));
+        while (index < intervals.length && intervals[index][1] < newInterval[0]) {
+            res.add(intervals[index++]);
         }
-        while (index < intervals.size() && intervals.get(index).start <= newInterval.end) {
-            newInterval.start = Math.min(intervals.get(index).start, newInterval.start);
-            newInterval.end = Math.max(intervals.get(index).end, newInterval.end);
+
+        while (index < intervals.length && intervals[index][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(intervals[index][0], newInterval[0]);
+            newInterval[1] = Math.max(intervals[index][1], newInterval[1]);
             index++;
         }
         res.add(newInterval);
-        while (index < intervals.size()) {
-            res.add(intervals.get(index++));
+
+        while (index < intervals.length) {
+            res.add(intervals[index++]);
         }
-        return res;
+        int[][] arr = new int[res.size()][2];
+        arr = res.toArray(arr);
+        return arr;
+
     }
 
     @Test
     public void test0() {
-        List<Interval> intervals = Arrays.asList(new Interval(1, 2), new Interval(3, 5), new Interval(6, 7),
-                new Interval(8, 10), new Interval(12, 16));
-        Interval newInterval = new Interval(4, 8);
-        List<Interval> res = insert(intervals, newInterval);
-        List<Interval> expected = Arrays.asList(new Interval(1, 2), new Interval(3, 10), new Interval(12, 16));
-        assertEquals(expected, res);
+        int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
+        int[] newInterval = {4, 8};
+        int[][] expected = {{1, 2}, {3, 10}, {12, 16}};
+        assertArrayEquals(expected, insert(intervals, newInterval));
     }
 }

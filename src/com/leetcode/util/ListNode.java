@@ -2,6 +2,7 @@ package com.leetcode.util;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.Assert;
 
 public class ListNode {
     public int val;
@@ -31,8 +32,7 @@ public class ListNode {
     /**
      * Parse string representation into a list of linked nodes
      * 
-     * @param list
-     *            - e.g. "1->4->3->2->5->2"
+     * @param list - e.g. "1->4->3->2->5->2"
      * @return the head node of the list nodes
      */
     public static ListNode build(String list) {
@@ -57,6 +57,18 @@ public class ListNode {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static void assertEquals(ListNode expected, ListNode actual) {
+        String message = "ListNodes are not equal, expected: %d, actual: %d";
+        if (expected == null && actual == null) {
+            return;
+        } else if (expected == null || actual == null) {
+            Assert.fail(String.format(message, expected != null ? expected.val : null,
+                    actual != null ? actual.val : null));
+        } else if (expected.val != actual.val) {
+            Assert.fail(String.format(message, expected.val, actual.val));
         }
     }
 }

@@ -1,10 +1,8 @@
 package com.interview.mustdo;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.Test;
 
 public class LongestConsecutiveSequence {
@@ -12,23 +10,24 @@ public class LongestConsecutiveSequence {
         int res = 0;
         // num, length
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; ++i) {
-            if (map.containsKey(nums[i])) continue;
-            int left = map.getOrDefault(nums[i] - 1, 0);
-            int right = map.getOrDefault(nums[i] + 1, 0);
+        for (int num : nums) {
+            if (map.containsKey(num)) continue;
+            int left = map.getOrDefault(num - 1, 0);
+            int right = map.getOrDefault(num + 1, 0);
             int sum = left + right + 1;
             res = Math.max(res, sum);
-            // cannot ignore, since for duplicated number, we want to continue
-            map.put(nums[i], sum);
-            map.put(nums[i] - left, sum);
-            map.put(nums[i] + right, sum);
+            // we don't need to iterate all the way to left/right since we ignore visited element
+            // the head and tail are the most important
+            map.put(num, sum); // record to ignore it next time
+            map.put(num - left, sum);
+            map.put(num + right, sum);
         }
         return res;
     }
 
     @Test
     public void test0() {
-        int[] nums = {4, 0, -4, -2, 2, 5, 2, 0, -8, -1, 7, 4, 5, -4, 6,  -3};
+        int[] nums = {4, 0, -4, -2, 2, 5, 2, 0, -8, -1, 7, 4, 5, -4, 6, -3};
         assertEquals(5, longestConsecutive(nums));
     }
 }

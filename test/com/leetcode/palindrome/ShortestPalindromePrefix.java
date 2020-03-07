@@ -1,11 +1,12 @@
 package com.leetcode.palindrome;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
-// adding characters in front of it only
+
 public class ShortestPalindromePrefix {
+    // find the longest palindrome substring, abacd -> aba
+    // get the suffix then reverse and insert into head -> dc + aba + cd
     public String shortestPalindrome(String s) {
         int start = 0;
         for (int end = s.length() - 1; end >= 0; end--) {
@@ -18,7 +19,8 @@ public class ShortestPalindromePrefix {
             return s;
         }
         String suffix = s.substring(start);
-        return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, start)) + suffix;
+        return new StringBuffer(suffix).reverse().toString()
+                + shortestPalindrome(s.substring(0, start)) + suffix;
     }
 
     // this method use KMP, not so ideal. Hard to think, hard to explain.
@@ -72,13 +74,13 @@ public class ShortestPalindromePrefix {
         String s = "adcba";
         assertEquals("abcdadcba", shortestPalindrome(s));
     }
-    
+
     @Test
     public void test4() {
         String s = "abcdabca";
         assertEquals("acbadcbabcdabca", shortestPalindrome(s));
     }
-    
+
     @Test
     public void test5() {
         String s = "abcd";
