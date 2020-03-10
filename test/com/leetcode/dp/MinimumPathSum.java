@@ -1,7 +1,6 @@
 package com.leetcode.dp;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class MinimumPathSum {
@@ -27,7 +26,7 @@ public class MinimumPathSum {
 
     @Test
     public void test0() {
-        int[][] grid = new int[][]{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
+        int[][] grid = new int[][] {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
         assertEquals(Integer.valueOf(7), Integer.valueOf(minPathSum(grid)));
     }
 }
