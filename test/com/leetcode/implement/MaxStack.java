@@ -1,39 +1,54 @@
 package com.leetcode.implement;
 
 import static org.junit.Assert.assertEquals;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.PriorityQueue;
+import java.util.Stack;
 import org.junit.Test;
 
 public class MaxStack {
-    PriorityQueue<Integer> maxQueue = new PriorityQueue<>((a, b) -> (b - a));
-    // use deque so that we could call function to check from the tail to head
-    Deque<Integer> queue = new ArrayDeque<>();
+    Stack<Integer> stack = new Stack<Integer>();
+    Stack<Integer> maxStack = new Stack<Integer>();
 
     public void push(int x) {
-        maxQueue.offer(x);
-        queue.addLast(x);
+        pushHelper(x);
+    }
+
+    private void pushHelper(int x) {
+        int tmpMax = maxStack.isEmpty() ? Integer.MIN_VALUE : maxStack.peek();
+        if (tmpMax < x) {
+            tmpMax = x;
+        }
+        stack.push(x);
+        maxStack.push(tmpMax);
     }
 
     public int pop() {
-        int val = queue.removeLast();
-        maxQueue.remove(val);
-        return val;
+        maxStack.pop();
+        return stack.pop();
     }
 
     public int top() {
-        return queue.getLast();
+        return stack.peek();
     }
 
     public int peekMax() {
-        return maxQueue.peek();
+        return maxStack.peek();
     }
 
     public int popMax() {
-        int res = maxQueue.poll();
-        queue.removeLastOccurrence(res);
-        return res;
+        int max = maxStack.peek();
+        Stack<Integer> tmp = new Stack<Integer>();
+        while (stack.peek() != max) {
+            tmp.push(stack.pop());
+            maxStack.pop();
+        }
+        // now stack.peek() == max, pop it
+        stack.pop();
+        maxStack.pop();
+
+        while (!tmp.isEmpty()) {
+            pushHelper(tmp.pop());
+        }
+        return max;
     }
 
     @Test

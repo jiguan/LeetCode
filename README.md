@@ -1,27 +1,48 @@
 # LeetCode
+
 ## Categories
+
+- [Array](test/com/leetcode/array/REAEME.md)
 - [Tree](test/com/leetcode/tree/README.md)
 - [Math](test/com/leetcode/math/README.md)
 - [String](test/com/leetcode/string/README.md)
 - [DP](test/com/leetcode/dp/REAEME.md)
 
-## Must do questions
+## Must-do
+
 - 146. [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - 208. [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- 239. [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
+Keynote: use a `Deque` to store __index__, everytime we encounter a larger element, starting from the **TAIL** dump all indexes whose values are **SMALLER** than current one. We have to store __index__, otherwise we cannot dump element kicked from the window
+
 
 
 ## General knowledge
- * If the cases the limited,  __bucket sort__  is a good option
- * Use this code to determine if the intervals have an overlap
-``` 
+
+- If the cases the limited,  __bucket sort__  is a good option
+- Use this code to determine if the intervals have an overlap
+
+```java
 // find the overlap... if there is any...
 int startMax = Math.max(a.start, b.start);
 int endMin = Math.min(a.end, b.end);
-            
-if (endMin >= startMax) {
+
+if (startMax <= endMin ) {
 ```
 
+
+- Mod operations
+
+```java
+(a + b) % p = (a % p + b % p) % p
+(a * b) % p = (a % p * b % p) % p
+ a ^ b % p = ((a % p) ^ b) % p
+```
+
+
 ### Algorithms
+
 - [HeapSort](test/com/algorithm/HeapSort.java)
 - [InsertSort](test/com/algorithm/InsertSort.java)
 - [QuickSort](test/com/algorithm/QuickSort.java)
@@ -29,6 +50,7 @@ if (endMin >= startMax) {
 - [TrieTree](test/com/algorithm/TrieTree.java)
 
 ### Tricky questions
+
  - 214 Shortest Palindrome 
       - Based on the solution, I can see why doing so can result the correct answer, but the reason behind it is unclear. 
  - 123 Binary Tree Maximum Path Sum
@@ -76,7 +98,10 @@ if (endMin >= startMax) {
   - [Set problems](https://discuss.leetcode.com/topic/46161/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning)
   
 ## Hints
-  - If there is some clue of a loop, try to use slow/fast pointers
-   - [202. Happy Number](https://leetcode.com/problems/happy-number/) 
+  - If there is any sign of a loop, try to use slow/fast pointers
+
+[202. Happy Number](https://leetcode.com/problems/happy-number/) 
   - If it is about words and character, try to count character's times
-   - [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
+
+[387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
+

@@ -1,13 +1,14 @@
-## Tree
-Here's a list of all questions related to the tree data structure. 
+# Tree
 
-### Tree traversal
+## Tree traversal
+
         3       Pre-order: 3 4 1 5 7
       4   7     Post-order: 1 5 4 7 3
     1  5        In-order: 1 4 5 3 7
- - Recursive solution is trivial. But it should be the first approach. 
- - Iteration is tricky. 
-  - Pre-order: Easy. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePreorderTraversal.java)
+
+- Recursive solution is trivial. But it should be the first approach. 
+- Iteration is tricky. 
+- Pre-order: Easy. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePreorderTraversal.java)
         1. Push root to stack 
         2. Inside while loop, pop out the node, and save its value to result list 
         3. If node has left, push right to stack, so as left node  
@@ -28,18 +29,19 @@ Here's a list of all questions related to the tree data structure.
 | Push right first | Push left first |
 | Add to result    | Reverse result  |
 
-### From in-order and pre-order arrays
+## From in-order and pre-order arrays
 The basic idea is:
   1. Create a builder function which takes `pre_start`, `pre_end`, `in_start`, `in_end`
   1. We can notice that the `preorder`'s structure is like this : head -> left -> right; `inorder`'s structure is left -> head -> right
   1. The first element `pre_start` inside `preorder` is always a root and we need to confirm the boundary between left and right. The left subtree length can be determined by checking `inorder` array. 
     * First find the index of root element in `inorder`, then the `leftSubLen = in_root - in_start` 
     * Determine the `pre_start` for right subtree by `pre_start + leftSubLen + 1`
-```
+
+```java
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
     }
-    
+
     private TreeNode build(int[] preorder, int pre_start, int pre_end, int[] inorder, int in_start, int in_end) {
         if(pre_start > pre_end || in_start > in_end) return null;
         
@@ -57,7 +59,11 @@ The basic idea is:
     }
 ```
 
-### Questions
+## Questions
+
+### Hard
+- [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+
 #### BST inorder traversal generates a sorted array
   1. [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/)
 

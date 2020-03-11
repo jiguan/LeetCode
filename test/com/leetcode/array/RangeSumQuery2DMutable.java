@@ -15,7 +15,6 @@ public class RangeSumQuery2DMutable {
         assertEquals(10, mat.sumRegion(2, 1, 4, 3));
     }
 
-
     @Test
     public void test1() {
         int[][] matrix =

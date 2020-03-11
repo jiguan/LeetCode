@@ -1,9 +1,28 @@
-## Arrays
-- Sorting an array `Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
+# Arrays
+
+## Keynote
+
+Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
+
+ `PriorityQueue` is implemented using *Heap* Data Structures and *Heap* has `O(log(n))` time complexity to insert and delete element.
+
+ [*Heap*](https://en.wikipedia.org/wiki/Binary_heap) is a tree whose parent is larger than its children. [Demo](https://www.growingwiththeweb.com/data-structures/binary-heap/overview/)
+
+- Build: `O(n log(n))`, *n* times of insertation
+- Insert: `O(log(n))` insert the element into the bottom and compare with its parent, which is called *up-heap* operation
+- Delete: `O(log(n))`, delete will take the root node and place the last element on its location then compare with its children
+- Search: `O(n)`
+- Heapify: `O(k)`, *k* is the height of tree
+
+## Questions
+### Bucket sort
+Think about if we could use *bucket sort*, even if there is *top K* inside!
+- [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 
 ### Intervals
-- 56. [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
-- 253. [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium, need some thoughts
+
+- [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
+- [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium
 
 ### Backtrack
 - 46. [Permutations](https://leetcode.com/problems/permutations/) - Medium, Must Do
@@ -24,7 +43,7 @@
 
 ### First K elements
 #### PriorityQueue
-Priority queue can be used to solve kth smallest questions. A key feature is given input is sorted or can be sorted. 
+
   1. Create a tuple class which stores indexes and val and implements Comparable interface
   2. Inside main function, create a `PriorityQueue` and save the first column values(`matrix[0][j]`) into the queue
   3. Write a `while(k-->0 && !queue.isEmpty())` to find out kth smallest element
