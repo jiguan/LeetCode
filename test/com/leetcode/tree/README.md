@@ -6,8 +6,8 @@
       4   7     Post-order: 1 5 4 7 3
     1  5        In-order: 1 4 5 3 7
 
-- Recursive solution is trivial. But it should be the first approach. 
-- Iteration is tricky. 
+- Recursive solution is trivial. But it should be the first approach
+- Iteration is tricky
 - Pre-order: Easy. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePreorderTraversal.java)
         1. Push root to stack 
         2. Inside while loop, pop out the node, and save its value to result list 
@@ -60,6 +60,14 @@ The basic idea is:
 ```
 
 ## Questions
+
+### Tree traverse
+
+To flatten a binary tree, use *recusive* function and return a `Pair` to record the head and tail
+
+- [Flatten Binary Tree to Linked List preorder](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+- Flatten Binary Tree to Linked List inorder
+
 
 ### Hard
 - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)

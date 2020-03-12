@@ -24,3 +24,5 @@ Keep calm. Write down some cases and find out their rules.
 ## Hard
 
 - [Interleaving String](https://leetcode.com/problems/interleaving-string/)
+- [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
+- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
