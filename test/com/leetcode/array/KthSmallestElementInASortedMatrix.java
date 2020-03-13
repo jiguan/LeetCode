@@ -1,7 +1,6 @@
 package com.leetcode.array;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 /*
@@ -16,34 +15,34 @@ import org.junit.Test;
 public class KthSmallestElementInASortedMatrix {
     public int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;
-        int left = matrix[0][0], right = matrix[n - 1][n - 1];
+        int small = matrix[0][0], big = matrix[n - 1][n - 1];
 
-        while (left < right) {
-            int mid = (left + right) / 2;
+        while (small < big) {
+            int midVal = (small + big) / 2;
             int count = 0; // number of elements no bigger than mid
 
             for (int i = 0; i < n; i++) {
                 int[] row = matrix[i];
-                int t_left = 0, t_right = row.length;
-                while (t_left < t_right) {
-                    int t_mid = (t_left + t_right) / 2;
-                    int value = row[t_mid];
-                    if(value > mid) {
-                        t_right = t_mid;
+                int left = 0, right = row.length;
+                while (left < right) {
+                    int mid = (left + right) / 2;
+                    int value = row[mid];
+                    if (value > midVal) {
+                        right = mid;
                     } else {
-                        t_left = t_mid + 1;
+                        left = mid + 1;
                     }
                 }
-                count += t_left;
+                count += left;
             }
 
             if (count < k) {
-                left = mid + 1;
+                small = midVal + 1;
             } else {
-                right = mid;
+                big = midVal;
             }
         }
-        return left;
+        return small;
     }
 
     @Test
@@ -51,5 +50,5 @@ public class KthSmallestElementInASortedMatrix {
         int[][] matrix = new int[][] {{1, 5, 9}, {10, 11, 13}, {12, 13, 15}};
         assertEquals(9, kthSmallest(matrix, 3));
     }
-    
+
 }

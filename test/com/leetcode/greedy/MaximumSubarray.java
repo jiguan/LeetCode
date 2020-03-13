@@ -6,6 +6,7 @@ public class MaximumSubarray {
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
             max = Math.max(max, sum);
+            // if the sum is < 0, then start from next one
             sum = Math.max(0, sum);
         }
 

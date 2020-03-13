@@ -11,8 +11,10 @@ public class MergeKSortedLists {
         return partition(lists, 0, lists.length - 1);
     }
 
+    // O(nk log k) - merge sort O(n logN), k list
     private ListNode partition(ListNode[] lists, int start, int end) {
         if (start == end) return lists[start];
+        // Divide O(log k) times, every time we process nk element
         if (start < end) {
             int mid = (end - start) / 2 + start;
             ListNode l1 = partition(lists, start, mid);
@@ -22,6 +24,7 @@ public class MergeKSortedLists {
         return null;
     }
 
+    // O(n)
     private ListNode merge(ListNode l1, ListNode l2) {
         ListNode fake = new ListNode(0);
         ListNode node = fake;

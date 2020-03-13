@@ -4,11 +4,11 @@ import java.util.Stack;
 
 import org.junit.Test;
 
-public class MyQueue {
+public class ImplementQueueUsingStacks {
 
     @Test
     public void test0() {
-        MyQueueImpl queue = new MyQueueImpl();
+        MyQueue queue = new MyQueue();
         int[] nums = new int[]{1, 2, 3, 4};
         for (int num : nums) {
             queue.push(num);
@@ -21,7 +21,7 @@ public class MyQueue {
 
 }
 
-class MyQueueImpl {
+class MyQueue {
     Stack<Integer> input = new Stack<Integer>();
     Stack<Integer> output = new Stack<Integer>();
 

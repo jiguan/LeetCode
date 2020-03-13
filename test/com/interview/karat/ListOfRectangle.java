@@ -1,6 +1,8 @@
 package com.interview.karat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -16,72 +18,85 @@ import java.util.List;
  */
 public class ListOfRectangle {
 
-    public int[] rectangle1(int[][] matrix) {
-        int[] res = new int[4];
-        int row = matrix.length, col = matrix[0].length;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (matrix[i][j] == 0) {
-                    int iRight = i, jDown = j;
-                    while (iRight < row) {
-                        if (matrix[iRight][j] == 0) {
-                            iRight++;
-                        } else {
-                            break;
-                        }
+    static List<int[]> findMultiRectangle(int[][] matrix) {
+        List<int[]> res = new ArrayList<>();
+
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return res;
+        int m = matrix.length, n = matrix[0].length;
+        int[][] arr = matrix.clone();
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (arr[i][j] == 0) {
+                    int[] curr = new int[4];
+                    curr[0] = i;
+                    curr[1] = j;
+
+                    int tmp_i = i;
+
+                    while (tmp_i + 1 < m && matrix[tmp_i + 1][j] == 0) {
+                        ++tmp_i;
                     }
-                    while (jDown < col) {
-                        if (matrix[i][jDown] == 0) {
-                            jDown++;
-                        } else {
-                            break;
-                        }
+                    curr[2] = tmp_i;
+
+                    int tmp_j = j;
+                    while (tmp_j + 1 < n && matrix[i][tmp_j + 1] == 0) {
+                        ++tmp_j;
                     }
-                    return new int[] {i, j, iRight - 1, jDown - 1};
+                    curr[3] = tmp_j;
+                    res.add(curr);
+                    fill(arr, curr);
                 }
             }
         }
         return res;
     }
 
-    // multiple valid rectangles
-    public List<int[]> rectangleMulti(int[][] matrix) {
-        List<int[]> res = new ArrayList<>();
-        int row = matrix.length, col = matrix[0].length;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (matrix[i][j] == 0) {
+    static List<List<int[]>> findAllRectangle(int[][] matrix) {
 
-                    int iRight = i, jDown = j;
-                    while (iRight < row) {
-                        if (matrix[iRight][j] == 0) {
-                            matrix[iRight][j] = 1;
-                            iRight++;
-                        } else {
-                            break;
-                        }
-                    }
+        List<List<int[]>> res = new ArrayList<>();
 
-                    while (jDown < col) {
-                        if (matrix[i][jDown] == 0) {
-                            matrix[i][jDown] = 1;
-                            jDown++;
-                        } else {
-                            break;
-                        }
-                    }
-                    
-                    for(int a = i; a < iRight; ++a) {
-                        for(int b = j; j < jDown; ++b) {
-                            matrix[a][b] = 1;
-                        }
-                    }
-                    
-                    res.add(new int[] {i, j, iRight - 1, jDown - 1});
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return res;
+        int m = matrix.length, n = matrix[0].length;
+        int[][] arr = matrix.clone();
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (arr[i][j] == 0) {
+                    List<int[]> cur = new LinkedList<>();
+                    dfs(arr, i, j, cur);
+                    res.add(new ArrayList<>(cur));
                 }
             }
         }
         return res;
+    }
+
+    static void dfs(int[][] arr, int i, int j, List<int[]> cur) {
+        if (i >= arr.length || i < 0 || j >= arr[0].length || j < 0 || arr[i][j] == 1) return;
+
+        int[][] ds = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+        arr[i][j] = 1;
+        cur.add(new int[] {i, j});
+
+        for (int[] d : ds) {
+            dfs(arr, i + d[0], j + d[1], cur);
+        }
+    }
+
+    static void fill(int[][] arr, int[] cur) {
+        int i = cur[0], j = cur[1], m = cur[2], n = cur[3];
+        for (int a = i; a <= m; a++) {
+            for (int b = j; b <= n; ++b) {
+                arr[a][b] = 1;
+            }
+        }
+    }
+
+    static void print(List<int[]> list) {
+        for (int[] val : list) {
+            System.out.print(Arrays.toString(val));
+        }
     }
 
 }

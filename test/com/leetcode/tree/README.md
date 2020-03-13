@@ -68,8 +68,16 @@ To flatten a binary tree, use *recusive* function and return a `Pair` to record 
 - [Flatten Binary Tree to Linked List preorder](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
 - Flatten Binary Tree to Linked List inorder
 
+### Lowest Common Ancestor
+
+Find **ALL** ancestors of one node, then get the other's ancestor one by one and check if it has been visited already
+
+- [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+- [Lowest Common Ancestor of Deepest Leaves](https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/)
+- [Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/)
 
 ### Hard
+
 - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
 
 #### BST inorder traversal generates a sorted array

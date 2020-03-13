@@ -1,0 +1,5 @@
+# Dependency
+
+## Hard
+
+- Ancestors - karat

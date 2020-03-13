@@ -20,16 +20,14 @@ A technique whereby one object supplies the dependencies of another object. A de
 
 ### Document for a new class under Collection
 - Description
-- Thread safety
-- All methods and the time it costs
+- All constructors
 - If null allowed
 - Parameter
 - Interfaces it implements
-- All constructors
+- Thread safety
 - All exceptions it could throw, if it is Iterable fail-safe vs fail-fast
 - Any anonymous Inner Classes
 
-
 ### Testing
 
-- What is mock
+- What is mock, pro and cons
