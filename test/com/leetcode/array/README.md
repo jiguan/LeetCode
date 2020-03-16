@@ -41,6 +41,18 @@ Think about if we could use *bucket sort*, even if there is *top K* inside!
 - 269. [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) - Hard
 - 301. [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
 
+### Sliding Window
+
+https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+
+- [Longest Repeating Character Replacement](LongestRepeatingCharacterReplacement.java) Great question. At first it may seem like a DP question.
+- [Sliding Window Maximum](SlidingWindowMaximum.java) The solution dealing with the real sliding window problem using dequeue.
+- https://leetcode.com/problems/minimum-window-substring/
+- https://leetcode.com/problems/longest-substring-without-repeating-characters/
+- https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+- https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
+- https://leetcode.com/problems/find-all-anagrams-in-a-string/
+
 ### First K elements
 #### PriorityQueue
 
