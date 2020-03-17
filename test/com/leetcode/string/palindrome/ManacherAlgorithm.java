@@ -1,4 +1,4 @@
-package com.leetcode.palindrome;
+package com.leetcode.string.palindrome;
 
 // https://www.felix021.com/blog/read.php?2040
 // https://algs4.cs.princeton.edu/53substring/Manacher.java.html

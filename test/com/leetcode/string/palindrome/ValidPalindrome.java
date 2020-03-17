@@ -1,4 +1,4 @@
-package com.leetcode.palindrome;
+package com.leetcode.string.palindrome;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;

@@ -1,30 +1,29 @@
 package com.interview.karat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SubdomainVisitCount {
-    public List<String> subdomainVisits(String[] cpdomains) {
+    public Map<String, Integer> subdomainVisits(String[] records) {
+        // O(n)
         Map<String, Integer> map = new HashMap<>();
-        for (String cd : cpdomains) {
-            int i = cd.indexOf(' ');
-            int n = Integer.valueOf(cd.substring(0, i));
-            String s = cd.substring(i + 1);
-            for (i = 0; i < s.length(); ++i) {
-                if (s.charAt(i) == '.') {
-                    String d = s.substring(i + 1);
-                    map.put(d, map.getOrDefault(d, 0) + n);
+        if (records == null) return map;
+        // O(n)
+        for (String record : records) {
+            int i = record.indexOf(',');
+            int n = Integer.valueOf(record.substring(0, i));
+            String url = record.substring(i + 1);
+
+            map.put(url, map.getOrDefault(url, 0) + n);
+            // O(1)
+            for (int j = url.length() - 1; j >= 0; --j) {
+                if (url.charAt(j) == '.') {
+                    String sub = url.substring(j + 1);
+                    map.put(sub, map.getOrDefault(sub, 0) + n);
                 }
             }
-            map.put(s, map.getOrDefault(s, 0) + n);
         }
 
-        List<String> res = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            res.add(entry.getValue() + " " + entry.getKey());
-        }
-        return res;
+        return map;
     }
 }

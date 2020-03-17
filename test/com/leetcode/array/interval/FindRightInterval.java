@@ -1,4 +1,4 @@
-package com.leetcode.interval;
+package com.leetcode.array.interval;
 
 import static org.junit.Assert.assertArrayEquals;
 

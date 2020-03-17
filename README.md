@@ -2,11 +2,12 @@
 
 ## Categories
 
-- [Array](test/com/leetcode/array/REAEME.md)
+- [Array](test/com/leetcode/array/README.md)
 - [Tree](test/com/leetcode/tree/README.md)
 - [Math](test/com/leetcode/math/README.md)
 - [String](test/com/leetcode/string/README.md)
-- [DP](test/com/leetcode/dp/REAEME.md)
+- [DP](test/com/leetcode/dp/README.md)
+- [Graph](test/com/leetcode/graph/README.md)
 
 ## Must-do
 
@@ -15,8 +16,6 @@
 - 239. [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
 Keynote: use a `Deque` to store __index__, everytime we encounter a larger element, starting from the **TAIL** dump all indexes whose values are **SMALLER** than current one. We have to store __index__, otherwise we cannot dump element kicked from the window
-
-
 
 ## General knowledge
 

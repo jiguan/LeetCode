@@ -56,30 +56,30 @@ public class SharedCourse {
 
     static List<List<String>> shareClass(String[][] student_course_pairs_1) {
         Map<String, Set<String>> map = new HashMap<>();
-        List<String> stu = new ArrayList<>();
+        List<String> students = new ArrayList<>();
         List<List<String>> res = new ArrayList<>();
         for (String[] str : student_course_pairs_1) {
-            if (!stu.contains(str[0])) stu.add(str[0]);
+            if (!students.contains(str[0])) students.add(str[0]);
             if (map.get(str[0]) == null) {
                 Set<String> set = new HashSet<>();
                 map.put(str[0], set);
             }
             map.get(str[0]).add(str[1]);
         }
-        for (int i = 0; i < stu.size(); i++) {
-            for (int j = i + 1; j < stu.size(); j++) {
-                Set<String> in1 = map.get(stu.get(i));
-                Set<String> in2 = map.get(stu.get(j));
-                List<String> l = new ArrayList<>();
-                l.add(stu.get(i));
-                l.add(stu.get(j));
-                for (String s : in1) {
-                    if (in2.contains(s)) {
-                        l.add(s);
+        for (int i = 0; i < students.size(); i++) {
+            for (int j = i + 1; j < students.size(); j++) {
+                Set<String> courses1 = map.get(students.get(i));
+                Set<String> courses2 = map.get(students.get(j));
+                List<String> list = new ArrayList<>();
+                list.add(students.get(i));
+                list.add(students.get(j));
+                for (String course : courses1) {
+                    if (courses2.contains(course)) {
+                        list.add(course);
                     }
                 }
-                if (l.size() == 2) l.add("[]");
-                res.add(l);
+                if (list.size() == 2) list.add("[]"); // [17, 25, []]
+                res.add(list);
             }
         }
 

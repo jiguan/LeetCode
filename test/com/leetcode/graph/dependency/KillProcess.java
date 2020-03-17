@@ -1,4 +1,4 @@
-package com.leetcode.dependency;
+package com.leetcode.graph.dependency;
 
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
