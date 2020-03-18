@@ -10,6 +10,9 @@ public class FractionAdditionAndSubtraction {
         int A = 0, B = 1;
         while (sc.hasNext()) {
             int a = sc.nextInt(), b = sc.nextInt();
+            // a, b - original
+            // A, B - last result
+            // A / B + a / b = (A*b + a*B) / B * b
             A = A * b + a * B;
             B *= b;
             int g = gcd(A, B);

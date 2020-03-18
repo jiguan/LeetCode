@@ -17,6 +17,16 @@ private int gcd(int a, int b) {
 }
 ```
 
+As a helper function
+
+```java
+private int gcd(int a, int b) {
+    return a != 0 ? gcd(b % a, a) : Math.abs(b);
+}
+```
+
+- [Fraction Addition and Subtraction](https://leetcode.com/problems/fraction-addition-and-subtraction/)
+
 Question: 365. [Water and Jug Problem](WaterAndJugProblem.java)
 
 - How to get sqrt root
@@ -94,10 +104,11 @@ Question: 365. [Water and Jug Problem](WaterAndJugProblem.java)
 - [Convert a Number to Hexadecimal](ConvertANumberToHexadecimal.java)
     How to do division and consider all edge cases.
 
-### Medium
+- [Fraction to Recurring Decimal](https://leetcode.com/problems/fraction-to-recurring-decimal/) Use a map to record previous remaining and its index
+
 
 - 118 Pascal's Triangle
-- 367 Valid Perfect Square [question](https://leetcode.com/problems/valid-perfect-square)
+- [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square)
 
 ### Counting questions
 

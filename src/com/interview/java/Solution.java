@@ -1,4 +1,4 @@
-package com.interview;
+package com.interview.java;
 
 /*
  * Create a simple linked list of the following elements ... 5, 11, 3, 79, 36 Remove the second

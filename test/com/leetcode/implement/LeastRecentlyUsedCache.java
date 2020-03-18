@@ -1,4 +1,4 @@
-package com.leetcode.linkednodes;
+package com.leetcode.implement;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-
-import com.leetcode.linkednodes.LRUCache.Node;
 
 public class LeastRecentlyUsedCache {
     @Test
@@ -69,6 +67,20 @@ public class LeastRecentlyUsedCache {
         assertEquals(1, cache.get(2));
     }
 
+    @Test
+    public void test4() {
+        LRUCache cache = new LRUCache(2);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        assertEquals(1, cache.get(1));
+        cache.put(3, 3);
+        assertEquals(2, cache.get(2));
+        cache.put(4, 4);
+        assertEquals(-1, cache.get(1));
+        assertEquals(1, cache.get(3));
+        assertEquals(4, cache.get(4));
+    }
+    
     private void prettyPrint(Node node) {
         while (node != null) {
             System.out.print("[" + node.key + "-" + node.value + "] -> ");
@@ -131,7 +143,7 @@ class LRUCache {
     
     // only func relies on itself
     private void delete(Node node) {
-        // For newly created node, prev and next are null
+        // Since delete() is also called from update(). For newly created node, prev and next are null
         if (node.prev != null) {
             node.prev.next = node.next;
         }
@@ -142,21 +154,22 @@ class LRUCache {
         node.prev = null;
         node.next = null;
     }
+}
 
-    class Node {
-        Node prev, next;
-        int value, key;
-        public Node() {
-        };
+class Node {
+    Node prev, next;
+    // key is needed since we need to remove node from Map
+    int value, key;
+    public Node() {
+    };
 
-        public Node(int key, int value) {
-            this.value = value;
-            this.key = key;
-        }
+    public Node(int key, int value) {
+        this.value = value;
+        this.key = key;
+    }
 
-        @Override
-        public String toString() {
-            return "[" + key + " - " + value + "]";
-        }
+    @Override
+    public String toString() {
+        return "[" + key + " - " + value + "]";
     }
 }

@@ -11,9 +11,9 @@
 
 ## Must-do
 
-- 146. [LRU Cache](https://leetcode.com/problems/lru-cache/)
-- 208. [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-- 239. [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+- [LRU Cache](https://leetcode.com/problems/lru-cache/)
+- [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
 Keynote: use a `Deque` to store __index__, everytime we encounter a larger element, starting from the **TAIL** dump all indexes whose values are **SMALLER** than current one. We have to store __index__, otherwise we cannot dump element kicked from the window
 
@@ -30,7 +30,6 @@ int endMin = Math.min(a.end, b.end);
 if (startMax <= endMin ) {
 ```
 
-
 - Mod operations
 
 ```java
@@ -39,14 +38,20 @@ if (startMax <= endMin ) {
  a ^ b % p = ((a % p) ^ b) % p
 ```
 
-
-### Algorithms
+## Algorithms
 
 - [HeapSort](test/com/algorithm/HeapSort.java)
 - [InsertSort](test/com/algorithm/InsertSort.java)
 - [QuickSort](test/com/algorithm/QuickSort.java)
 - [SegmentTree](test/com/algorithm/SegmentTreeRangeSum.java)
 - [TrieTree](test/com/algorithm/TrieTree.java)
+
+## Questions
+
+### Sum of subarray
+
+- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+- [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/)
 
 ### Tricky questions
 
