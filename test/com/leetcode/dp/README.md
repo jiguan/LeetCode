@@ -16,6 +16,7 @@ Keep calm. Write down some cases and find out their rules.
 ## Medium
 
 - [Edit Distance](https://leetcode.com/problems/edit-distance/)
+- [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
 - [Gray Code](https://leetcode.com/problems/gray-code/)
 - [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)
 - [House Robber III](https://leetcode.com/problems/combination-sum-iii) [solution](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/dp/HouseRobberIII.java)

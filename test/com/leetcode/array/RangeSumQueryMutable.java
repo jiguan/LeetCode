@@ -1,70 +1,54 @@
 package com.leetcode.array;
 
-public class RangeSumQueryMutable {
-    private int[] nums;
-    SegmentTreeNode root;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-    public void NumArray(int[] nums) {
-        this.nums = nums;
-        root = build(0, nums.length - 1);
+public class RangeSumQueryMutable {
+
+    @Test
+    public void test0() {
+        int[] nums = {1, 3, 5};
+        NumArray numArray = new NumArray(nums);
+        assertEquals(9, numArray.sumRange(0, 2));
+        numArray.update(1, 2);
+        assertEquals(8, numArray.sumRange(0, 2));
+    }
+}
+
+
+// https://leetcode.com/problems/range-sum-query-mutable/discuss/75763/7ms-Java-solution-using-bottom-up-segment-tree
+class NumArray {
+    int[] tree;
+    int n;
+
+    public NumArray(int[] nums) {
+        n = nums.length;
+        tree = new int[n * 2];
+        buildTree(nums);
     }
 
-    private SegmentTreeNode build(int start, int end) {
-        if(start>end)   return null;
-        SegmentTreeNode root = new SegmentTreeNode();
-        root.range[0] = start;
-        root.range[1] = end;
-        if (start == end) {
-            root.sum = nums[start];
-        } else {
-            int mid = (start + end) / 2;
-            root.left = build(start, mid);
-            root.right = build(mid + 1, end);
-            root.sum = root.left.sum + root.right.sum;
+    private void buildTree(int[] nums) {
+        for (int i = n; i < n * 2; i++) {
+            tree[i] = nums[i - n];
         }
-        return root;
+
+        for (int i = n - 1; i > 0; i--) {
+            tree[i] = tree[i * 2] + tree[i * 2 + 1];
+        }
     }
 
     void update(int i, int val) {
-        int diff = val - nums[i];
-        nums[i] = val;
-        update(root, i, diff);
-    }
-
-    private void update(SegmentTreeNode node, int index, int diff) {
-        if (node == null)
-            return;
-        if (node.range[0] <= index && node.range[1] >= index) {
-            node.sum += diff;
-            update(node.left, index, diff);
-            update(node.right, index, diff);
+        for (tree[i += n] = val; i > 0; i >>= 1) {
+            tree[i >> 1] = tree[i] + tree[i ^ 1];
         }
     }
 
     public int sumRange(int i, int j) {
-        return sumRange(root, i, j);
-    }
-
-    private int sumRange(SegmentTreeNode node, int start, int end) {
-        if (node==null||node.range[1] < start || node.range[0] > end) { // no overlap
-            return 0;
+        int ret = 0;
+        for (i += n, j += n; i <= j; i >>= 1, j >>= 1) {
+            if ((i & 1) == 1) ret += tree[i++];
+            if ((j & 1) == 0) ret += tree[j--];
         }
-        if (node.range[0] >= start && node.range[1] <= end) { // complete overlap
-            return node.sum;
-        }
-        // partial overlap
-        return sumRange(node.left, start, end) + sumRange(node.right, start, end);
-    }
-
-    private class SegmentTreeNode {
-        int[] range = new int[2];
-        int sum = 0;
-        SegmentTreeNode left = null;
-        SegmentTreeNode right = null;
-
-        @Override
-        public String toString() {
-            return "SegmentTreeNode{range: [" + range[0] + ", " + range[1] + "], sum: " + sum + ", left: " + left + ", right: " + right + "} ";
-        }
+        return ret;
     }
 }

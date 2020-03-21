@@ -51,6 +51,17 @@ Such as AuthService, UserService, etc
 | MongoDB / Cassandra | 10 K | NoSQL on disk |
 | Redis / Memcached | 1M | NoSQL in mem |
 
+- SQL vs NoSQL
+
+| Feature     | SQL | NoSQL | Desc |
+|-------------|:---:|:-----:|------|
+| Transaction | Yes | No ||
+| Rich query  | Yes | No ||
+| Sequential ID | Yes | No ||
+| Distributed | No | Yes | Centralized MySQL + Distributed Memcached |
+| Second index | Yes | No |Most NoSQL don't support |
+| Data | Structural info | key - value ||
+
 NoSQL: key - value, e.g. log
 
 - Level 1: row_key (hash_key). No range query
@@ -62,7 +73,7 @@ query(row_key, column_start, column_end)
 
 - Level 3: value, usually it is `string`
 
-SQL: structural info => class
+SQL
 
 - Cache Aside, e.g. Memcached + MySql
 
@@ -80,4 +91,32 @@ No sharding in SQL
 
 #### Consistent Hashing
 
-% n where n is a large number
+- Try the whole hash as a loop
+- The loop size is 2^64 (0 ~ 2^64 - 1)
+- Micro shareds / Virtual nodes
+- Each virtual node is a point in the hash loop
+- Every time we add a new machine, distribute 1000 as virtual nodes
+- When we need to know the the server storing the key-value
+  - Calculate the hash value
+  - Find the first new node in clock-wise direction
+  - The virtual node is the server
+- When we migrate the data
+  - 1000 virtual nodes move to next one
+
+
+### Replica
+
+#### Master and slave
+
+Master slave is for SQL. Master - Write, Slave - Read from Master
+
+- Write Ahead log
+
+Any operation is recorded in the log. Every time there is an operation on master, master will notify slaves to update their data according to the log
+
+NoSQL saves 3 copies on the consistent Hashing loop
+
+- Vertical Sharding
+Distribute multiple tables into multiple servers
+
+- Horizontal Sharding

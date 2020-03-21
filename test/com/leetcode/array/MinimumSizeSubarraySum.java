@@ -1,4 +1,4 @@
-package com.leetcode.twopointers;
+package com.leetcode.array;
 
 import static org.junit.Assert.assertEquals;
 

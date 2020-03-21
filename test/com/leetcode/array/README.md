@@ -53,6 +53,24 @@ Think about if we could use *bucket sort*, even if there is *top K* inside!
 
 https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem
 
+### Max length of subarray
+
+Record the index
+
+- [Maximum Size Subarray Sum Equals k](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
+- [Contiguous Array](https://leetcode.com/problems/contiguous-array/)
+
+### Min length of subarray
+
+Two pointers
+
+- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+- [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/)
+
+### Segment tree
+
+- [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+
 - [Longest Repeating Character Replacement](LongestRepeatingCharacterReplacement.java) Great question. At first it may seem like a DP question.
 - [Sliding Window Maximum](SlidingWindowMaximum.java) The solution dealing with the real sliding window problem using dequeue.
 - https://leetcode.com/problems/minimum-window-substring/
