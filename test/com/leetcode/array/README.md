@@ -16,6 +16,34 @@ Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
 
 ## Questions
 
+### Binary Search
+
+- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition
+
+  ```java
+  while(low < high) {
+    int mid = (high - low) / 2 + low;
+    if(target > nums[mid]) {
+      low = mid + 1;
+    } else {
+      high = mid;
+    }
+  }
+  res[0] = low
+  ```
+
+  ```java
+  while(low < high) {
+    int mid = (high - low) / 2 + low + 1;
+    if(target < nums[mid]) {
+      high = mid - 1;
+    } else {
+      low = mid;
+    }
+  }
+  res[1] = high
+  ```
+
 ### K elements
 
 #### PriorityQueue
@@ -26,10 +54,10 @@ Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
   1. Inside the `while` loop, get the tuple by `queue.poll` and if the tuple's `x` has next(`tuple.x < mat.length - 1`) then save next element into the queue. Since the matrix is sorted, we can get a bigger candidate
 
 Time complexities:
-- Find minimum: жи(1)
-- Delete minimum: жи(log n)
-- Insert: O(log n)
 
+- Find minimum: O(1)
+- Delete minimum: O(log n)
+- Insert: O(log n)
 
 #### Binary Search
 

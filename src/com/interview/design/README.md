@@ -53,14 +53,31 @@ Such as AuthService, UserService, etc
 
 - SQL vs NoSQL
 
-| Feature     | SQL | NoSQL | Desc |
-|-------------|:---:|:-----:|------|
-| Transaction | Yes | No ||
-| Rich query  | Yes | No ||
-| Sequential ID | Yes | No ||
-| Distributed | No | Yes | Centralized MySQL + Distributed Memcached |
-| Second index | Yes | No |Most NoSQL don't support |
-| Data | Structural info | key - value ||
+| Feature        | SQL | NoSQL | Desc |
+|----------------|:---:|:-----:|------|
+| Transaction    | Yes |  No   ||
+| Rich query     | Yes | No    ||
+| Sequential ID  | Yes | No    ||
+| Distributed    | No  | Yes   | Centralized MySQL + Distributed Memcached |
+| Second index   | Yes | No    |Most NoSQL don't support |
+| Data           | Structural info | key - value | |
+
+### NoSQL
+
+NoSQL is good for
+
+- Insert and retrieve the whole block
+- Flexible schema
+- Scale up
+- Aggregation stats, e.g. average age
+
+NoSQL is bad for
+
+- A lot of update
+- High requirement on data consistency (ACID)
+- Read on practical data
+- Relationship is required
+- Join tables
 
 NoSQL: key - value, e.g. log
 
@@ -73,7 +90,9 @@ query(row_key, column_start, column_end)
 
 - Level 3: value, usually it is `string`
 
-SQL
+### SQL
+
+Reliability or ACID Compliancy (Atomicity, Consistency, Isolation, Durability): The vast majority of relational databases are ACID compliant. So, when it comes to data reliability and safe guarantee of performing transactions, SQL databases are still the better bet.
 
 - Cache Aside, e.g. Memcached + MySql
 
@@ -85,9 +104,48 @@ Web Server <=> Cache <=> Database
 
 ## Scale
 
+### Caching
+
+Cache policy
+
+- Least Recently Used (LRU)
+- Least Frequently Used (LFU)
+
+Disadvantage
+
+- Data consistency
+- Extra call to check cache
+- Thrashing: keep putting data in and out of cache if the cache is small
+
+Cache close to the server:
+
+- Faster
+- Inconsistent data over different servers
+- A server goes down, so is its cache
+
+Cache close to the database:
+
+- Global cache
+- Data consistency
+- No associated with a certain server
+- Scale up independently
+
+Write through: update the cache and then update the database
+
+Write back: kick current value out of the database and update the database. When the next request comes in, it will read the latest value and save it into the cache
+
+- Updating is expensive since it needs to hit the DB
+- Works well when there are distributed caches
+- Works well for critical data
+
 ### Sharding
 
-No sharding in SQL
+We could share SQL over the IDs
+
+Downsides:
+
+- Complex queries, e.g. range query
+- Join becomes unavailable
 
 #### Consistent Hashing
 
@@ -106,11 +164,14 @@ No sharding in SQL
 
 ### Replica
 
-#### Master and slave
+Master Slave is for SQL. Master handles __Write__ operation, then propagates data to Slaves. Slave handles __Read__ operation
 
-Master slave is for SQL. Master - Write, Slave - Read from Master
+Downsides:
 
-- Write Ahead log
+- Write speed is not improved (only 1 master)
+- Replication log
+
+Write Ahead log
 
 Any operation is recorded in the log. Every time there is an operation on master, master will notify slaves to update their data according to the log
 
@@ -120,3 +181,4 @@ NoSQL saves 3 copies on the consistent Hashing loop
 Distribute multiple tables into multiple servers
 
 - Horizontal Sharding
+

@@ -19,6 +19,21 @@
 
   [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
+* If we want to check if one word is a child of another one, rather than using `Permutation`, we could count the number of letters and compare them
+
+  ```java
+  private boolean isValid(int[] newWord, int[] existing) {
+      for (int i = 0; i < existing.length; ++i) {
+          // Some letters existing valid word but not in this newly pass in word
+          // There is no way this ScrabbleWord could be a subset of this new word
+          if (newWord[i] < existing[i]) {
+              return false;
+          }
+      }
+      return true;
+  }
+  ```
+
 ### Tricks
 
 * One time extra: Some questions require one extra time execution at the end of the iteration. One way to to add additional unharmful element.
