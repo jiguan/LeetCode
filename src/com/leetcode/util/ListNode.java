@@ -69,6 +69,8 @@ public class ListNode {
                     actual != null ? actual.val : null));
         } else if (expected.val != actual.val) {
             Assert.fail(String.format(message, expected.val, actual.val));
+        } else {
+            assertEquals(expected.next, actual.next);
         }
     }
 }

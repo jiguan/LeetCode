@@ -18,7 +18,7 @@ Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
 
 ### Binary Search
 
-- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition
+- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition and return variable (return the one `+1`).
 
   ```java
   while(low < high) {
@@ -99,8 +99,9 @@ Consider to use this approach if there is *top K frequency* inside
 - 496. Next Greater Element I
 
 ### BFS/DFS
-- 269. [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) - Hard
-- 301. [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
+
+- [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) Warm up, need to use cache
+- [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
 
 ### Sliding Window
 

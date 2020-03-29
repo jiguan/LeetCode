@@ -3,6 +3,7 @@ package com.leetcode.math;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+// how many ways can we write it as a sum of consecutive positive integers
 public class ConsecutiveNumbersSum {
     /*
      * N = (x+1) + (x+2) + ... + (x+k)
@@ -11,7 +12,7 @@ public class ConsecutiveNumbersSum {
      * 
      * Either k or 2x + k + 1 is odd.
      */
-    public int consecutiveNumbersSum(int N) {
+    public int consecutiveNumbersSumIter(int N) {
         int res = 1, count = 0;
         while (N % 2 == 0)
             N /= 2;
@@ -26,10 +27,26 @@ public class ConsecutiveNumbersSum {
         return N == 1 ? res : res * 2;
     }
 
+    // N = k, k + 1, k + 2, ..., k + (i - 1)
+    // ki = N - (i - 1) * i / 2
+
+    public int consecutiveNumbersSum(int N) {
+        int ans = 0;
+        for (int i = 1; i * (i - 1) / 2 < N; ++i)
+            if ((N - i * (i - 1) / 2) % i == 0) ++ans;
+        return ans;
+    }
+
     @Test
     public void test0() {
         int N = 15;
         assertEquals(4, consecutiveNumbersSum(N));
+    }
+
+    @Test
+    public void test1() {
+        int N = 5;
+        assertEquals(2, consecutiveNumbersSum(N));
     }
 
 }

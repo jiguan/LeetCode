@@ -1,7 +1,6 @@
 package com.leetcode.string;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class ReverseWordsInAString {
@@ -53,17 +52,28 @@ public class ReverseWordsInAString {
         return new String(arr).substring(0, i);
     }
 
-    public String reverseWords0(String s) {
-        if (s == null || s.length() == 0) return s;
-        String[] words = s.trim().split("\\s+");
-        StringBuffer buffer = new StringBuffer();
-        int len = words.length;
-        for (int i = len - 1; i > 0; i--) {
-            buffer.append(words[i]);
-            buffer.append(" ");
+    public String reverseWords1(String s) {
+        StringBuilder sb = new StringBuilder();
+
+        int end = s.length() - 1;
+        while (end >= 0) {
+            while (end >= 0 && s.charAt(end) == ' ') {
+                --end;
+            }
+            int start = end - 1;
+            while (start >= 0 && s.charAt(start) != ' ') {
+                start--;
+            }
+            if (start + 1 >= 0) {
+                sb.append(" ");
+                sb.append(s.substring(start + 1, end + 1));
+            }
+            end = start - 1;
+
         }
-        buffer.append(words[0]);
-        return buffer.toString();
+        if (sb.length() > 0) sb.deleteCharAt(0);
+        return sb.toString();
+
     }
 
     @Test
@@ -83,10 +93,22 @@ public class ReverseWordsInAString {
         String s = "   a";
         assertEquals("a", reverseWords(s));
     }
-    
+
     @Test
     public void test3() {
         String s = "   ";
         assertEquals("", reverseWords(s));
+    }
+
+    @Test
+    public void test4() {
+        String s = "  hello world!  ";
+        assertEquals("world! hello", reverseWords1(s));
+    }
+    
+    @Test
+    public void test5() {
+        String s = "a b";
+        assertEquals("b a", reverseWords1(s));
     }
 }

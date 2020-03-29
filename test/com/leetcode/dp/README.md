@@ -24,6 +24,7 @@ Keep calm. Write down some cases and find out their rules.
 
 ## Hard
 
+- [Frog Jump](https://leetcode.com/problems/frog-jump/), little bit different. But if following the description, it should be intuitive.
 - [Interleaving String](https://leetcode.com/problems/interleaving-string/)
 - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 - [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
