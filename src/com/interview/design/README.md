@@ -104,6 +104,14 @@ Web Server <=> Cache <=> Database
 
 ## Scale
 
+### Load Balancer
+
+Load Balancing Algorithems
+
+- Random
+- Round robin
+- Load based
+
 ### Caching
 
 Cache policy
