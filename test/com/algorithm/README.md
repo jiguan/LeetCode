@@ -32,4 +32,4 @@ A binary heap is a nearly complete binary tree; that is, all levels of the tree,
 
 
 #### Questions
-  - [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+- [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)

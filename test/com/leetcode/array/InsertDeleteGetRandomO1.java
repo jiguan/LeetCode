@@ -17,7 +17,7 @@ import org.junit.Test;
  **/
 public class InsertDeleteGetRandomO1 {
 	// element - position
-	private Map<Integer, Integer> position = new HashMap<>();
+	private Map<Integer, Integer> map = new HashMap<>();
 	private List<Integer> nums = new ArrayList<>();
 	private Random random = new Random();
 
@@ -26,9 +26,9 @@ public class InsertDeleteGetRandomO1 {
 	 * contain the specified element.
 	 */
 	public boolean insert(int val) {
-		if (position.containsKey(val))
+		if (map.containsKey(val))
 			return false;
-		position.put(val, nums.size());
+		map.put(val, nums.size());
 		nums.add(val);
 		return true;
 	}
@@ -38,18 +38,18 @@ public class InsertDeleteGetRandomO1 {
 	 * specified element.
 	 */
 	public boolean remove(int val) {
-		if (!position.containsKey(val))
+		if (!map.containsKey(val))
 			return false;
 
-		int pos = position.get(val);
-		if (pos != nums.size()) {
-			// swap pos with last one
+		int loc = map.get(val);
+		if (loc != nums.size()) {
+			// swap loc with last one
 			int lastElement = nums.get(nums.size() - 1);
-			nums.set(pos, lastElement);
-			position.put(lastElement, pos);
+			nums.set(loc, lastElement);
+			map.put(lastElement, loc);
 		}
 		nums.remove(nums.size() - 1);
-		position.remove(val);
+		map.remove(val);
 
 		return true;
 	}
