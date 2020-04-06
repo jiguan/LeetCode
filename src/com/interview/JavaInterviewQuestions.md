@@ -161,6 +161,29 @@ When data is sent over the Internet, each unit transmitted includes both header 
   1. HTTPS is secured by Transport Layer Security (TLS)
   1. SSL/TLS provides a secure channel between two machines or devices operating over the internet or an internal network
 
+Status codes
+
+* 201 Created
+
+The request has succeeded and a new resource has been created as a result. This is typically the response sent after POST requests, or some PUT requests.
+
+* 202 Accepted
+
+The request has been received but not yet acted upon. It is noncommittal, since there is no way in HTTP to later send an asynchronous response indicating the outcome of the request. It is intended for cases where another process or server handles the request, or for batch processing.
+
+* 204 No Content
+
+There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.
+
+* Redirects (300–399)
+
+* 400 Bad Request
+
+The server could not understand the request due to invalid syntax.
+
+* 401 Unauthorized
+* 403 Forbidden
+* 408 Request Timeout
 
 ## Spring
 
@@ -200,4 +223,21 @@ There are five scopes defined for Spring Beans.
   * Global-session
 
   This is used to create global session beans for Portlet applications
+
+
+## Linux commands
+
+* free: get memory usage
+* uname: get current user
+* pushd and popd: save current directory into memory (like a stack) and return back
+* locate: quick find files, need to `updatedb` first
+* find /etc/ -name *.conf
+* df: disk free, get space
+* du: disk usage per directory level
+* vmstat: get summary info of os in near-real time
+* ps aux: process status
+* ifconfig: get IP address
+* netstat: list all connection
+* wget: download a file
+* telnet: like ssh, to access remote computers 
 
