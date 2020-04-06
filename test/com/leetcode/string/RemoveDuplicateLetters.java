@@ -1,28 +1,33 @@
 package com.leetcode.string;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class RemoveDuplicateLetters {
     public String removeDuplicateLetters(String s) {
-        int[] letters = new int[26];
-        char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            if (letters[c - 'a'] != 0) {
-                letters[c - 'a'] = Math.min(i + 1, letters[c - 'a']);
-            } else {
-                letters[c - 'a'] = i + 1;
+        if (s == null || s.length() == 0) return s;
+        int[] counts = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            counts[s.charAt(i) - 'a']++;
+        }
+        int pos = 0;
+        for (int i = 0; i < s.length(); i++) {
+            // find the letter with smallest ASCII value
+            if (s.charAt(i) < s.charAt(pos)) {
+                pos = i;
+            }
+            // if there is no more duplicated letter, a smaller character letter is useless
+            if (--counts[s.charAt(i) - 'a'] == 0) {
+                break;
             }
         }
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 26; i++) {
-            builder.insert(letters[i] - 1, 'a' + i);
-        }
-        return builder.toString();
+
+        String next = s.substring(pos + 1).replaceAll(String.valueOf(s.charAt(pos)), "");
+        // only take out the char at pos, since letters before it have duplication letter (otherwise
+        // we have stopped)
+        return s.charAt(pos) + removeDuplicateLetters(next);
     }
-    
+
     @Test
     public void test0() {
         String s = "cbacdcbc";

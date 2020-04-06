@@ -1,4 +1,4 @@
-package com.interview.oa.amazon;
+package com.interview.amazon;
 
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ public class CriticalRouters2 {
                 if(nextNode == parentNode) continue;
                 dfs(graph, nextNode, currNode, depth + 1, depths, indegree, res);
                 if(depth < depths.get(nextNode)) {
-                    // found a critical path, add nodes if they are leaf
+                    // found a critical path, add nodes if they are not leaf
                     if(indegree.get(currNode) != 1) {
                         res.add(currNode);
                     }

@@ -4,6 +4,8 @@
 
 Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
 
+Sorting a PriorityQueue: `PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1])`
+
  `PriorityQueue` is implemented using *Heap* Data Structures and *Heap* has `O(log(n))` time complexity to insert and delete element.
 
  [Heap](https://en.wikipedia.org/wiki/Binary_heap) is a tree whose parent is larger than its children. [Demo](https://www.growingwiththeweb.com/data-structures/binary-heap/overview/)
@@ -16,9 +18,13 @@ Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
 
 ## Questions
 
+### Two pointers
+
+- [Count Number of Teams](https://leetcode.com/contest/weekly-contest-182/problems/count-number-of-teams/) Contest question. Better than 3Sum
+
 ### Binary Search
 
-- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition
+- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition and return variable (return the one `+1`).
 
   ```java
   while(low < high) {
@@ -59,9 +65,20 @@ Time complexities:
 - Delete minimum: O(log n)
 - Insert: O(log n)
 
-#### Binary Search
+Questions:
 
-Use quick sort, find the mid and compare the size
+- [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) Good question to get familiar with custom _Comparator_.
+- [Exam Room](https://leetcode.com/problems/exam-room/)
+
+#### Quick Sort
+
+Use quick sort, find the mid and compare the size.
+
+Time complexities:
+
+- O(n ^ 2)
+
+Question:
 
 - [Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums)
 - [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix)
@@ -87,10 +104,13 @@ Consider to use this approach if there is *top K frequency* inside
 
 ### Stack
 
+- [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) Good question to start with using _Stack_
+- [Next Greater Node In Linked List](https://leetcode.com/problems/next-greater-node-in-linked-list/) Good question, similar to the [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), but need some changes of mind - Is a `Map` necessary to store every element's next larger element in the __same__ array?
 - [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/), test corner cases
 - [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 - [Trapping Rain Water](stack/TrappingRainWater.java), same idea with __Largest Rectangle in Histogram__
 - [Largest Rectangle in Histogram](stack/LargestRectangleInHistogram.java), Hard
+- [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) Very good question, __MUST-DO__
 - 1130. Minimum Cost Tree From Leaf Values
 - 907. Sum of Subarray Minimums
 - 901. Online Stock Span
@@ -99,8 +119,9 @@ Consider to use this approach if there is *top K frequency* inside
 - 496. Next Greater Element I
 
 ### BFS/DFS
-- 269. [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) - Hard
-- 301. [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
+
+- [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) Warm up, need to use cache
+- [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
 
 ### Sliding Window
 

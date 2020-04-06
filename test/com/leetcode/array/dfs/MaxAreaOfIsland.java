@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.array.dfs;
 
 import static org.junit.Assert.assertEquals;
 

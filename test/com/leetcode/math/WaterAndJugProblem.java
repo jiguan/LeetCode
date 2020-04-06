@@ -1,5 +1,6 @@
 package com.leetcode.math;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +27,7 @@ public class WaterAndJugProblem {
 
 	@Test
 	public void testGcd() {
-		assertTrue(canMeasureWater(3, 5, 4));
+		assertEquals(Integer.valueOf(1), Integer.valueOf(gcd(3, 5)));
 	}
 
 	@Test

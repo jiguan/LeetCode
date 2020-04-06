@@ -1,10 +1,27 @@
 package com.algorithm;
 
+import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Test;
 
 // https://www.youtube.com/watch?v=W81Qzuz4qH0
-public class Heap<T extends Comparable<T>> {
+public class ImplementHeap {
+    @Test
+    public void testInsert() {
+        Heap<Integer> heap = new Heap<>();
+        for (Integer i = 0; i < 10; i++) {
+            heap.insert(i);
+            assertEquals(heap.items.get(0), i);
+        }
+
+        for (Integer i = 9; i >= 0; i--) {
+            assertEquals(heap.delete(), i);
+        }
+    }
+}
+
+class Heap<T extends Comparable<T>> {
     public List<T> items = new ArrayList<>();
 
     public void insert(T item) {

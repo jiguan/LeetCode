@@ -1,4 +1,4 @@
-package com.leetcode.greedy;
+package com.leetcode.array.stack;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,8 +15,9 @@ public class RemoveDuplicateLetters {
         // used or not;
 
         // count appearances
-        for (char ch : s.toCharArray())
+        for (char ch : s.toCharArray()) {
             count[ch - 'a']++;
+        }
 
         boolean[] visited = new boolean[26];
 

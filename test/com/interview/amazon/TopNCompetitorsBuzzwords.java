@@ -1,4 +1,4 @@
-package com.interview.oa.amazon;
+package com.interview.amazon;
 
 import java.util.ArrayList;
 import java.util.HashMap;

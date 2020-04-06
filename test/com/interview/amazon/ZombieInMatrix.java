@@ -1,4 +1,4 @@
-package com.interview.oa.amazon;
+package com.interview.amazon;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
