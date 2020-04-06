@@ -265,3 +265,46 @@ There are five scopes defined for Spring Beans.
 * wget: download a file
 * telnet: like ssh, to access remote computers 
 
+## Relational Database
+
+What are all the different normalizations?
+
+* First Normal Form (1NF):
+This should remove all the duplicate columns from the table. Creation of tables for the related data and identification of unique columns.
+
+* Second Normal Form (2NF):
+Meeting all requirements of the first normal form. Placing the subsets of data in separate tables and Creation of relationships between the tables using primary keys.
+
+* Third Normal Form (3NF):
+This should meet all requirements of 2NF. Removing the columns which are not dependent on primary key constraints.
+
+* Fourth Normal Form (4NF):
+Meeting all the requirements of third normal form and it should not have multi- valued dependencies.
+
+What is the difference between DELETE, TRUNCATE and DROP commands?
+
+* DELETE command is used to remove rows from the table, and WHERE clause can be used for conditional set of parameters. Commit and Rollback can be performed after delete statement.
+
+* TRUNCATE removes all rows from the table. Truncate operation cannot be rolled back.
+
+*  DROP command removes a table from the database and operation cannot be rolled back.
+
+What is a relationship?
+
+Database Relationship is defined as the connection between the tables in a database.
+
+* One to One
+* One to Many
+* Many to One
+* Self-Referencing
+* (Many to Many should be converted to 2 Many to One tables and use a bridge table connecting them)
+
+What are clustered and non-clustered Indexes?
+
+* Clustered indexes is the index according to which data is physically stored on disk. Therefore, only one clustered index can be created on a given database table.
+
+* Non-clustered indexes don’t define physical ordering of data, but logical ordering. Typically, a tree is created whose leaf point to disk records. B-Tree or B+ tree are used for this purpos
+
+What is the difference between primary key and unique constraints?
+
+* Primary key cannot have NULL value, the unique constraints can have NULL values. There is only one primary key in a table, but there can be multiple unique constrains.
