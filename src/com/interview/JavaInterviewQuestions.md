@@ -82,39 +82,63 @@ Starting from the root set, if an object cannot be accessible, ma
 
 ## Multi-thread
 
-* What is the key difference between a process and a thread?
+What is the key difference between a process and a thread?
 
-A process is an execution of a program but a thread is a single execution sequence within the process. A process can contain multiple threads.
+* A process is an execution of a program but a thread is a single execution sequence within the process. A process can contain multiple threads.
+* A JVM runs in a single process and each process will have its own heap. Threads run within a process (i.e. a JVM process), and share the heap belonging to that process. This is why several threads may access the same object. Threads share the same heap and have their own stack space. This is how one thread’s invocation of a method and its local variables are kept thread safe from other threads.
 
-A JVM runs in a single process and each process will have its own heap. Threads run within a process (i.e. a JVM process), and share the heap belonging to that process. This is why several threads may access the same object. Threads share the same heap and have their own stack space. This is how one thread’s invocation of a method and its local variables are kept thread safe from other threads.
-
-* Explain different ways of creating a thread?
+Explain different ways of creating a thread?
 
 1. Extending the java.lang.Thread class.
 2. Implementing the java.lang.Runnable interface.
 3. Implementing the java.util.concurrent.Callable interface with the java.util.concurrent.Executor framework to pool the threads.
 
-* Which approach would you favor and why?
+Which approach would you favor and why?
 
 Favor Callable interface with the Executor framework for thread pooling.
 
 1. The thread pool is more efficient. Even though the threads are light-weighted than creating a process, creating them utilizes a lot of resources. Also, creating a new thread for each task will consume more stack memory as each thread will have its own stack and also the CPU will spend more time in context switching. Creating a lot many threads with no bounds to the maximum threshold can cause application to run out of heap memory. So, creating a Thread Pool is a better solution as a finite number of threads can be pooled and reused. The runnable or callable tasks will be placed in a queue, and the finite number of threads in the pool will take turns to process the tasks in the queue.
-
 2. The Runnable or Callable interface is preferred over extending the Thread class, as it does not require your object to inherit a thread because when you need multiple inheritance, only interfaces can help you. Java class can extend only one class, but can implement many interfaces.
+3. The Runnable interface’s void run() method has no way of returning any result back to the main thread. The executor framework introduced the Callable interface that returns a value from its call() method. This means the asynchronous task will be able to return a value once it is done executing.
 
-3. The Runnable interface’s void run( ) method has no way of returning any result back to the main thread. The executor framework introduced the Callable interface that returns a value from its call( ) method. This means the asynchronous task will be able to return a value once it is done executing.
+How to end a Thread?
+A Thread ends due to the following reasons:
 
-* What is the difference between yield and sleep? What is the difference between the methods sleep() and wait( )?
+1. The thread ends when the run() method finishes its execution.
+2. When the thread throws an Exception or Error that is not being caught in the program.
+3. Java program completes or ends.
+4. Another thread calls stop() methods.
 
-When a task invokes yield( ), it changes from running state to runnable state. When a task invokes sleep( ), it changes from running state to waiting/sleeping state.
+Callable vs Runnable
+
+Note that a thread can't be created with a Callable
+
+1. For implementing Runnable, the run() method needs to be implemented which does not return anything, while for a Callable, the call() method needs to be implemented which returns a result on completion. Note that a thread can't be created with a Callable, it can only be created with a Runnable.
+1. The call() method can throw an exception whereas run() cannot.
+
+What is Future?
+
+* To create the thread, a Runnable is required. To obtain the result, a Future is required.
+* When the call() method completes, answer must be stored in an object known to the main thread, so that the main thread can know about the result that the thread returned. How will the program store and obtain this result later? For this, a Future object can be used. Think of a Future as an object that holds the result – it may not hold it right now, but it will do so in the future (once the Callable returns). Thus, a Future is basically one way the main thread can keep track of the progress and result from other threads. To implement this interface, 5 methods have to be overridden, but as the example below uses a concrete implementation from the library, only the important methods are listed here.
+* Observe that Callable and Future do two different things – Callable is similar to Runnable, in that it encapsulates a task that is meant to run on another thread, whereas a Future is used to store a result obtained from a different thread. In fact, the Future can be made to work with Runnable as well, which is something that will become clear when Executors come into the picture.
+
+What is the difference between yield and sleep? What is the difference between the methods `sleep()` and `wait()`?
+
+When a task invokes yield(), it changes from running state to runnable state. When a task invokes sleep(), it changes from running state to waiting/sleeping state.
+
+* When shall we use `synchronization`?
+
+1. Synchronization is the capability to control the access of multiple threads to shared resources. synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race.
+1. If we do not use synchronization and let two or more threads access a shared resource at the same time, it will lead to distorted results. Here is an example: Let’s assume that we have two different threads T1 and T2, T1 that start execution and save certain values in a file sample.txt which will be used to calculate some results when T1 returns. Meanwhile, T2 starts and before T1 returns, T2 changes the values saved by T1 in the file sample.txt (sample.txt is the shared resource). Now obviously T1 will give the wrong result.
+1. Synchronization was introduced to prevent such problems from happening. If we use synchronization in the above-mentioned case, once T1 starts using sample.txt file, this file will be locked(LOCK mode), and no other thread will be able to access or modify it until T1 returns.
+
+* What is deadlock?
+Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. Deadlock occurs when multiple threads need the same locks but obtain them in a different order. A Java multi-threaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock, or monitor, associated with the specified object.
+In order to avoid deadlock, one should ensure that when you acquire multiple locks, you always acquire the locks in the same order in all threads.
 
 * What does re-entrancy mean regarding intrinsic or explicit locks?
 
 Re-entrancy means that locks are acquired on a per-thread rather than per-invocation basis. In Java, both intrinsic and explicit locks are re-entrant.
-
-* What is synchronization?
-
-Synchronization is the capability to control the access of multiple threads to shared resources. synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race.
 
 * How does thread communicate with each other?
 
@@ -130,7 +154,7 @@ When we use volatile keyword with a variable, all the threads read it’s value 
 
 * Which is more preferred – Synchronized method or Synchronized block?
 
-Synchronized block is more preferred way because it doesn’t lock the Object, synchronized methods lock the Object and if there are multiple synchronization blocks in the class, even though they are not related, it will stop them from execution and put them in wait state to get the lock on Object.
+Synchronized block is more preferred way because it doesn't lock the Object, synchronized methods lock the Object and if there are multiple synchronization blocks in the class, even though they are not related, it will stop them from execution and put them in wait state to get the lock on Object.
 
 ## Server
 
@@ -140,7 +164,7 @@ Synchronized block is more preferred way because it doesn’t lock the Object, s
   1. SOAP supports both POST and GET methods. However, GET includes the request in the query string. SOAP requests (XML messages) are usually too complex and verbose to be included in the query string, so almost every implementation (for example JAX-WS) supports only POST
   1. . SOAP can use almost any transport to send the request but REST uses HTTP/HTTPS
   1. Any SOAP envelope can be used in REST services like generated token but not vice versa. This means that if you have created a token using SOAP then that token can be used in REST (under HTTP header manager section => Authorization). But you can not use REST envelopes in a SOAP request.
-  1. SOAP provides good security option. Although SOAP and REST both support SSL (Secure Socket Layer) for data protection, while making the request, SOAP supports Web Services Security for enterprise-level protection which offers protection from the creation of the message to it’s consumption. Security and authentication in HTTP are standardized, so that's what you use when doing REST over HTTP
+  1. SOAP provides good security option. Although SOAP and REST both support SSL (Secure Socket Layer) for data protection, while making the request, SOAP supports Web Services Security for enterprise-level protection which offers protection from the creation of the message to it's consumption. Security and authentication in HTTP are standardized, so that's what you use when doing REST over HTTP
   1. REST is Faster. The statelessness nature of REST makes it faster than a SOAP.
   1. SOAP only support XML, but REST supports different format like text, JSON, XML
 

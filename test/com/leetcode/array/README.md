@@ -105,7 +105,7 @@ Consider to use this approach if there is *top K frequency* inside
 ### Stack
 
 - [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) Good question to start with using _Stack_
-- [Next Greater Node In Linked List](https://leetcode.com/problems/next-greater-node-in-linked-list/) Good question, similar to the previous question, but need some changes of mind - Is a `Map` necessary to store every element's next larger element?
+- [Next Greater Node In Linked List](https://leetcode.com/problems/next-greater-node-in-linked-list/) Good question, similar to the [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), but need some changes of mind - Is a `Map` necessary to store every element's next larger element in the __same__ array?
 - [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/), test corner cases
 - [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 - [Trapping Rain Water](stack/TrappingRainWater.java), same idea with __Largest Rectangle in Histogram__
