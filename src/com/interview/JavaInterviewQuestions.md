@@ -65,21 +65,14 @@ What is the difference between inner class and nested class?
 
 How to tell an object is garbage?
 
-1. Reference Counting Collector
-
-Pro: effective Con: cannot handle circulate referring
-
-2. Tracing Collector
-
-Starting from the root set, if an object cannot be accessible, ma
+1. Reference Counting Collector: pro: effective; con: cannot handle circulate referring
+2. Tracing Collector: tarting from the root set, if an object cannot be accessible, mark it as garbage
 
 How to collect memory?
 
 1. Tracing Collector
-
-2. Compacting Collector
-
-3. Copying Collector
+1. Compacting Collector
+1. Copying Collector
 
 ## Multi-thread
 
@@ -103,7 +96,6 @@ Favor Callable interface with the Executor framework for thread pooling.
 3. The Runnable interface’s void run() method has no way of returning any result back to the main thread. The executor framework introduced the Callable interface that returns a value from its call() method. This means the asynchronous task will be able to return a value once it is done executing.
 
 How to end a Thread?
-A Thread ends due to the following reasons:
 
 1. The thread ends when the run() method finishes its execution.
 2. When the thread throws an Exception or Error that is not being caught in the program.
@@ -112,7 +104,7 @@ A Thread ends due to the following reasons:
 
 Callable vs Runnable
 
-Note that a thread can't be created with a Callable
+__Note that a thread can't be created with a Callable__
 
 1. For implementing Runnable, the run() method needs to be implemented which does not return anything, while for a Callable, the call() method needs to be implemented which returns a result on completion. Note that a thread can't be created with a Callable, it can only be created with a Runnable.
 1. The call() method can throw an exception whereas run() cannot.
@@ -125,9 +117,10 @@ What is Future?
 
 What is the difference between yield and sleep? What is the difference between the methods `sleep()` and `wait()`?
 
-When a task invokes yield(), it changes from running state to runnable state. When a task invokes sleep(), it changes from running state to waiting/sleeping state.
+* When a task invokes yield(), it changes from running state to runnable state
+* When a task invokes sleep(), it changes from running state to waiting/sleeping state.
 
-* When shall we use `synchronization`?
+When shall we use `synchronization`?
 
 1. Synchronization is the capability to control the access of multiple threads to shared resources. synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race.
 1. If we do not use synchronization and let two or more threads access a shared resource at the same time, it will lead to distorted results. Here is an example: Let’s assume that we have two different threads T1 and T2, T1 that start execution and save certain values in a file sample.txt which will be used to calculate some results when T1 returns. Meanwhile, T2 starts and before T1 returns, T2 changes the values saved by T1 in the file sample.txt (sample.txt is the shared resource). Now obviously T1 will give the wrong result.
