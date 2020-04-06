@@ -9,15 +9,15 @@
 | int  | 32 bits | -2^31 ~ 2^31 -1 |
 | long | 64 bits | -2^63 ~ 2^63 -1 |
 
-* What is protected access modifier?
+What is protected access modifier?
 
-Variables, methods and constructors which are declared protected in a superclass can be accessed only by the subclasses in other package or any class within the package of the protected members' class.
+* Variables, methods and constructors which are declared protected in a superclass can be accessed only by the subclasses in other package or any class within the package of the protected members' class.
 
-* Why is String class considered immutable?
+Why is String class considered immutable?
 
-The String class is immutable, so that once it is created a String object cannot be changed. Since String is immutable it can safely be shared between many threads ,which is considered very important for multithreaded programming.
+* The String class is immutable, so that once it is created a String object cannot be changed. Since String is immutable it can safely be shared between many threads ,which is considered very important for multithreaded programming.
 
-* Exception
+Exception
 
 | Throwable |Throwable|Throwable|
 | ----| ---- | --- |
@@ -25,44 +25,45 @@ The String class is immutable, so that once it is created a String object cannot
 | Checked exceptions |Unchecked exceptions ||
 | IOException | RuntimeException ||
 
-* What is Polymorphism?
+What is Polymorphism?
 
-Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
+* Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
 
-* What is Abstraction?
+What is Abstraction?
 
-It refers to the ability to make a class abstract in OOP. It helps to reduce the complexity and also improves the maintainability of the system.
+* It refers to the ability to make a class abstract in OOP. It helps to reduce the complexity and also improves the maintainability of the system.
 
-* What is Encapsulation?
+What is Encapsulation?
 
-It is the technique of making the fields in a class private and providing access to the fields via public methods. If a field is declared private, it cannot be accessed by anyone outside the class, thereby hiding the fields within the class. Therefore encapsulation is also referred to as data hiding.
+* It is the technique of making the fields in a class private and providing access to the fields via public methods. If a field is declared private, it cannot be accessed by anyone outside the class, thereby hiding the fields within the class. Therefore encapsulation is also referred to as data hiding.
 
-* Differences between final and immutability
+Differences between final and immutability
 
-  * final means that you can’t change the object’s reference to point to another reference or another object, but you can still mutate its state (using setter methods e.g). Whereas immutable means that the object’s actual value can’t be changed, but you can change its reference to another one.
-  * final modifier is applicable for variable but not for objects, Whereas immutability applicable for an object but not for variables.
+* final means that you can’t change the object’s reference to point to another reference or another object, but you can still mutate its state (using setter methods e.g). Whereas immutable means that the object’s actual value can’t be changed, but you can change its reference to another one.
+* final modifier is applicable for variable but not for objects, Whereas immutability applicable for an object but not for variables.
 By declaring a reference variable as final, we won’t get any immutability nature, Even though reference variable is final. We can perform any type of change in the corresponding Object. But we cant perform reassignment for that variable.
-  * final ensures that the address of the object remains the same whereas the Immutable suggests that we can’t change the state of the object once created.
+* final ensures that the address of the object remains the same whereas the Immutable suggests that we can’t change the state of the object once created.
 
-* What is the benefit of Composition over Inheritance?
-  * Any change in the superclass might affect subclass even though we might not be using the superclass methods. For example, if we have a method test() in the subclass and suddenly somebody introduces a method test() in the superclass, we will get compilation errors in the subclass. The composition will never face this issue because we are using only what methods we need.
-  * Inheritance exposes all the superclass methods and variables to the client and if we have no control in designing superclass, it can lead to security holes. Composition allows us to provide restricted access to the methods and hence more secure.
+What is the benefit of Composition over Inheritance?
 
-* Can a constructor be made final?
+* Any change in the superclass might affect subclass even though we might not be using the superclass methods. For example, if we have a method test() in the subclass and suddenly somebody introduces a method test() in the superclass, we will get compilation errors in the subclass. The composition will never face this issue because we are using only what methods we need.
+* Inheritance exposes all the superclass methods and variables to the client and if we have no control in designing superclass, it can lead to security holes. Composition allows us to provide restricted access to the methods and hence more secure.
 
-No
+Can a constructor be made final?
 
-* Can constructor be inherited?
+* No
 
-No, constructor cannot be inherited.
+Can constructor be inherited?
 
-* What is the difference between inner class and nested class?
+* No, constructor cannot be inherited.
 
-When a class is defined within a scope of another class, then it becomes inner class. If the access modifier of the inner class is static, then it becomes nested class.
+What is the difference between inner class and nested class?
+
+* When a class is defined within a scope of another class, then it becomes inner class. If the access modifier of the inner class is static, then it becomes nested class.
 
 ## GC
 
-* How to tell an object is garbage?
+How to tell an object is garbage?
 
 1. Reference Counting Collector
 
@@ -72,7 +73,7 @@ Pro: effective Con: cannot handle circulate referring
 
 Starting from the root set, if an object cannot be accessible, ma
 
-* How to collect memory?
+How to collect memory?
 
 1. Tracing Collector
 
@@ -132,58 +133,60 @@ When a task invokes yield(), it changes from running state to runnable state. Wh
 1. If we do not use synchronization and let two or more threads access a shared resource at the same time, it will lead to distorted results. Here is an example: Let’s assume that we have two different threads T1 and T2, T1 that start execution and save certain values in a file sample.txt which will be used to calculate some results when T1 returns. Meanwhile, T2 starts and before T1 returns, T2 changes the values saved by T1 in the file sample.txt (sample.txt is the shared resource). Now obviously T1 will give the wrong result.
 1. Synchronization was introduced to prevent such problems from happening. If we use synchronization in the above-mentioned case, once T1 starts using sample.txt file, this file will be locked(LOCK mode), and no other thread will be able to access or modify it until T1 returns.
 
-* What is deadlock?
+What is deadlock?
+
 Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. Deadlock occurs when multiple threads need the same locks but obtain them in a different order. A Java multi-threaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock, or monitor, associated with the specified object.
 In order to avoid deadlock, one should ensure that when you acquire multiple locks, you always acquire the locks in the same order in all threads.
 
-* What does re-entrancy mean regarding intrinsic or explicit locks?
+What does re-entrancy mean regarding intrinsic or explicit locks?
 
-Re-entrancy means that locks are acquired on a per-thread rather than per-invocation basis. In Java, both intrinsic and explicit locks are re-entrant.
+* Re-entrancy means that locks are acquired on a per-thread rather than per-invocation basis. In Java, both intrinsic and explicit locks are re-entrant.
 
-* How does thread communicate with each other?
+How does thread communicate with each other?
 
-Object class wait(), notify() and notifyAll() methods allows threads to communicate about the lock status of a resource
+* Object class wait(), notify() and notifyAll() methods allows threads to communicate about the lock status of a resource
 
-* Why wait(), notify() and notifyAll() methods have to be called from synchronized method or block?
+Why wait(), notify() and notifyAll() methods have to be called from synchronized method or block?
 
-When a Thread calls wait() on any Object, it must have the monitor on the Object that it will leave and goes in wait state until any other thread call notify() on this Object. Similarly when a thread calls notify() on any Object, it leaves the monitor on the Object and other waiting threads can get the monitor on the Object. Since all these methods require Thread to have the Object monitor, that can be achieved only by synchronization, they need to be called from synchronized method or block.
+* When a Thread calls wait() on any Object, it must have the monitor on the Object that it will leave and goes in wait state until any other thread call notify() on this Object. Similarly when a thread calls notify() on any Object, it leaves the monitor on the Object and other waiting threads can get the monitor on the Object. Since all these methods require Thread to have the Object monitor, that can be achieved only by synchronization, they need to be called from synchronized method or block.
 
-* What is volatile keyword in Java
+What is volatile keyword in Java
 
-When we use volatile keyword with a variable, all the threads read it’s value directly from the memory and don’t cache it. This makes sure that the value read is the same as in the memory.
+* When we use volatile keyword with a variable, all the threads read it’s value directly from the memory and don’t cache it. This makes sure that the value read is the same as in the memory.
 
-* Which is more preferred – Synchronized method or Synchronized block?
+Which is more preferred – Synchronized method or Synchronized block?
 
-Synchronized block is more preferred way because it doesn't lock the Object, synchronized methods lock the Object and if there are multiple synchronization blocks in the class, even though they are not related, it will stop them from execution and put them in wait state to get the lock on Object.
+* Synchronized block is more preferred way because it doesn't lock the Object, synchronized methods lock the Object and if there are multiple synchronization blocks in the class, even though they are not related, it will stop them from execution and put them in wait state to get the lock on Object.
 
 ## Server
 
-* REST vs SOAP
-  1. SOAP is a protocol whereas REST is architecture. REST is protocol independent. It's not coupled to HTTP
-  1. SOAP exposes behavior which represent logic whereas REST exposes resources
-  1. SOAP supports both POST and GET methods. However, GET includes the request in the query string. SOAP requests (XML messages) are usually too complex and verbose to be included in the query string, so almost every implementation (for example JAX-WS) supports only POST
-  1. . SOAP can use almost any transport to send the request but REST uses HTTP/HTTPS
-  1. Any SOAP envelope can be used in REST services like generated token but not vice versa. This means that if you have created a token using SOAP then that token can be used in REST (under HTTP header manager section => Authorization). But you can not use REST envelopes in a SOAP request.
-  1. SOAP provides good security option. Although SOAP and REST both support SSL (Secure Socket Layer) for data protection, while making the request, SOAP supports Web Services Security for enterprise-level protection which offers protection from the creation of the message to it's consumption. Security and authentication in HTTP are standardized, so that's what you use when doing REST over HTTP
-  1. REST is Faster. The statelessness nature of REST makes it faster than a SOAP.
-  1. SOAP only support XML, but REST supports different format like text, JSON, XML
+REST vs SOAP
 
-* REST Principles
+1. SOAP is a protocol whereas REST is architecture. REST is protocol independent. It's not coupled to HTTP
+1. SOAP exposes behavior which represent logic whereas REST exposes resources
+1. SOAP supports both POST and GET methods. However, GET includes the request in the query string. SOAP requests (XML messages) are usually too complex and verbose to be included in the query string, so almost every implementation (for example JAX-WS) supports only POST
+1. . SOAP can use almost any transport to send the request but REST uses HTTP/HTTPS
+1. Any SOAP envelope can be used in REST services like generated token but not vice versa. This means that if you have created a token using SOAP then that token can be used in REST (under HTTP header manager section => Authorization). But you can not use REST envelopes in a SOAP request.
+1. SOAP provides good security option. Although SOAP and REST both support SSL (Secure Socket Layer) for data protection, while making the request, SOAP supports Web Services Security for enterprise-level protection which offers protection from the creation of the message to it's consumption. Security and authentication in HTTP are standardized, so that's what you use when doing REST over HTTP
+1. REST is Faster. The statelessness nature of REST makes it faster than a SOAP.
+1. SOAP only support XML, but REST supports different format like text, JSON, XML
 
-  * Stateless: Each client request to the server requires that its state be fully represented. The server must be able to completely understand the client request without using any server context or server session state. It follows that all state must be kept on the client
-  * Cacheable: Cache constraints may be used, thus enabling response data to be marked as cacheable or not-cacheable. Any data marked as cacheable may be reused as the response to the same subsequent request.
-  * Uniform Interface: All components must interact through a single uniform interface
+REST Principles
 
-* What is payload?
+* Stateless: Each client request to the server requires that its state be fully represented. The server must be able to completely understand the client request without using any server context or server session state. It follows that all state must be kept on the client
+* Cacheable: Cache constraints may be used, thus enabling response data to be marked as cacheable or not-cacheable. Any data marked as cacheable may be reused as the response to the same subsequent request.
+* Uniform Interface: All components must interact through a single uniform interface
+
+What is payload?
 
 When data is sent over the Internet, each unit transmitted includes both header information and the actual data being sent. The header identifies the source and destination of the packet, __while the actual data is referred to as the payload__. In general, the payload is the data that is carried on behalf of an application and the data received by the destination system.
 
-* HTTP vs HTTPS
+HTTP vs HTTPS
 
-  1. HTTP is also called "a stateless system", which means that it enables connection on demand
-  1. HTTP can be intercepted and potentially altered. Any data you enter into the site will be sent plaintext and therefore susceptible to interception or eavesdropping
-  1. HTTPS is secured by Transport Layer Security (TLS)
-  1. SSL/TLS provides a secure channel between two machines or devices operating over the internet or an internal network
+1. HTTP is also called "a stateless system", which means that it enables connection on demand
+1. HTTP can be intercepted and potentially altered. Any data you enter into the site will be sent plaintext and therefore susceptible to interception or eavesdropping
+1. HTTPS is secured by Transport Layer Security (TLS)
+1. SSL/TLS provides a secure channel between two machines or devices operating over the internet or an internal network
 
 Status codes
 
@@ -211,43 +214,27 @@ The server could not understand the request due to invalid syntax.
 
 ## Spring
 
-* What do you understand by Dependency Injection?
+What do you understand by Dependency Injection?
 
 Dependency Injection design pattern allows us to remove the hard-coded dependencies and make our application loosely coupled, extendable and maintainable. We can implement dependency injection pattern to move the dependency resolution from compile-time to runtime.
 
-* What do you understand by Aspect Oriented Programming?
+What do you understand by Aspect Oriented Programming?
 
-Enterprise applications have some common cross-cutting concerns that are applicable to different types of Objects and application modules, such as logging, transaction management, data validation, authentication etc. In Object Oriented Programming, modularity of application is achieved by Classes whereas in AOP application modularity is achieved by Aspects and they are configured to cut across different classes methods.
+* Enterprise applications have some common cross-cutting concerns that are applicable to different types of Objects and application modules, such as logging, transaction management, data validation, authentication etc. In Object Oriented Programming, modularity of application is achieved by Classes whereas in AOP application modularity is achieved by Aspects and they are configured to cut across different classes methods.
+* AOP takes out the direct dependency of cross-cutting tasks from classes that are not possible in normal object-oriented programming. For example, we can have a separate class for logging but again the classes will have to call these methods for logging the data.
 
-AOP takes out the direct dependency of cross-cutting tasks from classes that are not possible in normal object-oriented programming. For example, we can have a separate class for logging but again the classes will have to call these methods for logging the data.
-
-* What is Spring IoC Container?
+What is Spring IoC Container?
 
 Inversion of Control (IoC) is the mechanism to achieve loose-coupling between Objects dependencies. To achieve loose coupling and dynamic binding of the objects at runtime, the objects define their dependencies that are being injected by other assembler objects. Spring IoC container is the program that injects dependencies into an object and makes it ready for our use.
 
-* What are different scopes of Spring Bean?
+What are different scopes of Spring Bean?
 There are five scopes defined for Spring Beans.
 
-  * Singleton
-  
-  Only one instance of the bean will be created for each container. This is the default scope for the spring beans. While using this scope, make sure spring bean doesn’t have shared instance variables otherwise it might lead to data inconsistency issues because it’s not thread-safe.
-
-  * Prototype
-
-  A new instance will be created every time the bean is requested.
-
-  * Request
-
-  This is same as prototype scope, however it’s meant to be used for web applications. A new instance of the bean will be created for each HTTP request.
-
-  * Session
-
-   A new bean will be created for each HTTP session by the container.
-
-  * Global-session
-
-  This is used to create global session beans for Portlet applications
-
+* Singleton: only one instance of the bean will be created for each container. This is the default scope for the spring beans
+* Prototype: a new instance will be created every time the bean is requested.
+* Request: this is same as prototype scope, however it’s meant to be used for web applications. A new instance of the bean will be created for each HTTP request.
+* Session: a new bean will be created for each HTTP session by the container.
+* Global-session: this is used to create global session beans for Portlet applications
 
 ## Linux commands
 
