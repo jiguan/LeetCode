@@ -1,10 +1,8 @@
 package com.leetcode.implement;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.Test;
 
 public class LeastRecentlyUsedCache {
@@ -13,11 +11,11 @@ public class LeastRecentlyUsedCache {
         LRUCache cache = new LRUCache(2);
         cache.put(1, 1);
         cache.put(2, 2);
-        prettyPrint(cache.head);
+        LRUCache.prettyPrint(cache.head);
         assertEquals(1, cache.get(1));
-        prettyPrint(cache.head);
+        LRUCache.prettyPrint(cache.head);
         cache.put(3, 3);
-        prettyPrint(cache.head);
+        LRUCache.prettyPrint(cache.head);
         assertEquals(-1, cache.get(2));
         cache.put(4, 4);
         assertEquals(-1, cache.get(1));
@@ -33,11 +31,11 @@ public class LeastRecentlyUsedCache {
         cache.put(3, 3);
         cache.put(4, 4);
         assertEquals(4, cache.get(4));
-        prettyPrint(cache.head);
+        LRUCache.prettyPrint(cache.head);
         assertEquals(3, cache.get(3));
         assertEquals(2, cache.get(2));
         assertEquals(-1, cache.get(1));
-        prettyPrint(cache.head);
+        LRUCache.prettyPrint(cache.head);
         cache.put(5, 5);
         assertEquals(-1, cache.get(1));
         assertEquals(2, cache.get(2));
@@ -80,20 +78,13 @@ public class LeastRecentlyUsedCache {
         assertEquals(1, cache.get(3));
         assertEquals(4, cache.get(4));
     }
-    
-    private void prettyPrint(Node node) {
-        while (node != null) {
-            System.out.print("[" + node.key + "-" + node.value + "] -> ");
-            node = node.next;
-        }
-        System.out.println("null");
-    }
 }
 
 class LRUCache {
     int capacity;
     Map<Integer, Node> map;
     Node head = new Node(), tail = new Node();
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
         map = new HashMap<>(capacity);
@@ -140,10 +131,11 @@ class LRUCache {
         node.prev = head;
     }
 
-    
+
     // only func relies on itself
     private void delete(Node node) {
-        // Since delete() is also called from update(). For newly created node, prev and next are null
+        // Since delete() is also called from update(). For newly created node, prev and next are
+        // null
         if (node.prev != null) {
             node.prev.next = node.next;
         }
@@ -154,22 +146,32 @@ class LRUCache {
         node.prev = null;
         node.next = null;
     }
-}
 
-class Node {
-    Node prev, next;
-    // key is needed since we need to remove node from Map
-    int value, key;
-    public Node() {
-    };
+    class Node {
+        Node prev, next;
+        // key is needed since we need to remove node from Map
+        int value, key;
 
-    public Node(int key, int value) {
-        this.value = value;
-        this.key = key;
+        public Node() {};
+
+        public Node(int key, int value) {
+            this.value = value;
+            this.key = key;
+        }
+
+        @Override
+        public String toString() {
+            return "[" + key + " - " + value + "]";
+        }
     }
 
-    @Override
-    public String toString() {
-        return "[" + key + " - " + value + "]";
+    static void prettyPrint(Node node) {
+        while (node != null) {
+            System.out.print("[" + node.key + "-" + node.value + "] -> ");
+            node = node.next;
+        }
+        System.out.println("null");
     }
 }
+
+

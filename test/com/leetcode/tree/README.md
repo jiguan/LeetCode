@@ -33,15 +33,16 @@
 
 ### Tree traverse
 
-To flatten a binary tree, using *recusive* function and return a `Pair` to record the head and tail
+To flatten a binary tree, using *recursive* function and return a `Pair` to record the head and tail
 
 - [Flatten Binary Tree to Linked List preorder](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
 - Flatten Binary Tree to Linked List inorder
 
 *InOrder* traverse is like a binary search, the __root__ value is in the middle. But we can know the __left subtree size__ and __right subtree size__. From *PreOrder* and *PostOrder* we can know the root value directly
 
-- [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-- [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+- [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) Use *InOrder* traverse and count visited nodes
+- [Construct Binary Tree from PreOrder and InOrder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+- [Construct Binary Tree from InOrder and PostOrder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
 ### Lowest Common Ancestor
 
@@ -52,11 +53,11 @@ Find **ALL** ancestors of one node, then get the other's ancestor one by one and
 - [Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/)
 - [Karat] Ancestors
 
-
 - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
 
-### BST inorder traversal generates a sorted array
-  1. [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/)
+### BST InOrder traversal generates a sorted array
+
+- [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/)
 
 ### Tree nodes/depth counting
 
@@ -70,5 +71,5 @@ Find **ALL** ancestors of one node, then get the other's ancestor one by one and
 
 ### Segment Tree
 
-//https://www.youtube.com/watch?v=ZBHKZF5w4YU
+https://www.youtube.com/watch?v=ZBHKZF5w4YU
 
