@@ -253,7 +253,7 @@ What are all the different normalizations?
 This should remove all the duplicate columns from the table. Creation of tables for the related data and identification of unique columns.
 
 * Second Normal Form (2NF):
-Meeting all requirements of the first normal form. Placing the subsets of data in separate tables and Creation of relationships between the tables using primary keys.
+Meeting all requirements of 1NF. Single column primary key (no composite key)
 
 * Third Normal Form (3NF):
 This should meet all requirements of 2NF. Removing the columns which are not dependent on primary key constraints.
@@ -267,7 +267,7 @@ What is the difference between DELETE, TRUNCATE and DROP commands?
 
 * TRUNCATE removes all rows from the table. Truncate operation cannot be rolled back.
 
-*  DROP command removes a table from the database and operation cannot be rolled back.
+* DROP command removes a table from the database and operation cannot be rolled back.
 
 What is a relationship?
 

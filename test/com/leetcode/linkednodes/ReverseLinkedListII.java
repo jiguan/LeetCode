@@ -8,12 +8,14 @@ public class ReverseLinkedListII {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode fake = new ListNode(-1);
         fake.next = head;
-        ListNode stop = fake;
+        ListNode prev = fake;
         for (int i = 1; i < m; ++i) {
-            stop = stop.next;
+            prev = prev.next;
         }
-        ListNode node = stop.next;
-        ListNode prev = stop;
+        ListNode node = prev.next;
+        ListNode anchor = prev;
+        // prev __ node -> next
+        // prev <- node __ next
         for (int i = m; i <= n; ++i) {
             ListNode next = node.next;
             node.next = prev;
@@ -21,8 +23,10 @@ public class ReverseLinkedListII {
             node = next;
         }
 
-        stop.next.next = node;
-        stop.next = prev;
+        // anchor.next was the head, now it becomes the tail
+        anchor.next.next = node;
+        // connect the new head
+        anchor.next = prev;
         return fake.next;
     }
 
