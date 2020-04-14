@@ -1,4 +1,4 @@
-package com.interview.phone.apple;
+package com.interview.apple;
 
 import static org.junit.Assert.assertArrayEquals;
 import java.util.ArrayList;

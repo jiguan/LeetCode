@@ -1,4 +1,4 @@
-package com.interview.onsite.microsoft;
+package com.interview.microsoft;
 
 import static org.junit.Assert.assertEquals;
 

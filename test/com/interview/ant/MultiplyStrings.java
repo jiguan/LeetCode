@@ -1,4 +1,4 @@
-package com.interview.phone.ant;
+package com.interview.ant;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.interview.phone.ant;
+package com.interview.ant;
 
 import java.util.Random;
 

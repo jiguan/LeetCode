@@ -1,4 +1,4 @@
-package com.interview.phone.lyft;
+package com.interview.lyft;
 
 public class DifferentRacks {
 

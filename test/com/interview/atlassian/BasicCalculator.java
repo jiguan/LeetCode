@@ -1,4 +1,4 @@
-package com.interview.phone.atlassian;
+package com.interview.atlassian;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Stack;

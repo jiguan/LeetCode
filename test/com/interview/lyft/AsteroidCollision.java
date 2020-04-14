@@ -1,4 +1,4 @@
-package com.interview.phone.lyft;
+package com.interview.lyft;
 
 import java.util.Stack;
 import org.junit.Test;

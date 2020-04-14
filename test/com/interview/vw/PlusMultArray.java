@@ -1,4 +1,4 @@
-package com.interview.oa.vw;
+package com.interview.vw;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
