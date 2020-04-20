@@ -58,10 +58,10 @@ public class MedianOfTwoSortedArrays {
 
     @Test
     public void testFindMedianSortedArrays1() {
-        int[] nums1 = new int[] {1, 3};
+        int[] nums1 = new int[] {1, 3, 5};
         int[] nums2 = new int[] {2};
 
-        assertEquals(2, findMedianSortedArrays(nums1, nums2), DELTA);
+        assertEquals(2.5, findMedianSortedArrays(nums1, nums2), DELTA);
     }
 
     @Test

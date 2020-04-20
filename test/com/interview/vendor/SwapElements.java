@@ -10,27 +10,30 @@ import org.junit.Test;
 // arrays are the same. Return false if we can't find
 public class SwapElements {
     public boolean swap(int[] A, int[] B) {
-        Set<Integer> set = new HashSet<>();
-        int sumA = 0;
-        for (int num : A) {
-            set.add(num * 2);
-            sumA += num;
+        // Make sure A has smaller size so that less space is used
+        if (A.length > B.length) return swap(B, A);
+        Set<Long> set = new HashSet<>();
+        long sumA = 0;
+        for (int num1 : A) {
+            set.add(Long.valueOf(num1));
+            sumA += num1;
         }
-        int sumB = 0;
+        long sumB = 0;
         for (int num : B) {
             sumB += num;
         }
         // sum1 - sum2 = diff
         // num1 - num2 = - (diff / 2)
-        int diff = sumA - sumB;
-        for (int num : B) {
-            if (set.contains(2 * num - diff)) {
+        // num1 = num2 - (diff / 2)
+        long diff = sumA - sumB;
+        if (diff % 2 != 0) return false;
+        for (int num2 : B) {
+            if (set.contains(num2 - diff / 2)) {
                 return true;
             }
         }
         return false;
     }
-
 
     @Test
     public void test0() {
