@@ -1,5 +1,7 @@
 # Facebook Messenger
 
+<img src="messenger.png" alt="messenger arch" title="messenger arch" width="500" height="200" />
+
 ## Scenario
 
 * Send one-to-one message

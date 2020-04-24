@@ -2,6 +2,8 @@
 
 [System Design : Distributed Database System Key Value Store](https://www.youtube.com/watch?v=rnZmdmlR-2M)
 
+<img src="distributed_db.png" alt="distributed db arch" title="distributed db arch" width="500" height="200" />
+
 ## Metadata Manager
 
 - Leader election, in replication group
