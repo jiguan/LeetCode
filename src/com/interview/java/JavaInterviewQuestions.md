@@ -201,7 +201,7 @@ HTTP vs HTTPS
 
 1. HTTP is also called "a stateless system", which means that it enables connection on demand
 1. HTTP can be intercepted and potentially altered. Any data you enter into the site will be sent __plaintext__ and therefore susceptible to interception or eavesdropping
-1. HTTPS is secured by Transport Layer Security (TLS)
+1. HTTPS is HTTP but content secured by Transport Layer Security (TLS)
 1. SSL/TLS provides a secure channel between two machines or devices operating over the internet or an internal network
 
 HTTPS handshake
@@ -212,14 +212,16 @@ HTTPS handshake
 * Private key: used by receiver to decrypt the cipher text to read the message.
 * Certificate = Website info + Signature. An SSL certificate is used to authenticate the identify of a website
 * Signature = encrypt(hash(all details))
-* Certificate Authority: A known CA can sign web server requests so that anyone with the CA's public key can verify that requests were signed it by the CA. Browsers have these known CA's public key embedded and verify the information from the Certificate is trustable. This is to avoid Man in the mid attack and we can find it out the website we are talking is not youtube.com
+* Certificate Authority: A known CA can sign web server requests so that anyone with the CA's public key can verify that requests were signed it by the CA. Browsers have these known CA's public key embedded and verify the information from the Certificate is trustable. This is to avoid _Man-In-The-Middle_ attack and we can find it out the website we are talking is not youtube.com
 
-1. Client sends `HTTP` request to the server's port 443, including TLS version, Key(RSA), supported Cipher (AES), Hash(HMAC-MD5)
-2. Server responses with TLS version, random2, confirmed encryption method (RSA), and Certificate and public key
-3. After the client gets the Certificate, client will check who is the root CA. client will decrypt signature using third-party public key, and then calculated the public key from the signature, lastly compare the calculated public key from response.
-4. After the client authorizes the certificate, client generate __Pre-Master Key__ encrypted by the public key and sends to the server
-5. The server gets the __Pre-Master Key__  by decrypting the private key. Therefore both client and server have the same random1, random2, pre-master key. Then both of them calculate the session-key and mac-key based on it (Symmetric Key).
-6. All following messages will be encrypted by this new key
+
+<img src="https_handshake_cn.jpg" alt="https handshake" title="JVM heap memory" width="600" height="1200" />
+
+1. Client sends the request to the server's port 443, including TLS version, a random number (random1), Key(RSA), supported Cipher (AES), Hash(HMAC-MD5).
+2. Server responses with confirmed TLS version, another random number (random2), confirmed encryption method (RSA), and Certificate with _public key_.
+3. After the client gets the response, client authorizes the certificate by checking its CA. If the ceritificat is trustable, the client generates __Pre-Master Key__ encrypted by the _public key_ and sends back to the server.
+5. The server gets the __Pre-Master Key__  by decrypting the private key. Since both client and server now have the same random1, random2, pre-master key, they calculate the session-key and mac-key based on it (__Symmetric Key__).
+6. All following messages are encrypted by this symmetric key.
 
 Status codes
 
