@@ -1,6 +1,6 @@
 # Facebook Messenger
 
-<img src="messenger.png" alt="messenger arch" title="messenger arch" width="500" height="200" />
+<img src="messenger.png" alt="messenger arch" title="messenger arch" width="500" height="350" />
 
 ## Scenario
 
@@ -9,6 +9,7 @@
 * Check the messenger is read
 * Send picture or file
 * Security
+* Content is not stored on the server
 
 ## Service
 
@@ -39,7 +40,7 @@ We have a Redis database to store __ACTIVE__ users and their associated server n
 | con_01 | t1 | User123 | Hello! | null |
 | con_01 | t2 | User456 | World! | null |
 | con_02 | t3 | User456 | Are you online? | null |
-| con_03 | t4 | User123 | null | url1 |
+| con_03 | t4 | User123 | null | url1 (Pointing to a pic or video) |
 
 * UnreadTable
 
@@ -50,3 +51,8 @@ We have a Redis database to store __ACTIVE__ users and their associated server n
 * Block file system
 
 For picture or file, save it into a block file system rather than the __ConversationTable__ to optimize the speed
+
+## Fellow up
+
+* Allow group chat
+* Save the content on the server

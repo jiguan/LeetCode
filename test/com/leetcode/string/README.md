@@ -4,7 +4,7 @@
 
 - Split by spaces: ```split("\\s+")```
 
-## Keynote
+## Reverse strings
 
 If we need to reverse the sentence's order but keep each word's order, try to
 
@@ -17,20 +17,21 @@ yks si eulb
 blue is sky
 ```
 
-- [Reverse Words in a String II](https://leetcode.com/problems/reverse-words-in-a-string-ii/)
+## Counting letters
 
 If the question is comparison for chars, using a count array with positive/negative value to indicate it shows up or not
 
+- [Reverse Words in a String II](https://leetcode.com/problems/reverse-words-in-a-string-ii/)
 - [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
- If we want to check if one word is a child of another one, rather than using `Permutation`, we could count the number of letters and compare them
+If we want to check if one word is a subset characters of another one, rather than output all combinations into a HashMap, we could count the number of letters.
 
 ```java
-private boolean isValid(int[] newWord, int[] existing) {
-    for (int i = 0; i < existing.length; ++i) {
-        // Some letters existing valid word but not in this newly pass in word
-        // There is no way this ScrabbleWord could be a subset of this new word
-        if (newWord[i] < existing[i]) {
+private boolean isValid(int[] wordA, int[] wordB) {
+    for (int i = 0; i < 26; ++i) {
+        // If a letter exists in existing wordA but not in wordB
+        // There is no way wordA is a subset of wordB
+        if (wordA[i] < wordB[i]) {
             return false;
         }
     }
@@ -40,16 +41,44 @@ private boolean isValid(int[] newWord, int[] existing) {
 
 - Blue Nile's assignment: scrabble-solver-service
 
-__One more time extra__: Some questions require one extra execution at the end of the iteration. We could add an additional unharmful element.
+## Add a dummy character
+
+Some questions require one extra execution at the end of the iteration. We could add an additional unharmful element.
 
 - [Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
+
+## KMP
 
 Knuth Morris Pratt algorithm [Code](../../../com/algorithm/KnuthMorrisPratt.java)
 
 1. First build a longest suffix-prefix table (**lsp**) which recording the next position of the matched character with current one (previously matched character's index + 1).
 1. Then initialize two pointers, **s** for the searched and **t** for the pattern. Compare their corresponding characters and if they are matched, both move forward. Otherwise, using the **lsp** table, **t** keeps setting to the previous one (**t** - 1, still matched character)'s next position until it becomes 0 or its character matches current one.
 
-   [Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/description/)
+- [Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/description/)
+
+```java
+public boolean repeatedSubstringPattern(String s) {
+    int len = s.length();
+    // longest suffix-prefix
+    int[] lsp = new int[len];
+
+    for (int i = 1; i < s.length(); ++i) {
+        char c = s.charAt(i);
+        // previous character's start position
+        int j = lsp[i - 1];
+        while (j != 0 && c != s.charAt(j)) {
+            j = lsp[j - 1];
+        }
+
+        if (c == s.charAt(j)) {
+            lsp[i] = j + 1;
+        }
+    }
+    // If there is repeated substring pattern, the lsp would be like [0, 0, 0, 1, 2, 3, 4, 5, 6]
+    // len - lsp[last] is the pattern length
+    return lsp[len - 1] != 0 && len % (len - lsp[len - 1]) == 0;
+}
+```
 
 ## Questions
 
@@ -59,3 +88,6 @@ __Dictionary word matching__ question: The idea is using an index and skip some 
 
 - [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) Hard, we could use greedy algorithm approach.
 
+### Repeat characters
+
+- [Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/)

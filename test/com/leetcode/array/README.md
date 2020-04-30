@@ -110,9 +110,7 @@ Questions:
 
 Use quick sort, find the mid and compare the size.
 
-Time complexities:
-
-- O(n ^ 2)
+Time complexities: __O(n ^ 2)__
 
 Question:
 
@@ -156,8 +154,12 @@ Consider to use this approach if there is *top K frequency* inside
 
 ### BFS/DFS
 
-- [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) Warm up, need to use cache
-- [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - Hard, Must Do
+- [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) - warm up, need to use cache
+- [Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) - hard, must-do
+
+### Merge sort
+
+- [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) - hard
 
 ### Sliding Window
 

@@ -18,7 +18,7 @@ public class MaximalRectangle {
         }
         int result = 0;
         for (int i = 0; i < m; i++) {
-            int currLeft = 0, currRight = n;
+
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == '1') {
                     height[j]++;
@@ -27,8 +27,12 @@ public class MaximalRectangle {
                     height[j] = 0;
                 }
             }
+            int currLeft = 0;
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == '1')
+                    // max is to get the common area
+                    // 0 0 1 => 0 0 2
+                    // 1 1 1 => 0 0 2 (not 0 0 0)
                     left[j] = Math.max(left[j], currLeft);
                 else {
                     left[j] = 0;
@@ -36,8 +40,12 @@ public class MaximalRectangle {
                     currLeft = j + 1;
                 }
             }
+            int currRight = n;
             for (int j = n - 1; j >= 0; j--) {
                 if (matrix[i][j] == '1')
+                    // min is to get the common area
+                    // 1 0 0 => 1 3 3
+                    // 1 1 1 => 1 3 3 (not 3 3 3)
                     right[j] = Math.min(right[j], currRight);
                 else {
                     right[j] = n;
@@ -60,9 +68,15 @@ public class MaximalRectangle {
 
     @Test
     public void test1() {
-        char[][] matrix = new char[][] {{'0', '1', '1', '0', '1'}, {'1', '1', '0', '1', '0'},
-                {'0', '1', '1', '1', '0'}, {'1', '1', '1', '1', '0'}, {'1', '1', '1', '1', '1'},
-                {'0', '0', '0', '0', '0'}};
+        // @formatter:off
+        char[][] matrix = new char[][] {
+            {'0', '1', '1', '0', '1'},
+            {'1', '1', '0', '1', '0'},
+            {'0', '1', '1', '1', '0'},
+            {'1', '1', '1', '1', '0'},
+            {'1', '1', '1', '1', '1'},
+            {'0', '0', '0', '0', '0'}};
+        // @formatter:on
         assertEquals(9, maximalRectangle(matrix));
     }
 
@@ -77,5 +91,17 @@ public class MaximalRectangle {
     public void test3() {
         char[][] matrix = new char[][] {{'0', '1'}};
         assertEquals(1, maximalRectangle(matrix));
+    }
+
+    @Test
+    public void test4() {
+        // @formatter:off
+        char[][] matrix = new char[][] {
+            {'1', '0', '1', '0', '0'},
+            {'1', '0', '1', '1', '1'},
+            {'1', '1', '1', '1', '1'},
+            {'1', '0', '0', '1', '0'}};
+        // @formatter:on
+        assertEquals(6, maximalRectangle(matrix));
     }
 }

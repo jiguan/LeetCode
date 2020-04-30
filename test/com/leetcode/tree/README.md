@@ -2,25 +2,88 @@
 
 ## Tree traversal
 
-        3       Pre-order: 3 4 1 5 7
-      4   7     Post-order: 1 5 4 7 3
-    1  5        In-order: 1 4 5 3 7
+```text
+     3
+    / \      Pre-order: 3 4 1 5 7
+   4   7     Post-order: 1 5 4 7 3
+  / \        In-order: 1 4 5 3 7
+ 1   5
+```
 
-- Recursive solution is trivial. But it should be the first approach
-- Iteration is tricky
-- Pre-order: Easy. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePreorderTraversal.java)
-        1. Push root to stack 
-        2. Inside while loop, pop out the node, and save its value to result list 
-        3. If node has left, push right to stack, so as left node  
-  - Post-order: Tricky. Similar to pre-order. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreePostorderTraversal.java)
-        1. Push the root to the stack 
-        2. Pop up the stack, if node'e left is not null, add left to the stack, so as the right node. Record the node's val 
-        3. **Outside the while loop, reverse res**
-  - In-order: Tricky. [Code](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/tree/BinaryTreeInorderTraversal.java)
-        1. Create a node variable outside while loop and do not push node to the stack
-        1. `while(prev!=null || !stack.isEmpty())`, keep pushing node's left to the stack
-        1. Update the node by pop up the stack, and record its value
-        1. Make node point to node.right
+### Pre-Order (root, left, right)
+
+```java
+public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> res = new LinkedList<>();
+    if (root == null) return res;
+    // using stack to make sure root's left children is traversed first
+    // use stack to accomplish recursive effect
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+
+    while (!stack.isEmpty()) {
+        TreeNode node = stack.pop();
+        res.add(node.val);
+
+        if (node.right != null) {
+            stack.push(node.right);
+        }
+        if (node.left != null) {
+            stack.push(node.left);
+        }
+    }
+    return res;
+}
+```
+
+### Post-order (left, right, root)
+
+```java
+public List<Integer> postorderTraversal(TreeNode root) {
+    List<Integer> res = new LinkedList<>();
+    if (root == null) return res;
+
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    while(!stack.isEmpty()) {
+        TreeNode node = stack.pop();
+        res.add(0, node.val);
+        if(node.left!=null) {
+            stack.push(node.left);
+        }
+        if(node.right!=null) {
+            stack.push(node.right);
+        }
+    }
+    return res;
+}
+```
+
+### In-order (left, root, right)
+
+```java
+public List<Integer> inorderTraversal(TreeNode root) {
+    List<Integer> res = new LinkedList<>();
+    // store current node's left children
+    // Initially it is unknown
+    Stack<TreeNode> stack = new Stack<>();
+    TreeNode node = root;
+
+    while (node != null || !stack.isEmpty()) {
+        // as long as there is a valid node, we need to explore its left children
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+        node = stack.pop();
+        // all its left children have been traversed
+        res.add(node.val);
+        node = node.right;
+    }
+
+    return res;
+}
+```
 
 **Pre-order and post-order are very similar** [Code](https://github.com/jiguan/LeetCode/blob/master/src/com/leetcode/util/Tree.java)
 
@@ -54,6 +117,10 @@ Find **ALL** ancestors of one node, then get the other's ancestor one by one and
 - [Karat] Ancestors
 
 - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+
+### Build BST to find number of elements
+
+- [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
 
 ### BST InOrder traversal generates a sorted array
 
