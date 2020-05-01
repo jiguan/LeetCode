@@ -1,4 +1,4 @@
-package com.leetcode.binearysearch;
+package com.leetcode.bfs;
 
 public class LongestIncreasingPathInAMatrix {
     private int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};

@@ -46,7 +46,7 @@ public class CountOfSmallerNumbersAfterSelf {
         // e.g. 5,2,6,1
         // counts: (1,0) - (1,0)
         // after merge 2,5 with 1,6
-        // left elements no impact on right side
+        // left elements have no impact on right side
         // but right element (1) increases counts of left elements
 
         int[] tmp = new int[end - start + 1];

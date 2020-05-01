@@ -1,4 +1,4 @@
-package com.leetcode.array.dfs;
+package com.leetcode.bfs;
 
 import org.junit.Test;
 

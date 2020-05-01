@@ -1,4 +1,4 @@
-package com.leetcode.rotatedsortedarray ;
+package com.leetcode.array.rotatedsortedarray ;
 
 import static org.junit.Assert.assertEquals;
 

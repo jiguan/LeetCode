@@ -1,4 +1,4 @@
-package com.leetcode.binearysearch;
+package com.leetcode.bfs;
 
 public class AndroidUnlockPatterns {
     public int numberOfPatterns(int m, int n) {

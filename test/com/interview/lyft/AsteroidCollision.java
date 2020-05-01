@@ -1,5 +1,6 @@
 package com.interview.lyft;
 
+import static org.junit.Assert.assertArrayEquals;
 import java.util.Stack;
 import org.junit.Test;
 
@@ -37,6 +38,6 @@ public class AsteroidCollision {
     @Test
     public void test0() {
         int[] asteroids = {-2, -2, 1, -2};
-
+        assertArrayEquals(new int[]{-2, -2, -2}, asteroidCollision(asteroids));
     }
 }

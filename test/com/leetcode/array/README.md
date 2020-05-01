@@ -1,56 +1,64 @@
 # Arrays
 
-## Keynote
+## List to array
 
-Sorting an array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
+- String array: `list.toArray(new String[list.size])`
+- Integer array: `list.toArray(new Integer[list.size])`
 
-Sorting a PriorityQueue: `PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1])`
+## Sorting
 
- `PriorityQueue` is implemented using *Heap* Data Structures and *Heap* has `O(log(n))` time complexity to insert and delete element.
+- Array: `Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));`
+- PriorityQueue: `PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1])`
 
- [Heap](https://en.wikipedia.org/wiki/Binary_heap) is a tree whose parent is larger than its children. [Demo](https://www.growingwiththeweb.com/data-structures/binary-heap/overview/)
+## Priority Queue
 
-- Build: `O(n log(n))`, *n* times of insertation
+`PriorityQueue` is implemented using *Heap* Data Structures and *Heap* has `O(log(n))` time complexity to insert and delete element.
+
+[Heap](https://en.wikipedia.org/wiki/Binary_heap) is a tree whose parent is larger than its children. [Demo](https://www.growingwiththeweb.com/data-structures/binary-heap/overview/)
+
+- Build: `O(n log(n))`, *n* times of insertion
 - Insert: `O(log(n))` insert the element into the bottom and compare with its parent, which is called *up-heap* operation
 - Delete: `O(log(n))`, delete will take the root node and place the last element on its location then compare with its children
 - Search: `O(n)`
 - Heapify: `O(k)`, *k* is the height of tree
 
-Binary Search
+## Binary Search
 
 ```java
-    public int findFloorIndex(int[] arr, int target) {
-        int start = 0, end = arr.length - 1;
-        while (start < end) {
-            int mid = (end - start + 1) / 2 + start;
-            if (arr[mid] > target) {
-                end = mid - 1;
-            } else if (arr[mid] < target) {
-                start = mid;
-            } else {
-                return mid;
-            }
+public int findFloorIndex(int[] arr, int target) {
+    int start = 0, end = arr.length - 1;
+    while (start < end) {
+        int mid = (end - start + 1) / 2 + start;
+        if (arr[mid] > target) {
+            end = mid - 1;
+        } else if (arr[mid] < target) {
+            start = mid;
+        } else {
+            return mid;
         }
-        return start;
     }
+    return start;
+}
 ```
 
 ```java
-    public int findCeilIndex(int[] arr, int target) {
-        int start = 0, end = arr.length - 1;
-        while (start < end) {
-            int mid = (end - start) / 2 + start;
-            if (arr[mid] > target) {
-                end = mid;
-            } else if (arr[mid] < target) {
-                start = mid + 1;
-            } else {
-                return mid;
-            }
+public int findCeilIndex(int[] arr, int target) {
+    int start = 0, end = arr.length - 1;
+    while (start < end) {
+        int mid = (end - start) / 2 + start;
+        if (arr[mid] > target) {
+            end = mid;
+        } else if (arr[mid] < target) {
+            start = mid + 1;
+        } else {
+            return mid;
         }
-        return start;
     }
+    return start;
+}
 ```
+
+- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - hard, binary search against sum to find out the max sum of subarray
 
 ## Questions
 
@@ -63,24 +71,24 @@ Binary Search
 - [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition and return variable (return the one `+1`).
 
   ```java
-  while(low < high) {
-    int mid = (high - low) / 2 + low;
-    if(target > nums[mid]) {
-      low = mid + 1;
-    } else {
-      high = mid;
-    }
+  while (low < high) {
+      int mid = (high - low) / 2 + low;
+      if (target > nums[mid]) {
+          low = mid + 1;
+      } else {
+          high = mid;
+      }
   }
   res[0] = low
   ```
 
   ```java
-  while(low < high) {
+  while (low < high) {
     int mid = (high - low) / 2 + low + 1;
-    if(target < nums[mid]) {
-      high = mid - 1;
+    if (target < nums[mid]) {
+        high = mid - 1;
     } else {
-      low = mid;
+        low = mid;
     }
   }
   res[1] = high
@@ -88,7 +96,7 @@ Binary Search
 
 ### K elements
 
-#### PriorityQueue
+#### Using PriorityQueue
 
   1. Create a tuple class which stores indexes and val and implements Comparable interface
   1. Inside main function, create a `PriorityQueue` and save the first column values(`matrix[0][j]`) into the queue
@@ -106,9 +114,9 @@ Questions:
 - [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) Good question to get familiar with custom _Comparator_.
 - [Exam Room](https://leetcode.com/problems/exam-room/)
 
-#### Quick Sort
+#### Using Quick Sort
 
-Use quick sort, find the mid and compare the size.
+Find the mid and compare the size.
 
 Time complexities: __O(n ^ 2)__
 
@@ -120,7 +128,7 @@ Question:
 - [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/)
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
 
-#### Bucket sort
+#### Using Bucket sort
 
 Consider to use this approach if there is *top K frequency* inside
 

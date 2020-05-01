@@ -23,8 +23,9 @@ If the question is comparison for chars, using a count array with positive/negat
 
 - [Reverse Words in a String II](https://leetcode.com/problems/reverse-words-in-a-string-ii/)
 - [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+- [Guess the Word](https://leetcode.com/problems/guess-the-word/) - hard, counting letters to find out the word with "max coverage"
 
-If we want to check if one word is a subset characters of another one, rather than output all combinations into a HashMap, we could count the number of letters.
+If we want to check if one word is a subset characters of another one, rather than outputting all combinations into a HashMap, we could count the number of letters.
 
 ```java
 private boolean isValid(int[] wordA, int[] wordB) {

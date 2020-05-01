@@ -1,4 +1,4 @@
-package com.leetcode.binearysearch;
+package com.leetcode.bfs;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
