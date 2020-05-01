@@ -1,24 +1,37 @@
 # Bit manipulation
 
-## Keynote
+## Mod operations
 
-- `n & (n - 1)` will eliminate the last bit 
+```java
+(a + b) % p = (a % p + b % p) % p
+(a * b) % p = (a % p * b % p) % p
+ a ^ b % p = ((a % p) ^ b) % p
+```
+
+## Bit operations
+
+- Eliminate the last bit: `n & (n - 1)`
 
   [Hamming Distance](https://discuss.leetcode.com/topic/72317/java-solution)
 
-- `n & -n` get the last non-zero bit
+- Get the last non-zero bit: `n & -n`
 
   [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
-- `~0` get all 1
-- Determine sqrt root:
+- Get all 1: `~0`
 
-  ```while (r * r > x) r = (r + x / r) / 2;```
+## Calculate sqrt root
 
-- For range query questions, think about calcuate a array to store them all
+```java
+while (r * r > x) {
+    r = (r + x / r) / 2;
+}
+```
+
+- For range query questions, think about calculate a array to store them all
 
   [XOR Queries of a Subarray](https://leetcode.com/problems/xor-queries-of-a-subarray/)
 
-### Questions
+## Questions
 
 #### Easy 
 - 318 [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) [Solution](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/bit/MaximumProductofWordLengths.java)
