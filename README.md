@@ -3,12 +3,13 @@
 ## Categories
 
 - [Array](test/com/leetcode/array/README.md)
-- [Linked Nodes](test/com/leetcode/linkednodes/README.md)
+- [Linked nodes](test/com/leetcode/linkednodes/README.md)
 - [Tree](test/com/leetcode/tree/README.md)
 - [Math](test/com/leetcode/math/README.md)
 - [String](test/com/leetcode/string/README.md)
 - [DP](test/com/leetcode/dp/README.md)
 - [Graph](test/com/leetcode/graph/README.md)
+- [BFS/DFS](test/com/leetcode/bfs/README.md)
 
 ## Must-do
 

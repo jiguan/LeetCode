@@ -19,7 +19,7 @@ As a helper function
 
 ```java
 private int gcd(int a, int b) {
-    return a != 0 ? gcd(b % a, a) : Math.abs(b);
+   return a != 0 ? gcd(b % a, a) : Math.abs(b);
 }
 ```
 
@@ -89,10 +89,36 @@ public boolean isPowerOfThree(int n) {
 }
 ```
 
-- [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/description/)
+## Count Primes
+
+```java
+// O(n * log(log(n)))
+public int countPrimes(int n) {
+   if (n < 3) return 0;
+   // for n = 2
+   int count = 1;
+   boolean[] arr = new boolean[n];
+   // i = 3, i*j = 6, 9, 12, .., n/3
+   // i = 5, i*j = 10, 15, 20, .., n/5
+   // ...
+   // n/3 + n/5 + n/7, (n/9 is skipped), n/11 => O(n * log(log(n)))
+   for (int i = 3; i < n; i += 2) {
+      if (arr[i] == false) {
+         count++;
+         for (int j = 2; i * j < n; j++) {
+            arr[i * j] = true;
+         }
+      }
+   }
+   return count;
+}
+```
+
+[Proof of sum(1/p)=ln(ln(n)) + O(1), where p is prime](http://www.cs.umd.edu/~gasarch/BLOGPAPERS/sump.pdf)
 
 ## Questions
 
+- [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/description/) - number of 1-0 combination = pick one from 1 * pick one from 0 = num(1) * num(0)
 - [Convert a Number to Hexadecimal](ConvertANumberToHexadecimal.java)
     How to do division and consider all edge cases.
 - [Fraction to Recurring Decimal](https://leetcode.com/problems/fraction-to-recurring-decimal/) Use a map to record previous remaining and its index

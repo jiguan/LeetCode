@@ -58,8 +58,6 @@ public int findCeilIndex(int[] arr, int target) {
 }
 ```
 
-- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - hard, binary search against sum to find out the max sum of subarray
-
 ## Questions
 
 ### Two pointers
@@ -93,6 +91,8 @@ public int findCeilIndex(int[] arr, int target) {
   }
   res[1] = high
   ```
+
+- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - hard, binary search against sum to find out the max sum of subarray
 
 ### K elements
 

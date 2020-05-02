@@ -1,31 +1,59 @@
-package com.leetcode.dp;
+package com.leetcode.array.binarysearch;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-// cannot understand
+// Divide the array into m subarrays, find the minimized value of the largest sum among them
 public class SplitArrayLargestSum {
     public int splitArray(int[] nums, int m) {
-        int n = nums.length;
-        int[] dp = new int[n + 1];
-        for (int i = n - 1; i >= m - 1; --i) {
-            dp[i] = dp[i + 1] + nums[i];
+        int max = 0;
+        long sum = 0;
+        for (int num : nums) {
+            max = Math.max(num, max);
+            sum += num;
         }
-        for (int k = 2; k <= m; ++k) {
-            for (int i = m - k; i <= n - k; ++i) {
-                dp[i] = Integer.MAX_VALUE;
-                for (int j = i, sum = 0; j <= n - k; ++j) {
-                    sum += nums[j];
-                    if (sum >= dp[i]) break;
-                    // sum: from left to right
-                    // dp[i] from right to left till i
-                    // cut it into 2 parts, we want to find the max sum smaller than right
-                    dp[i] = Math.max(sum, dp[j + 1]);
-                }
-                if (k == m) break;
+        if (m == 1) return (int) sum;
+        if (m == nums.length) return max;
+        // binary search
+        // since we want to find the min largest sum, so the value at least is max
+        long left = max, right = sum;
+        while (left < right) {
+            long mid = (left + right) / 2;
+            // if sum of subarray < mid can divide array into at most m subarrays
+            // mid is large enough
+            if (isTargetSumValid(nums, mid, m)) {
+                right = mid;
+            } else {
+                left = mid + 1;
             }
         }
-        return dp[0];
+        return (int) left;
+    }
+
+    // checking if each subarray is at most targetSum, whether we could divide the array into at
+    // most m
+    // subarrays
+    // if not, then targetSum is too small, we have to divide more than m parts
+    // if yes, then targetSum >= max sum of subarray
+    public boolean isTargetSumValid(int[] nums, long targetSum, int m) {
+        int count = 1;
+        long total = 0;
+        for (int num : nums) {
+            total += num;
+            // count how many subsets whose sum smaller than target
+            // only if target >= max sum can return true
+            // max + 1 => true => right = mid => next mid smaller
+            // max - 1 => false => left + 1 => next mid larger
+            // finally left = right = mid = max
+            if (total > targetSum) {
+                total = num;
+                count++;
+                if (count > m) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Test
@@ -35,13 +63,6 @@ public class SplitArrayLargestSum {
         assertEquals(18, splitArray(nums, m));
     }
 
-    @Test
-    public void test2() {
-        int[] nums = {7, 2, 5, 10, 8};
-        int m = 3;
-        assertEquals(14, splitArray(nums, m));
-    }
-    
     @Test
     public void test1() {
         int[] nums = {5334, 6299, 4199, 9663, 8945, 3566, 9509, 3124, 6026, 6250, 7475, 5420, 9201,
