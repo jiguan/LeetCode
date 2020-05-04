@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 
+// word1 is a predecessor of word2 if and only if we can add exactly one letter anywhere in word1 to
+// make it equal to word2.
 public class LongestStringChain {
     public int longestStrChain(String[] words) {
         if (words == null || words.length == 0) return 0;
@@ -25,10 +27,25 @@ public class LongestStringChain {
         return res;
     }
 
+
+
     @Test
     public void test0() {
         String[] words = {"a", "b", "ba", "bca", "bda", "bdca"};
         int expected = 4;
+        assertEquals(expected, longestStrChain(words));
+    }
+
+    @Test
+    public void test1() {
+        String[] words = {"wnyxmflkf", "xefx", "usqhb", "ttmdvv", "hagmmn", "tmvv", "pttmdvv",
+                "nmzlhlpr", "ymfk", "uhpaglmmnn", "zckgh", "hgmmn", "isqxrk", "isqrk", "nmzlhpr",
+                "uysyqhxb", "haglmmn", "xfx", "mm", "wymfkf", "tmdvv", "uhaglmmn", "mf",
+                "uhaglmmnn", "mfk", "wnymfkf", "powttkmdvv", "kwnyxmflkf", "xx", "rnqbhxsj",
+                "uysqhb", "pttkmdvv", "hmmn", "iq", "m", "ymfkf", "zckgdh", "zckh", "hmm", "xuefx",
+                "mv", "iqrk", "tmv", "iqk", "wnyxmfkf", "uysyqhb", "v", "m", "pwttkmdvv",
+                "rnqbhsj"};
+        int expected = 10;
         assertEquals(expected, longestStrChain(words));
     }
 }
