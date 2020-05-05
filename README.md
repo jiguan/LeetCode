@@ -11,13 +11,18 @@
 - [Graph](test/com/leetcode/graph/README.md)
 - [BFS/DFS](test/com/leetcode/bfs/README.md)
 
-## Must-do
+## Frquent questions
 
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-- [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
-Keynote: use a `Deque` to store __index__, everytime we encounter a larger element, starting from the **TAIL** dump all indexes whose values are **SMALLER** than current one. We have to store __index__, otherwise we cannot dump element kicked from the window
+## Tips
+
+Some questions have special tricks:
+
+- [Valid Square](https://leetcode.com/problems/valid-square/)
+
+
 
 ## General knowledge
 

@@ -11,29 +11,29 @@ public class OptimalAccountBalancing {
     public int minTransfers(int[][] transactions) {
         // user - amt
         Map<Integer, Integer> map = new HashMap<>();
-        for (int[] t : transactions) {
-            int from = t[0], to = t[1], amt = t[2];
+        for (int[] tran : transactions) {
+            int from = tran[0], to = tran[1], amt = tran[2];
             map.put(from, map.getOrDefault(from, 0) - amt);
             map.put(to, map.getOrDefault(to, 0) + amt);
         }
         return settle(0, new ArrayList<>(map.values()));
     }
 
-    private int settle(int start, List<Integer> debt) {
-        while (start < debt.size() && debt.get(start) == 0) {
-            start++;
+    private int settle(int index, List<Integer> balance) {
+        while (index < balance.size() && balance.get(index) == 0) {
+            index++;
         }
-        if (start == debt.size()) return 0;
+        if (index == balance.size()) return 0;
         // how many transactions needed
         int times = Integer.MAX_VALUE;
-        for (int i = start + 1; i < debt.size(); i++) {
-            if (debt.get(start) * debt.get(i) < 0) {
-                debt.set(i, debt.get(i) + debt.get(start));
-                times = Math.min(times, 1 + settle(start + 1, debt));
-                debt.set(i, debt.get(i) - debt.get(start));
+        for (int i = index + 1; i < balance.size(); i++) {
+            if (balance.get(index) * balance.get(i) < 0) {
+                balance.set(i, balance.get(i) + balance.get(index));
+                // move to next non-zero amount
+                times = Math.min(times, 1 + settle(index + 1, balance));
+                balance.set(i, balance.get(i) - balance.get(index));
             }
         }
-
         return times;
     }
 
