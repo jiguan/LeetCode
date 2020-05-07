@@ -107,6 +107,10 @@ To flatten a binary tree, using *recursive* function and return a `Pair` to reco
 - [Construct Binary Tree from PreOrder and InOrder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 - [Construct Binary Tree from InOrder and PostOrder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
+Other tree traverse questions
+
+- [Delete Nodes And Return Forest](https://leetcode.com/problems/delete-nodes-and-return-forest/) - medium, interesting question with introducing a flag
+
 ### Lowest Common Ancestor
 
 Find **ALL** ancestors of one node, then get the other's ancestor one by one and check if it has been visited already
@@ -115,7 +119,6 @@ Find **ALL** ancestors of one node, then get the other's ancestor one by one and
 - [Lowest Common Ancestor of Deepest Leaves](https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/)
 - [Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/)
 - [Karat] Ancestors
-
 - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
 
 ### Build BST to find number of elements
@@ -128,8 +131,8 @@ Find **ALL** ancestors of one node, then get the other's ancestor one by one and
 
 ### Tree nodes/depth counting
 
-  1. [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive.
-  1. [Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/description/)
+- [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) Try to solve it using recursive.
+- [Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/description/)
 
 ### BFS and DFS
 

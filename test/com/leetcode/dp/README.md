@@ -21,10 +21,11 @@ Keep calm. Write down some cases and find out their rules.
 - [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)
 - [House Robber III](https://leetcode.com/problems/combination-sum-iii) [solution](https://github.com/jiguan/LeetCode/blob/master/test/com/leetcode/dp/HouseRobberIII.java)
 - [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/)
+- [Minimum Knight Moves](https://leetcode.com/problems/minimum-knight-moves/) - at first thought, it should use __BFS__, however using __DP__ is too more faster since unnecessary calculation is avoid. Even thought the ending condition is hard to think.
 
 ## Hard
 
-- [Frog Jump](https://leetcode.com/problems/frog-jump/), little bit different. But if following the description, it should be intuitive.
+- [Frog Jump](https://leetcode.com/problems/frog-jump/) - little bit different. But if following the description, it should be intuitive.
 - [Interleaving String](https://leetcode.com/problems/interleaving-string/)
 - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 - [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)

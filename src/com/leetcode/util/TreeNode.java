@@ -2,6 +2,7 @@ package com.leetcode.util;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 
 public class TreeNode {
@@ -10,6 +11,21 @@ public class TreeNode {
 
     public TreeNode(int x) {
         val = x;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof TreeNode) {
+            TreeNode tmp = (TreeNode) obj;
+            return this.val == tmp.val && (this.left != null ? this.left.equals(tmp.left) : true)
+                    && (this.right != null ? this.right.equals(tmp.right) : true);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val, left, right, parent);
     }
 
     @Override
@@ -41,7 +57,8 @@ public class TreeNode {
     public static boolean isSameTree(TreeNode expect, TreeNode actual) {
         if (expect == null && actual == null) return true;
         if (expect == null || actual == null) return false;
-        return expect.val == actual.val && isSameTree(expect.left, actual.left) && isSameTree(expect.right, actual.right);
+        return expect.val == actual.val && isSameTree(expect.left, actual.left)
+                && isSameTree(expect.right, actual.right);
     }
 
     // Encodes a tree to a single string.
@@ -59,6 +76,7 @@ public class TreeNode {
         }
         return String.join(",", res);
     }
+
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] strs = data.split(",");
