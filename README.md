@@ -16,6 +16,10 @@
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
 
+## No clue questions
+
+- [Minimum Area Rectangle](https://leetcode.com/problems/minimum-area-rectangle/)
+
 ## Tips
 
 Some questions have special tricks:
