@@ -6,7 +6,7 @@ import org.junit.Test;
 // https://leetcode.com/discuss/interview-question/398050/3
 /*
  * Write a function that, given an integer N, returns the maximum possible value obtained by
- * inserting one '5' digits inside teh decimal representation of integer N. Examples: Give N = 268,
+ * inserting one '5' digits inside the decimal representation of integer N. Examples: Give N = 268,
  * the function should return 5268; N = -999, the function should return -5999
  */
 public class MaxPossibleValue {
