@@ -8,7 +8,7 @@ public class ImplementHashMap {
     public static void main(String[] args) {
 
         // Creating the Map
-        Map<Integer, String> map = new Map<Integer, String>();
+        CustomMap<Integer, String> map = new CustomMap<Integer, String>();
 
         // Inserting elements
         map.insert(1, "Geeks");
@@ -28,7 +28,7 @@ public class ImplementHashMap {
     }
 }
 
-class Map<K, V> {
+class CustomMap<K, V> {
 
     class MapNode<K, V> {
 
@@ -56,7 +56,7 @@ class Map<K, V> {
     // Default loadFactor
     final double DEFAULT_LOAD_FACTOR = 0.75;
 
-    public Map() {
+    public CustomMap() {
         numBuckets = 5;
 
         buckets = new ArrayList<>(numBuckets);

@@ -179,6 +179,8 @@ Consider to use this approach if there is *top K frequency* inside
 ### Sliding Window
 
 - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) - easy, warm up
+- [Longest Substring with At Most K Distinct Characters](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/) - Even though it is marked as hard, but you can do it!
+- [Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/) - Hard! The solution is very elegant. Worth reading!
 
 https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem
 

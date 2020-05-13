@@ -1,0 +1,52 @@
+# Top Google Questions
+
+- Two Sum
+- Text Justification
+- Minimum Window Substring
+- Maximal Rectangle
+- Find Median from Data Stream
+- Longest String Chain
+- Design Hit Counter
+- Decode String
+- Design Search Autocomplete System
+- The Skyline Problem
+- Guess the Word
+- Count of Smaller Numbers After Self
+- Edit Distance
+- Minimum Domino Rotations For Equal Row
+- Insert Interval
+- Longest Substring with At Most K Distinct Characters
+- Logger Rate Limiter
+- Minimum Window Subsequence
+- Delete Nodes And Return Forest
+- String Transforms Into Another String
+- 24 Game
+- Open the Lock
+- Valid Square
+- Validate Stack Sequences
+- Evaluate Division
+- Campus Bikes
+- Expressive Words
+- Confusing Number II
+- Hand of Straights
+- Robot Room Cleaner
+- Minimum Area Rectangle
+- Shortest Subarray with Sum at Least K
+- Number of Submatrices That Sum to Target
+- Repeated Substring Pattern
+- Split Array into Consecutive Subsequences
+- Bulls and Cows
+- Longest Repeating Character Replacement
+- Moving Average from Data Stream
+- Snapshot Array
+- Divide Chocolate
+- Max Sum of Rectangle No Larger Than K
+- Divide Array in Sets of K Consecutive Numbers
+- Network Delay Time
+- Count Square Submatrices with All Ones
+- Shortest Way to Form String
+- Find And Replace in String
+- Flip Equivalent Binary Trees
+- Minimum Distance to Type a Word Using Two Fingers
+- X of a Kind in a Deck of Cards
+- Time Needed to Inform All Employees
