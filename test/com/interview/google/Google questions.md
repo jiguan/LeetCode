@@ -1,0 +1,509 @@
+# Google questions
+
+> https://leetcode.com/company/google/
+
+- Minimum Domino Rotations For Equal Row
+- Guess the Word
+- Split Array Largest Sum
+- Campus Bikes
+- Expressive Words
+- Two Sum
+- Count Complete Tree Nodes
+- String Transforms Into Another String
+- Confusing Number II
+- Shortest Way to Form String
+- Delete Nodes And Return Forest
+- Logger Rate Limiter
+- Compare Strings by Frequency of the Smallest Character
+- Split Array into Consecutive Subsequences
+- Minimum Window Subsequence
+- Design Search Autocomplete System
+- Brace Expansion II
+- License Key Formatting
+- Optimal Account Balancing
+- Divide Chocolate
+- Cracking the Safe
+- Max Sum of Rectangle No Larger Than K
+- Student Attendance Record II
+- Bulls and Cows
+- Hand of Straights
+- Validate Stack Sequences
+- Count of Smaller Numbers After Self
+- New 21 Game
+- Campus Bikes II
+- 24 Game
+- Brace Expansion
+- Encode and Decode Strings
+- Minimum Area Rectangle
+- Maximal Square
+- Flip Equivalent Binary Trees
+- Snapshot Array
+- Minimum Swaps To Make Sequences Increasing
+- Open the Lock
+- Most Stones Removed with Same Row or Column
+- Find And Replace in String
+- Stream of Characters
+- Number of Submatrices That Sum to Target
+- Race Car
+- Robot Room Cleaner
+- Design Snake Game
+- Evaluate Division
+- Backspace String Compare
+- Time Based Key-Value Store
+- Maximal Rectangle
+- Network Delay Time
+- Sequence Reconstruction
+- Capacity To Ship Packages Within D Days
+- Parse Lisp Expression
+- Russian Doll Envelopes
+- Construct Binary Tree from Preorder and Postorder Traversal
+- Binary Tree Coloring Game
+- Longest String Chain
+- Flatten a Multilevel Doubly Linked List
+- Text Justification
+- Bricks Falling When Hit
+- Minimize Max Distance to Gas Station
+- Optimize Water Distribution in a Village
+- Bus Routes
+- Longest Increasing Path in a Matrix
+- Strobogrammatic Number III
+- Design Hit Counter
+- Decode String
+- Minimum Knight Moves
+- My Calendar I
+- Minimum Window Substring
+- Number of Islands
+- Find Eventual Safe States
+- Candy Crush
+- Meeting Rooms II
+- Image Overlap
+- Sentence Similarity II
+- Range Sum Query 2D - Immutable
+- Insert Interval
+- Guess Number Higher or Lower II
+- Trapping Rain Water
+- Random Pick with Weight
+- Confusing Number
+- Longest Word in Dictionary through Deleting
+- Minimum Area Rectangle II
+- Number of Matching Subsequences
+- Isomorphic Strings
+- Binary Tree Longest Consecutive Sequence
+- Merge Intervals
+- Minimum Distance to Type a Word Using Two Fingers
+- The Skyline Problem
+- Minimize Malware Spread
+- Divide Array in Sets of K Consecutive Numbers
+- Longest Line of Consecutive One in Matrix
+- Parallel Courses
+- Number of Atoms
+- Maximum Vacation Days
+- Reorganize String
+- Longest Substring with At Most K Distinct Characters
+- Moving Average from Data Stream
+- Shortest Subarray with Sum at Least K
+- Tiling a Rectangle with the Fewest Squares
+- Sort Items by Groups Respecting Dependencies
+- Find Median from Data Stream
+- Maximum Sum of Two Non-Overlapping Subarrays
+- Cat and Mouse
+- Valid Square
+- Longest Mountain in Array
+- Missing Ranges
+- Basic Calculator III
+- Median of Two Sorted Arrays
+- Path with Maximum Gold
+- My Calendar II
+- Add Two Numbers
+- Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+- Longest Consecutive Sequence
+- Minimum Number of Flips to Convert Binary Matrix to Zero Matrix
+- Repeated Substring Pattern
+- Read N Characters Given Read4 II - Call multiple times
+- Find First and Last Position of Element in Sorted Array
+- Remove Comments
+- Shortest Distance from All Buildings
+- Rectangle Area II
+- X of a Kind in a Deck of Cards
+- Range Module
+- Maximum Size Subarray Sum Equals k
+- Smallest Range Covering Elements from K Lists
+- Maximum Subarray
+- Different Ways to Add Parentheses
+- Increasing Triplet Subsequence
+- Edit Distance
+- Split Array With Same Average
+- Online Majority Element In Subarray
+- Next Closest Time
+- Merge k Sorted Lists
+- Escape a Large Maze
+- Count Square Submatrices with All Ones
+- Find the Shortest Superstring
+- Palindrome Pairs
+- Best Meeting Point
+- Search in a Sorted Array of Unknown Size
+- Binary Search Tree Iterator
+- Student Attendance Record I
+- Insert Delete GetRandom O(1)
+- Subarray Sum Equals K
+- Reveal Cards In Increasing Order
+- Reconstruct Itinerary
+- Plus One Linked List
+- LRU Cache
+- Redundant Connection II
+- Stone Game II
+- Interleaving String
+- Word Search II
+- RLE Iterator
+- Minimum Size Subarray Sum
+- Remove All Adjacent Duplicates In String
+- House Robber III
+- Sentence Similarity
+- Word Ladder
+- Fraction to Recurring Decimal
+- Serialize and Deserialize N-ary Tree
+- Longest Substring Without Repeating Characters
+- Car Fleet
+- Regular Expression Matching
+- Course Schedule II
+- Cherry Pickup
+- Pacific Atlantic Water Flow
+- 3Sum
+- Maximum of Absolute Value Expression
+- Top K Frequent Words
+- Longest Repeating Character Replacement
+- Binary Tree Maximum Path Sum
+- Best Time to Buy and Sell Stock IV
+- Minimum Number of Refueling Stops
+- First Missing Positive
+- Product of the Last K Numbers
+- Rotated Digits
+- Mini Parser
+- Repeated String Match
+- Minimum Height Trees
+- Magic Squares In Grid
+- Longest Repeating Substring
+- Interval List Intersections
+- Time Needed to Inform All Employees
+- Word Break
+- Find Duplicate Subtrees
+- Rectangle Overlap
+- Linked List Components
+- Excel Sheet Column Title
+- Search in Rotated Sorted Array
+- Surrounded Regions
+- H-Index
+- Unique Paths II
+- Binary Tree Longest Consecutive Sequence II
+- Stone Game III
+- 3Sum Closest
+- Design Compressed String Iterator
+- Letter Combinations of a Phone Number
+- Unique Word Abbreviation
+- Shortest Path in Binary Matrix
+- Exam Room
+- Minimum Path Sum
+- Sort Transformed Array
+- Beautiful Array
+- Dice Roll Simulation
+- Distinct Subsequences
+- Print Immutable Linked List in Reverse
+- Multiply Strings
+- Evaluate Reverse Polish Notation
+- Longest Word in Dictionary
+- Sliding Puzzle
+- Fruit Into Baskets
+- Single-Row Keyboard
+- Sliding Window Median
+- Swap Adjacent in LR String
+- Linked List Random Node
+- Strobogrammatic Number II
+- LFU Cache
+- Generalized Abbreviation
+- All Possible Full Binary Trees
+- Jump Game IV
+- Maximum Points You Can Obtain from Cards
+- Design Bounded Blocking Queue
+- Knight Dialer
+- House Robber
+- UTF-8 Validation
+- Range Sum Query 2D - Mutable
+- Populating Next Right Pointers in Each Node II
+- Peeking Iterator
+- Next Permutation
+- Combinations
+- Number of Dice Rolls With Target Sum
+- Decode Ways
+- Vertical Order Traversal of a Binary Tree
+- Random Pick with Blacklist
+- Palindrome Permutation II
+- Odd Even Jump
+- Peak Index in a Mountain Array
+- Plus One
+- Frog Jump
+- Bomb Enemy
+- Sliding Window Maximum
+- Remove Outermost Parentheses
+- Diagonal Traverse
+- Single Number II
+- Remove All Adjacent Duplicates in String II
+- Maximum Frequency Stack
+- Minimum Cost to Merge Stones
+- Dungeon Game
+- Wildcard Matching
+- Summary Ranges
+- Sentence Screen Fitting
+- Employee Free Time
+- Unique Binary Search Trees
+- Gas Station
+- Wiggle Sort
+- Course Schedule III
+- All O`one Data Structure
+- Design Phone Directory
+- Accounts Merge
+- Subarrays with K Different Integers
+- Split BST
+- Minesweeper
+- Recover Binary Search Tree
+- Longest Palindromic Substring
+- Rearrange String k Distance Apart
+- Is Subsequence
+- Data Stream as Disjoint Intervals
+- Insert into a Sorted Circular Linked List
+- Kill Process
+- Max Points on a Line
+- Find the Duplicate Number
+- Shortest Bridge
+- Spiral Matrix
+- Jump Game
+- Exclusive Time of Functions
+- Minimum Number of Taps to Open to Water a Garden
+- Top K Frequent Elements
+- Count Univalue Subtrees
+- Find All Anagrams in a String
+- Group Shifted Strings
+- Video Stitching
+- Integer to English Words
+- Rank Teams by Votes
+- Word Search
+- Long Pressed Name
+- Find the Difference
+- Android Unlock Patterns
+- Shortest Distance to a Character
+- Paint Fence
+- Design HashSet
+- Reverse Pairs
+- Jump Game II
+- Kth Largest Element in an Array
+- Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+- Positions of Large Groups
+- Perfect Squares
+- The Maze II
+- Path With Maximum Minimum Value
+- Odd Even Linked List
+- Filling Bookcase Shelves
+- Strong Password Checker
+- Pow(x, n)
+- Find and Replace Pattern
+- Maximize Distance to Closest Person
+- Minimum Cost to Hire K Workers
+- Super Egg Drop
+- Queue Reconstruction by Height
+- Substring with Concatenation of All Words
+- Maximum Width of Binary Tree
+- Maximum XOR of Two Numbers in an Array
+- Valid Parentheses
+- Group Anagrams
+- Max Chunks To Make Sorted
+- Find Pivot Index
+- Serialize and Deserialize Binary Tree
+- Longest Increasing Subsequence
+- Predict the Winner
+- Maximum Product Subarray
+- Range Sum Query - Mutable
+- Longest Common Subsequence
+- Find Peak Element
+- Find Duplicate File in System
+- Longest Substring with At Most Two Distinct Characters
+- Heaters
+- Kth Smallest Element in a Sorted Matrix
+- Strobogrammatic Number
+- Container With Most Water
+- Check Completeness of a Binary Tree
+- Meeting Rooms
+- Basic Calculator
+- Permutations
+- Alien Dictionary
+- Product of Array Except Self
+- Compare Version Numbers
+- Walls and Gates
+- Number of Closed Islands
+- Valid Number
+- Relative Sort Array
+- Subsets
+- Best Time to Buy and Sell Stock with Cooldown
+- Valid Sudoku
+- Find K-th Smallest Pair Distance
+- Happy Number
+- Binary Tree Inorder Traversal
+- Two Sum Less Than K
+- Largest Time for Given Digits
+- Construct Binary Tree from Preorder and Inorder Traversal
+- Similar String Groups
+- Count Servers that Communicate
+- Univalued Binary Tree
+- Knight Probability in Chessboard
+- Unique Paths III
+- Find Leaves of Binary Tree
+- Generate Parentheses
+- Word Break II
+- Encode and Decode TinyURL
+- Course Schedule
+- Word Ladder II
+- Invert Binary Tree
+- Reverse Linked List
+- The Maze
+- Snakes and Ladders
+- Design HashMap
+- Convert Sorted List to Binary Search Tree
+- Nth Highest Salary
+- Shortest Path in a Grid with Obstacles Elimination
+- Contiguous Array
+- Binary Tree Vertical Order Traversal
+- String Compression
+- Merge Two Sorted Lists
+- Permutation in String
+- Sort Characters By Frequency
+- Maximum Depth of Binary Tree
+- Best Time to Buy and Sell Stock with Transaction Fee
+- Remove Duplicate Letters
+- Subarray Product Less Than K
+- Integer to Roman
+- Basic Calculator II
+- Find K Pairs with Smallest Sums
+- Delete Leaves With a Given Value
+- Find All Duplicates in an Array
+- Non-decreasing Array
+- Guess Number Higher or Lower
+- Lowest Common Ancestor of a Binary Tree
+- Power of Two
+- Move Zeroes
+- Best Time to Buy and Sell Stock
+- Diameter of Binary Tree
+- Longest Common Prefix
+- Coin Change
+- Koko Eating Bananas
+- Critical Connections in a Network
+- Min Stack
+- Contains Duplicate II
+- Clone Graph
+- Largest Number At Least Twice of Others
+- Is Graph Bipartite?
+- Implement strStr()
+- Partition Equal Subset Sum
+- Read N Characters Given Read4
+- 4Sum
+- Inorder Successor in BST
+- Expression Add Operators
+- Keys and Rooms
+- Lowest Common Ancestor of Deepest Leaves
+- Max Area of Island
+- Battleships in a Board
+- Contains Duplicate III
+- Longest Arithmetic Sequence
+- Add Binary
+- Reverse Integer
+- Path Sum II
+- Minimum Falling Path Sum
+- Combination Sum
+- Best Time to Buy and Sell Stock II
+- Squares of a Sorted Array
+- Convert Binary Search Tree to Sorted Doubly Linked List
+- Intersection of Two Arrays
+- Maximum Binary Tree
+- Sparse Matrix Multiplication
+- Toeplitz Matrix
+- Combination Sum IV
+- Majority Element II
+- Largest Rectangle in Histogram
+- Search Insert Position
+- Subtree of Another Tree
+- Climbing Stairs
+- Majority Element
+- Palindrome Number
+- Populating Next Right Pointers in Each Node
+- N-Queens
+- Find the Celebrity
+- Missing Element in Sorted Array
+- Trim a Binary Search Tree
+- Valid Anagram
+- Longest Valid Parentheses
+- Pascal's Triangle
+- Remove Duplicates from Sorted Array
+- Spiral Matrix II
+- Remove Duplicates from Sorted Array II
+- Find K Closest Elements
+- Game of Life
+- Find Minimum in Rotated Sorted Array
+- String to Integer (atoi)
+- Shortest Unsorted Continuous Subarray
+- Combination Sum II
+- Sort Colors
+- Remove Invalid Parentheses
+- Divisor Game
+- House Robber II
+- Friend Circles
+- Employees Earning More Than Their Managers
+- Next Greater Element I
+- Reverse String
+- Range Sum Query - Immutable
+- Sort List
+- Validate Binary Search Tree
+- Excel Sheet Column Number
+- K Closest Points to Origin
+- Implement Trie (Prefix Tree)
+- Jewels and Stones
+- To Lower Case
+- Continuous Subarray Sum
+- Sqrt(x)
+- Merge Sorted Array
+- Unique Paths
+- Reverse Vowels of a String
+- First Unique Character in a String
+- Single Number
+- Power of Three
+- Island Perimeter
+- Task Scheduler
+- Height Checker
+- Valid Mountain Array
+- Reverse Bits
+- Daily Temperatures
+- Binary Tree Paths
+- Add and Search Word - Data structure design
+- Count and Say
+- Binary Tree Postorder Traversal
+- Balanced Binary Tree
+- Palindromic Substrings
+- Search a 2D Matrix II
+- Remove Linked List Elements
+- Find All Numbers Disappeared in an Array
+- Subtract the Product and Sum of Digits of an Integer
+- Binary Tree Preorder Traversal
+- Fizz Buzz
+- Swap Nodes in Pairs
+- Number of Steps to Reduce a Number to Zero
+- Delete Node in a Linked List
+- Defanging an IP Address
+- Same Tree
+- Intersection of Two Linked Lists
+- Missing Number
+- First Bad Version
+- Intersection of Two Arrays II
+- Two Sum II - Input array is sorted
+- Linked List Cycle
+- Valid Palindrome
+- Symmetric Tree
+- Roman to Integer
+- Single Element in a Sorted Array
+- Flood Fill
+- 

@@ -62,7 +62,10 @@ public int findCeilIndex(int[] arr, int target) {
 
 If we need to record the sum till __CURRENT__ element, we need [n + 1], since `sum[j] - sum[i] = sum(i+1, i+2, .. j)`, we need a buffer for sum starting from 0: `sum(0, 2) = sum[2] - sum[-1]`.
 
+- [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) - Must do, open your mind
+- [K-Concatenation Maximum Sum](https://leetcode.com/problems/k-concatenation-maximum-sum/) - No clue, could be follow up of the __Maximum Subarray__
 - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/)
+- [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 
 ## Questions
 
@@ -98,7 +101,8 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
   res[1] = high
   ```
 
-- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - hard, binary search against sum to find out the max sum of subarray
+- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - Hard, binary search against sum to find out the max sum of subarray
+- [Divide Chocolate](https://leetcode.com/problems/divide-chocolate/) - Hard, but similar to __Split Array Largest Sum__
 
 ### K elements
 
@@ -159,13 +163,19 @@ Consider to use this approach if there is *top K frequency* inside
 - [Trapping Rain Water](stack/TrappingRainWater.java), same idea with __Largest Rectangle in Histogram__
 - [Largest Rectangle in Histogram](stack/LargestRectangleInHistogram.java) - hard
 - [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) Very good question, __MUST-DO__
-- [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/) - hard
+
 - 1130. Minimum Cost Tree From Leaf Values
 - 907. Sum of Subarray Minimums
 - 901. Online Stock Span
 - 856. Score of Parentheses
 - 503. Next Greater Element II
 - 496. Next Greater Element I
+
+### Subarray
+
+To check sum of a subarray, we could use a hash table to store sum of previous values
+
+- [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/) - hard
 
 ### BFS/DFS
 

@@ -31,8 +31,7 @@ public class SplitArrayLargestSum {
     }
 
     // checking if each subarray is at most targetSum, whether we could divide the array into at
-    // most m
-    // subarrays
+    // most m subarrays
     // if not, then targetSum is too small, we have to divide more than m parts
     // if yes, then targetSum >= max sum of subarray
     public boolean isTargetSumValid(int[] nums, long targetSum, int m) {

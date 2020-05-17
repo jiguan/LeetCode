@@ -1,4 +1,4 @@
-package com.leetcode.dp;
+package com.leetcode.array.hashtable;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +14,7 @@ public class SubarraySumEqualsK {
 		 * 1. Hashmap<sum[0,i - 1], frequency>
 		 * 
 		 * 2. sum[i, j] = sum[0, j] - sum[0, i - 1] --> sum[0, i - 1] = sum[0, j] -
-		 * sum[i, j] k sum hashmap-key --> hashmap-key = sum - k
+		 * sum[i, j] --> sum[0, i - 1] = sum - k
 		 * 
 		 * 3. now, we have k and sum. As long as we can find a sum[0, i - 1], we then
 		 * get a valid subarray which is as long as we have the hashmap-key, we then get
