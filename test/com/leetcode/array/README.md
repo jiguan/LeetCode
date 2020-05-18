@@ -62,7 +62,7 @@ public int findCeilIndex(int[] arr, int target) {
 
 If we need to record the sum till __CURRENT__ element, we need [n + 1], since `sum[j] - sum[i] = sum(i+1, i+2, .. j)`, we need a buffer for sum starting from 0: `sum(0, 2) = sum[2] - sum[-1]`.
 
-- [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) - Must do, open your mind
+- [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) - Must do
 - [K-Concatenation Maximum Sum](https://leetcode.com/problems/k-concatenation-maximum-sum/) - No clue, could be follow up of the __Maximum Subarray__
 - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/)
 - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
@@ -156,6 +156,7 @@ Consider to use this approach if there is *top K frequency* inside
 
 ### Stack
 
+- [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences) - Very interesting question, no clue at first
 - [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) Good question to start with using _Stack_
 - [Next Greater Node In Linked List](https://leetcode.com/problems/next-greater-node-in-linked-list/) Good question, similar to the [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), but need some changes of mind - Is a `Map` necessary to store every element's next larger element in the __same__ array?
 - [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/), test corner cases

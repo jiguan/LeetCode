@@ -17,6 +17,7 @@ public class KConcatenationMaximumSum {
     public int kConcatenationMaxSum(int[] a, int k) {
         int n = a.length;
         int max = a[0], sum = a[0];
+        // Get max sum
         for (int i = 1; i < n; i++) {
             sum = Math.max(sum + a[i], a[i]);
             max = Math.max(max, sum);
@@ -25,6 +26,7 @@ public class KConcatenationMaximumSum {
         int leftSum = a[0], leftMax = Math.max(0, a[0]);
         int rightSum = a[n - 1], rightMax = Math.max(0, a[n - 1]);
         for (int i = 1; i < n; i++) {
+            // Different from sum
             leftSum += a[i];
             leftMax = Math.max(leftMax, leftSum);
         }
@@ -34,6 +36,7 @@ public class KConcatenationMaximumSum {
         }
         // prefix + suffix
         int tmp = rightMax + leftMax;
+        // whether we should sum over (k-2) arrays
         if (leftSum < 0) {
             return Math.max(max, tmp);
         } else {

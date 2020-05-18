@@ -8,14 +8,14 @@
 
 If we need to reverse the sentence's order but keep each word's order, try to
 
-  1. reverse each word
-  2. reverse the whole sentence
+1. reverse each word
+2. reverse the whole sentence
 
-```txt
-sky is blue
-yks si eulb
-blue is sky
-```
+    ```txt
+    sky is blue
+    yks si eulb
+    blue is sky
+    ```
 
 ## Counting letters
 
@@ -42,6 +42,10 @@ private boolean isValid(int[] wordA, int[] wordB) {
 
 - Blue Nile's assignment: scrabble-solver-service
 
+However, if the order matters we cannot use this approach.
+
+- [Expressive Words](https://leetcode.com/problems/expressive-words/)
+
 ## Add a dummy character
 
 Some questions require one extra execution at the end of the iteration. We could add an additional unharmful element.
@@ -57,29 +61,29 @@ Knuth Morris Pratt algorithm [Code](../../../com/algorithm/KnuthMorrisPratt.java
 
 - [Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/description/)
 
-```java
-public boolean repeatedSubstringPattern(String s) {
-    int len = s.length();
-    // longest suffix-prefix
-    int[] lsp = new int[len];
+    ```java
+    public boolean repeatedSubstringPattern(String s) {
+        int len = s.length();
+        // longest suffix-prefix
+        int[] lsp = new int[len];
 
-    for (int i = 1; i < s.length(); ++i) {
-        char c = s.charAt(i);
-        // previous character's start position
-        int j = lsp[i - 1];
-        while (j != 0 && c != s.charAt(j)) {
-            j = lsp[j - 1];
-        }
+        for (int i = 1; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            // previous character's start position
+            int j = lsp[i - 1];
+            while (j != 0 && c != s.charAt(j)) {
+                j = lsp[j - 1];
+            }
 
-        if (c == s.charAt(j)) {
-            lsp[i] = j + 1;
+            if (c == s.charAt(j)) {
+                lsp[i] = j + 1;
+            }
         }
+        // If there is repeated substring pattern, the lsp would be like [0, 0, 0, 1, 2, 3, 4, 5, 6]
+        // len - lsp[last] is the pattern length
+        return lsp[len - 1] != 0 && len % (len - lsp[len - 1]) == 0;
     }
-    // If there is repeated substring pattern, the lsp would be like [0, 0, 0, 1, 2, 3, 4, 5, 6]
-    // len - lsp[last] is the pattern length
-    return lsp[len - 1] != 0 && len % (len - lsp[len - 1]) == 0;
-}
-```
+    ```
 
 ## Questions
 
