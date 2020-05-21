@@ -14,9 +14,10 @@ If the question provides the bottom-up info, e.g. `node -> parent`, rather than 
 
 ## Questions
 
-### Traditional DFS
+### DFS approach
 
 - [Optimal Account Balancing](https://leetcode.com/problems/optimal-account-balancing/) - hard, how to convert it into dfs is not intuitive.
+- [Strobogrammatic Number III](StrobogrammaticNumberIII.java) - hard, not classic DFS problem. Worth to review
 
 ### Shortest distance
 

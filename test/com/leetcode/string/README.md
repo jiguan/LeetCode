@@ -52,6 +52,10 @@ Some questions require one extra execution at the end of the iteration. We could
 
 - [Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
 
+## Time calculation
+
+- [Next Closest Time](NextClosestTime.java) - Interesting way to calculate it.
+
 ## KMP
 
 Knuth Morris Pratt algorithm [Code](../../../com/algorithm/KnuthMorrisPratt.java)
