@@ -116,6 +116,19 @@ public int countPrimes(int n) {
 
 [Proof of sum(1/p)=ln(ln(n)) + O(1), where p is prime](http://www.cs.umd.edu/~gasarch/BLOGPAPERS/sump.pdf)
 
+## Median
+
+### Median minimus the sum of distance to all points
+
+```text
+val = sum(xi - m)
+```
+
+The val is minimized when the `m` is the median
+
+- [Best Meeting Point](https://leetcode.com/problems/best-meeting-point/)
+- [Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/)
+
 ## Questions
 
 - [Total Hamming Distance](https://leetcode.com/problems/total-hamming-distance/description/) - number of 1-0 combination = pick one from 1 * pick one from 0 = num(1) * num(0)

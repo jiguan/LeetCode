@@ -45,8 +45,8 @@ public class Interval {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
         if (obj == null) return false;
+        if (this == obj) return true;
         if (obj instanceof Interval == false) {
             return false;
         }
