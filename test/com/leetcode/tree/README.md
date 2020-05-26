@@ -110,6 +110,8 @@ To flatten a binary tree, using *recursive* function and return a `Pair` to reco
 Other tree traverse questions
 
 - [Delete Nodes And Return Forest](https://leetcode.com/problems/delete-nodes-and-return-forest/) - medium, interesting question with introducing a flag
+- [BinaryTreeLongestConsecutiveSequenceII](https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/)
+
 
 ### Lowest Common Ancestor
 
