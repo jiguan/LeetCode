@@ -1,4 +1,4 @@
-package com.leetcode.greedy;
+package com.leetcode.array.interval;
 
 import static org.junit.Assert.assertEquals;
 

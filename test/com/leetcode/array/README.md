@@ -148,6 +148,8 @@ Consider to use this approach if there is *top K frequency* inside
 
 - [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
 - [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium
+- [Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/) - Medium, count how many max events we could attend. Sort the array by start date, and then poll the event with earliest end date
+- Meeting room in `com.interview.google` - Medium, check on day `i` how many rooms are used
 
 ### Permutation
 
