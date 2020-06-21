@@ -127,7 +127,25 @@ val = sum(xi - m)
 The val is minimized when the `m` is the median
 
 - [Best Meeting Point](https://leetcode.com/problems/best-meeting-point/)
-- [Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/)
+- [Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) - No clue at first sight, interesting question
+- [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) - Hard
+
+## Sum of array
+
+```txt
+   N = k, k + 1, k + 2, ..., k + (i - 1)
+   N = (k + k + i - 1) * i / 2
+   N = ki + (i - 1) * i / 2
+   ki = N - (i - 1) * i / 2
+```
+
+If there is such a `i`, then we know one consecutive array exists.
+
+- [Consecutive Numbers Sum](https://leetcode.com/problems/consecutive-numbers-sum/)
+
+
+
+
 
 ## Questions
 

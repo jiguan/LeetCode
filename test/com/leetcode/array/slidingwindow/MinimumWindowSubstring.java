@@ -1,10 +1,20 @@
 package com.leetcode.array.slidingwindow;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 // https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
+/*
+ * Minimum Window Substring
+ * 
+ * Given a string S and a string T, find the minimum window in S which will contain all the
+ * characters in T in complexity O(n).
+ * 
+ * Example:
+ * 
+ * Input: S = "ADOBECODEBANC", T = "ABC" Output: "BANC"
+ * 
+ */
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
         int[] times = new int[128];
@@ -17,14 +27,14 @@ public class MinimumWindowSubstring {
         for (int end = 0; end < s.length(); end++) {
             char c = s.charAt(end);
             // this character exists in t
-            if(times[c] > 0) {
-            	--diff;
+            if (times[c] > 0) {
+                --diff;
             }
             // for characters not in t, always negative
             --times[c];
 
             while (diff == 0) {
-                if(res.equals("") || res.length() > end - begin + 1) {
+                if (res.equals("") || res.length() > end - begin + 1) {
                     res = s.substring(begin, end + 1);
                 }
                 char kickout = s.charAt(begin++);
@@ -42,12 +52,12 @@ public class MinimumWindowSubstring {
         String T = "ABC";
         assertEquals("BANC", minWindow(S, T));
     }
-    
+
     @Test
     public void test1() {
-    	// http://www.asciitable.com/
-    	int a = 'a';
-    	int A = 'A';
-    	System.out.println("a is " + a +", A is " + A);
+        // http://www.asciitable.com/
+        int a = 'a';
+        int A = 'A';
+        System.out.println("a is " + a + ", A is " + A);
     }
 }
