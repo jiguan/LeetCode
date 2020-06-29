@@ -75,7 +75,7 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
 
 ### Binary Search
 
-- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) Good question to determine the condition and return variable (return the one `+1`).
+- [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) - Good question to determine the condition and return variable (return the one `+1`).
 
   ```java
   while (low < high) {
@@ -103,6 +103,21 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
 
 - [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) - Hard, binary search against sum to find out the max sum of subarray
 - [Divide Chocolate](https://leetcode.com/problems/divide-chocolate/) - Hard, but similar to __Split Array Largest Sum__
+- [Missing Element in Sorted Array](MissingElementInSortedArray.java) - Google, a very good question. If either `left = mid` or `right = mid`, the ending condition need to take care of it
+
+    ```java
+    while (left < right - 1) {
+        int mid = left + (right - left) / 2;
+        missing = nums[mid] - nums[left] - (mid - left);
+
+        if (k > missing) {
+            k -= missing;
+            left = mid;
+        } else {
+            right = mid;
+        }
+    }
+    ```
 
 ### K elements
 

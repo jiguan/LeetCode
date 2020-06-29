@@ -1,6 +1,7 @@
 package com.leetcode.array;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /*
  * 
@@ -35,24 +36,27 @@ import java.util.LinkedList;
 
 public class WallsAndGates {
     public void wallsAndGates(int[][] rooms) {
-        LinkedList<int[]> list = new LinkedList<int[]>();
+        Queue<int[]> list = new LinkedList<int[]>();
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
-                if (rooms[i][j] == 0)
+                if (rooms[i][j] == 0) {
+                    // add gate
                     list.add(new int[] {i, j});
+                }
             }
         }
-        int[][] diff = new int[][] {{-1, 0, 1, 0}, {0, 1, 0, -1}};
+        int[][] dirs = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
         while (!list.isEmpty()) {
-            int[] pop = list.remove();
-            for (int i = 0; i < diff[0].length; i++) {
-                int newR = pop[0] + diff[0][i];
-                int newC = pop[1] + diff[1][i];
-                if (newR < 0 || newR >= rooms.length || newC < 0 || newC >= rooms[0].length
-                        || rooms[newR][newC] != Integer.MAX_VALUE)
-                    continue;
-                rooms[newR][newC] = rooms[pop[0]][pop[1]] + 1;
-                list.add(new int[] {newR, newC});
+            int[] curr = list.remove();
+            for (int[] dir : dirs) {
+                int next_i = curr[0] + dir[0];
+                int next_j = curr[1] + dir[1];
+                if (next_i >= 0 && next_i < rooms.length && next_j >= 0 && next_j < rooms[0].length
+                        && rooms[next_i][next_j] == Integer.MAX_VALUE) {
+                    rooms[next_i][next_j] = rooms[curr[0]][curr[1]] + 1;
+                    list.add(new int[] {next_i, next_j});
+                }
             }
         }
     }
