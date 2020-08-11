@@ -8,7 +8,7 @@ import org.junit.Test;
 // Given two integer arrays A and B, write a boolean function that returns true if we can find one
 // element from A and one element from B, so that after we swap the two element, the sum of the two
 // arrays are the same. Return false if we can't find
-public class SwapElements {
+public class SwapAndSum {
     public boolean swap(int[] A, int[] B) {
         // Make sure A has smaller size so that less space is used
         if (A.length > B.length) return swap(B, A);

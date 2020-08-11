@@ -2,6 +2,12 @@
 
 Keep calm. Write down some cases and find out their rules.
 
+## Sum of subarray
+
+- [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) - Easy, not so straightforward if you are not familiar.
+- [Maximum Number of Non-Overlapping Subarrays With Sum Equals Target](https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/) - Medium, follow up question.
+
+
 ## Easy
 
 - [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)

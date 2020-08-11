@@ -100,3 +100,7 @@ __Dictionary word matching__ question: The idea is using an index and skip some 
 ### Repeat characters
 
 - [Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/)
+
+
+### Remove characters
+- [Make The String Great](https://leetcode.com/problems/make-the-string-great/) - Easy. But check my code, how to use another array to store result string is interesting.

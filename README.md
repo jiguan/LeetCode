@@ -60,3 +60,7 @@ private int gcd(int a, int b) {
 - [QuickSort](test/com/algorithm/QuickSort.java)
 - [SegmentTree](test/com/algorithm/SegmentTreeRangeSum.java)
 - [TrieTree](test/com/algorithm/TrieTree.java)
+
+
+## Look back questions
+- Minimum Cost to Cut a Stick

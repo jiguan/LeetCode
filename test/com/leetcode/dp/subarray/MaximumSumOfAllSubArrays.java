@@ -1,4 +1,4 @@
-package com.leetcode.dp;
+package com.leetcode.dp.subarray;
 
 import static org.junit.Assert.assertEquals;
 

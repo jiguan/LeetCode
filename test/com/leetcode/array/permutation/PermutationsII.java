@@ -28,7 +28,7 @@ public class PermutationsII {
         }
         for (int i = 0; i < nums.length; i++) {
             if (visited[i] == false) {
-                if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1]) {
+                if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
                     continue;
                 }
                 curr.add(nums[i]);
