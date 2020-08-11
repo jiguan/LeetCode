@@ -14,8 +14,9 @@ public class ConsecutiveNumbersSum {
      */
     public int consecutiveNumbersSumIter(int N) {
         int res = 1, count = 0;
-        while (N % 2 == 0)
+        while (N % 2 == 0) {
             N /= 2;
+        }
         for (int i = 3; i * i <= N; i = i + 2) {
             count = 0;
             while (N % i == 0) {
@@ -28,12 +29,17 @@ public class ConsecutiveNumbersSum {
     }
 
     // N = k, k + 1, k + 2, ..., k + (i - 1)
+    // N = (k + k + i - 1) * i / 2
+    // N = k * i
     // ki = N - (i - 1) * i / 2
-
     public int consecutiveNumbersSum(int N) {
         int ans = 0;
-        for (int i = 1; i * (i - 1) / 2 < N; ++i)
-            if ((N - i * (i - 1) / 2) % i == 0) ++ans;
+        // N - (i - 1) * i / 2 > 0
+        for (int i = 1; i * (i - 1) / 2 < N; ++i) {
+            if ((N - i * (i - 1) / 2) % i == 0) {
+                ++ans;
+            }
+        }
         return ans;
     }
 

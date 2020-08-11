@@ -1,5 +1,7 @@
 package com.leetcode.array;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 import com.leetcode.util.ArrayReader;
 
 /*
@@ -34,18 +36,26 @@ public class SearchInASortedArrayOfUnknownSize {
         int start = 0;
         int end = 1;
         while (reader.get(end) < target) {
+            start = end;
             end = end * 2;
         }
         while (start <= end) {
             int mid = (start + end) / 2;
-            if (reader.get(mid) == target) {
-                return mid;
-            } else if (reader.get(mid) > target) {
+            if (reader.get(mid) > target) {
                 end = mid - 1;
-            } else {
+            } else if (reader.get(mid) < target) {
                 start = mid + 1;
+            } else {
+                return mid;
             }
         }
         return -1;
+    }
+
+    @Test
+    public void test0() {
+        ArrayReader reader = new ArrayReader(new int[] {-1, 0, 3, 5, 9, 12});
+        int target = 9;
+        assertEquals(4, search(reader, target));
     }
 }

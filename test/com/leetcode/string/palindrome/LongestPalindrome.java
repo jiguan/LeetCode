@@ -8,6 +8,8 @@ import java.util.Set;
 import org.junit.Test;
 
 /**
+ * Longest Palindrome
+ * 
  * Given a string which consists of lowercase or uppercase letters, find the
  * length of the longest palindromes that can be built with those letters.
  */
@@ -33,6 +35,7 @@ public class LongestPalindrome {
 
     @Test
     public void test0() {
+        // One longest palindrome that can be built is "dccaccd", whose length is 7.
         String s = "abccccdd";
         assertEquals(7, longestPalindrome(s));
     }

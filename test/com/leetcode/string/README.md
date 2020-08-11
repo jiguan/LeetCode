@@ -89,6 +89,14 @@ Knuth Morris Pratt algorithm [Code](../../../com/algorithm/KnuthMorrisPratt.java
     }
     ```
 
+## Palindrome
+
+- [Longest Palindrome](https://leetcode.com/problems/longest-palindrome/) - Hash Set, using given letters to reform a new palindrome string
+
+### Manacher’s Algorithm
+
+Linear Time Longest Palindromic Substring
+
 ## Questions
 
 - [Longest Word in Dictionary through Deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/). Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.

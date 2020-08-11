@@ -1,5 +1,8 @@
 package com.leetcode.array;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 /*
  * Missing Element in Sorted Array
  * 
@@ -22,12 +25,15 @@ package com.leetcode.array;
 public class MissingElementInSortedArray {
     public int missingElement(int[] nums, int k) {
         int left = 0, right = nums.length - 1;
+        // in nums array, how many elements are missing
         int missing = nums[right] - nums[left] - (right - left);
 
         if (k > missing) {
             return nums[right] + k - missing;
         }
 
+        // we set either left=mid or right=mid, use left<right-1 as ending condition
+        // otherwise, infinite loop
         while (left < right - 1) {
             int mid = left + (right - left) / 2;
             missing = nums[mid] - nums[left] - (mid - left);
@@ -41,5 +47,26 @@ public class MissingElementInSortedArray {
         }
 
         return nums[left] + k;
+    }
+
+    @Test
+    public void test0() {
+        int[] nums = new int[] {4, 7, 9, 10};
+        int k = 1;
+        assertEquals(5, missingElement(nums, k));
+    }
+
+    @Test
+    public void test1() {
+        int[] nums = new int[] {4, 7, 9, 10};
+        int k = 2;
+        assertEquals(6, missingElement(nums, k));
+    }
+
+    @Test
+    public void test2() {
+        int[] nums = new int[] {4, 7, 9, 10};
+        int k = 4;
+        assertEquals(11, missingElement(nums, k));
     }
 }
