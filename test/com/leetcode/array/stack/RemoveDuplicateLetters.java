@@ -1,11 +1,17 @@
 package com.leetcode.array.stack;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Stack;
-
 import org.junit.Test;
 
+/*
+ * Remove Duplicate Letters
+ * 
+ * Given a string which contains only lowercase letters, remove duplicate letters so that every
+ * letter appears once and only once. You must make sure your result is the smallest in
+ * lexicographical order among all possible results.
+ * 
+ */
 public class RemoveDuplicateLetters {
     public String removeDuplicateLetters(String s) {
         Stack<Character> stack = new Stack<Character>();
@@ -24,7 +30,8 @@ public class RemoveDuplicateLetters {
         // go through each char
         for (char c : s.toCharArray()) {
             count[c - 'a']--;
-            if (visited[c - 'a']) continue;
+            if (visited[c - 'a'])
+                continue;
 
             // pop out the char which is bigger and still has some left in behind
             while (!stack.isEmpty() && stack.peek() > c && count[stack.peek() - 'a'] > 0) {

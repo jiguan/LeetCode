@@ -11,14 +11,16 @@ public class LargestRectangleInHistogram {
         int maxArea = 0;
 
         for (int i = 0; i <= heights.length; ++i) {
-            int currHeight = (i != heights.length) ? heights[i] : 0;
+            int currHeight = (i == heights.length) ? 0 : heights[i];
 
             // currHeight is smaller than the prev one
             // pop all indexes from stack whose value is larger than currHeight
-            while (stack.peek() != -1 && heights[stack.peek()] >= currHeight) {
+            while (stack.peek() != -1 && heights[stack.peek()] > currHeight) {
                 // get previous height
+                // we never take current rectangle at i into consideration
                 int height = heights[stack.pop()];
                 // we need to use stack.peek where indicates the starting index
+                // e.g. if i = 1, we calculate the area at index 0, 1 - (-1) - 1 = 1
                 maxArea = Math.max(maxArea, height * (i - stack.peek() - 1));
             }
 
@@ -29,13 +31,13 @@ public class LargestRectangleInHistogram {
 
     @Test
     public void test0() {
-        //int[] heights = new int[] {2, 1, 5, 6, 2, 3};
-        //assertEquals(10, largestRectangleArea(heights));
+        int[] heights = new int[] {2, 1, 5, 6, 2, 3};
+        assertEquals(10, largestRectangleArea(heights));
     }
 
     @Test
     public void test1() {
-        int[] heights = new int[] {2,0, 3, 2};
+        int[] heights = new int[] {2, 0, 3, 2};
         assertEquals(4, largestRectangleArea(heights));
     }
 }

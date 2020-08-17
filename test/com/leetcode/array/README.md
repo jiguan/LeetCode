@@ -71,7 +71,10 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
 
 ### Two pointers
 
+- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+- [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/)
 - [Count Number of Teams](https://leetcode.com/contest/weekly-contest-182/problems/count-number-of-teams/) Contest question. Better than 3Sum
+- [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) - Hard, but it is faster than using `Stack`
 
 ### Binary Search
 
@@ -164,7 +167,7 @@ Consider to use this approach if there is *top K frequency* inside
 - [Merge Intervals](https://leetcode.com/problems/merge-intervals/) - Easy
 - [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) - Medium
 - [Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/) - Medium, count how many max events we could attend. Sort the array by start date, and then poll the event with earliest end date
-- Meeting room in `com.interview.google` - Medium, check on day `i` how many rooms are used
+- [Meeting room](../../interview/google/MeetingRoom.java) - Medium, check on day `i` how many rooms are used
 
 ### Permutation
 
@@ -178,16 +181,9 @@ Consider to use this approach if there is *top K frequency* inside
 - [Next Greater Node In Linked List](https://leetcode.com/problems/next-greater-node-in-linked-list/) Good question, similar to the [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), but need some changes of mind - Is a `Map` necessary to store every element's next larger element in the __same__ array?
 - [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/), test corner cases
 - [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
-- [Trapping Rain Water](stack/TrappingRainWater.java), same idea with __Largest Rectangle in Histogram__
-- [Largest Rectangle in Histogram](stack/LargestRectangleInHistogram.java) - hard
-- [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) Very good question, __MUST-DO__
-
-- 1130. Minimum Cost Tree From Leaf Values
-- 907. Sum of Subarray Minimums
-- 901. Online Stock Span
-- 856. Score of Parentheses
-- 503. Next Greater Element II
-- 496. Next Greater Element I
+- [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) - Medium to Hard, good to learn to how to use a stack to store temporary result 
+- [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) - Hard, same idea with __Largest Rectangle in Histogram__
+- [Largest Rectangle in Histogram](stack/LargestRectangleInHistogram.java) - Harder than _Trapping Rain Water_
 
 ### Subarray
 
@@ -221,15 +217,9 @@ Record the index
 
 ### Min length of subarray
 
-Two pointers
-
-- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
-- [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/)
-
 ### Segment tree
 
 - [Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
-
 - [Longest Repeating Character Replacement](LongestRepeatingCharacterReplacement.java) Great question. At first it may seem like a DP question.
 - [Sliding Window Maximum](SlidingWindowMaximum.java) The solution dealing with the real sliding window problem using dequeue.
 - https://leetcode.com/problems/minimum-window-substring/

@@ -35,7 +35,9 @@ Keep calm. Write down some cases and find out their rules.
 - [Interleaving String](https://leetcode.com/problems/interleaving-string/)
 - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 - [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+- [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/) - Hard, tricky question
 
 ## Cannot understand
 
 - [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
+- [Odd Even Jump](https://leetcode.com/problems/odd-even-jump/) - Seems that I can understand, but not completely

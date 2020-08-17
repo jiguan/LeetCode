@@ -11,7 +11,7 @@
 - [Graph](test/com/leetcode/graph/README.md)
 - [BFS/DFS](test/com/leetcode/bfs/README.md)
 
-## Frquent questions
+## Frequent questions
 
 - [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
@@ -61,6 +61,8 @@ private int gcd(int a, int b) {
 - [SegmentTree](test/com/algorithm/SegmentTreeRangeSum.java)
 - [TrieTree](test/com/algorithm/TrieTree.java)
 
+## Must do to warm up before an interview
+- [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/) - Hard, tricky question
 
 ## Look back questions
 - Minimum Cost to Cut a Stick

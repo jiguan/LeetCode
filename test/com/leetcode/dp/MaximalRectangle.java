@@ -6,10 +6,9 @@ import org.junit.Test;
 public class MaximalRectangle {
     public int maximalRectangle(char[][] matrix) {
         int m = matrix.length, n = matrix[0].length;
-        // index where '1' starts
+        // lower bound of consecutive '1' index
         int[] left = new int[n];
-        // index where '1' ends, (index where first '0' occurs)
-        // end with n, just like the length, excluded
+        // upper bound of consecutive '1' index, excluded
         int[] right = new int[n];
         // accumulate the height, from top to bottom
         int[] height = new int[n];
@@ -19,7 +18,7 @@ public class MaximalRectangle {
         int result = 0;
         for (int i = 0; i < m; i++) {
 
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < n; j++) {  
                 if (matrix[i][j] == '1') {
                     height[j]++;
                 } else {
@@ -40,6 +39,7 @@ public class MaximalRectangle {
                     currLeft = j + 1;
                 }
             }
+            // current right boundary
             int currRight = n;
             for (int j = n - 1; j >= 0; j--) {
                 if (matrix[i][j] == '1')
@@ -62,7 +62,7 @@ public class MaximalRectangle {
 
     @Test
     public void test0() {
-        char[][] matrix = new char[][] {{'0', '1', '1'}, {'0', '1', '1'}};
+        char[][] matrix = new char[][] {{'1', '1', '0'}, {'1', '1', '1'}, {'1', '1', '0'}};
         assertEquals(4, maximalRectangle(matrix));
     }
 
@@ -103,5 +103,18 @@ public class MaximalRectangle {
             {'1', '0', '0', '1', '0'}};
         // @formatter:on
         assertEquals(6, maximalRectangle(matrix));
+    }
+    
+    @Test
+    public void test5() {
+        char[][] matrix = new char[][] {{'1', '1', '0'}, {'0', '0', '1'}, {'1', '1', '0'}};
+        assertEquals(1, maximalRectangle(matrix));
+    }
+    
+    
+    @Test
+    public void test6() {
+        char[][] matrix = new char[][] {{'1', '1', '1'}, {'1', '0', '1'}, {'0', '0', '1'}};
+        assertEquals(3, maximalRectangle(matrix));
     }
 }
