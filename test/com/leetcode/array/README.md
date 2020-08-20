@@ -67,6 +67,13 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
 - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/)
 - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 
+## Sliding window
+
+Some questions have same concept --- having a temporary container to store candidate. When a new element checking in, we do some operations to process our candidates. This conditioner could be a `Stack` or `Array`. Usually what it stores are indexes.
+
+- [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
+
 ## Questions
 
 ### Two pointers

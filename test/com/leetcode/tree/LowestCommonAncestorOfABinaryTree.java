@@ -10,45 +10,49 @@ import org.junit.Test;
 import com.leetcode.util.TreeNode;
 
 public class LowestCommonAncestorOfABinaryTree {
-    // In general, the computational time required for this algorithm is O(h) where h is the height
-    // of the tree (length
-    // of longest path from a leaf to the root)
+    // In general, the computational time required for this algorithm is O(h)
+    // where h is the height of the tree
+    // (length of longest path from a leaf to the root)
     public TreeNode lowestCommonAncestor0(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || p == root || q == root) return root;
+        if (root == null || p == root || q == root)
+            return root;
 
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if (left != null && right != null) return root;
+        TreeNode left = lowestCommonAncestor0(root.left, p, q);
+        TreeNode right = lowestCommonAncestor0(root.right, p, q);
+        if (left != null && right != null)
+            return root;
 
         return left != null ? left : right;
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // node - parent
-        Map<TreeNode, TreeNode> parent = new HashMap<>();
+        Map<TreeNode, TreeNode> map = new HashMap<>();
         Stack<TreeNode> stack = new Stack<>();
-        parent.put(root, null);
+        // if we don't add it, map doesn't contain root
+        // while (!visited.contains(q)) will result infinite loop if q is the root
+        map.put(root, null);
         stack.push(root);
 
         // traverse all nodes until both p and q are visited
-        while (!(parent.containsKey(p) && parent.containsKey(q))) {
+        while (!(map.containsKey(p) && map.containsKey(q))) {
             TreeNode node = stack.pop();
             if (node.left != null) {
-                parent.put(node.left, node);
+                map.put(node.left, node);
                 stack.push(node.left);
             }
             if (node.right != null) {
-                parent.put(node.right, node);
+                map.put(node.right, node);
                 stack.push(node.right);
             }
         }
         Set<TreeNode> visited = new HashSet<>();
-        while (p != null) {
+        while (map.containsKey(p)) {
             visited.add(p);
-            p = parent.get(p);
+            p = map.get(p);
         }
         while (!visited.contains(q)) {
-            q = parent.get(q);
+            q = map.get(q);
         }
         return q;
     }
