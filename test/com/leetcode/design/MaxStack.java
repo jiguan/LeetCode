@@ -1,4 +1,4 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Stack;

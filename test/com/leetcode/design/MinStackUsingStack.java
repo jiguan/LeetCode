@@ -1,4 +1,4 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import org.junit.Test;
 
-public class MinStack {
+public class MinStackUsingStack {
     Integer min = Integer.MAX_VALUE;
     List<Integer> list = new LinkedList<>();
 
@@ -42,7 +42,7 @@ public class MinStack {
 
     @Test
     public void test1() {
-        MinStack stack = new MinStack();
+        MinStackUsingStack stack = new MinStackUsingStack();
         stack.push(-2);
         stack.push(0);
         stack.push(-3);
@@ -54,7 +54,7 @@ public class MinStack {
     
     @Test
     public void test2() {
-        MinStack stack = new MinStack();
+        MinStackUsingStack stack = new MinStackUsingStack();
         stack.push(1);
         stack.push(-2);
         stack.push(-2);
@@ -70,7 +70,7 @@ public class MinStack {
     @Test
     public void test0() {
         List<Integer> result = new ArrayList<>();
-        MinStack stack = new MinStack();
+        MinStackUsingStack stack = new MinStackUsingStack();
         stack.push(2);
         stack.push(0);
         stack.push(3);

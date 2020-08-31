@@ -9,21 +9,61 @@
 | int  | 32 bits | -2^31 ~ 2^31 -1 |
 | long | 64 bits | -2^63 ~ 2^63 -1 |
 
-What is protected access modifier?
+What are Access Modifiers?
+- Private, accessible only within the class in which they are declared
+- Default, accessible only within the same package
+- Protected, accessible within same package or sub classes in different package
+- Public, accessible everywhere
 
-* Variables, methods and constructors which are declared protected in a superclass can be accessed only by the subclasses in other package or any class within the package of the protected members' class.
+How does `HashMap` work in Java?
+
+- Using HashCode to calculate which bucket we should store
+- If there are multiple records with same HashCode, we will place them in LinkedList
+- During retrieving, we will compare records in LinkedList by `key.equals()`
+- If the size exceeds a given threshold defined by the load factor (0.75), a _rehashing_ will happen - re-size itself by creating a new bucket array of size twice of the previous size of HashMap and then start putting every old element into that new bucket array.
+- Potential race condition exists while resizing
+
+```txt
+Yes there is potential race condition exists while resizing HashMap in Java, if two threads at the same time found that now HashMap needs resizing and they both try to resizing. on the process of resizing of HashMap in Java, the element in the bucket which is stored in linked list get reversed in order during their migration to new bucket because Java HashMap doesn't append the new element at tail instead it append new element at the head to avoid tail traversing 
+
+(When adding a new element, we don't traverse to the tail every time, but instead we append it to the head:
+
+10
+23 10
+65 23 10
+44 65 23 10
+12 44 65 23 10
+
+90 12 44 65 23 10)
+
+If race condition happens then you will end up with an infinite loop. Since the thread A make 4 -> 3 -> 2 -> 1 already, but thread 2 maybe still traversing from 3 -> 4, which make 4 <=> 3. Check https://mailinator.blogspot.com/2009/06/beautiful-race-condition.html.
+
+
+Though this point, you can potentially argue that what the hell makes you think to use HashMap  in multi-threaded environment to interviewer :)
+```
+
+```
+table[0] -> [key0, val0, next] -> [key1, val1, next] -> null
+table[1]
+...
+table[n-1]
+```
 
 Why is String class considered immutable?
 
 * The String class is immutable, so that once it is created a String object cannot be changed. Since String is immutable it can safely be shared between many threads ,which is considered very important for multithreaded programming.
 
+When will the finally block not be executed?
+
+* If the JVM exits while the try or catch code is being executed, then the finally block may not execute. Likewise, if the thread executing the try or catch code is interrupted or killed, the finally block may not execute even though the application as a whole continues.
+
+Is java pass by reference or pass by value?
+
+* Java uses only __call by value__. It creates a copy of references and pass them as value to the methods.
+
 Exception
 
-| Throwable |Throwable|Throwable|
-| ----| ---- | --- |
-| Exception |Exception| Error |
-| Checked exceptions |Unchecked exceptions ||
-| IOException | RuntimeException ||
+<img src="java-exception.png" alt="java exception" title="Java Exceptions" width="500" height="200" />
 
 What is Polymorphism?
 
@@ -77,8 +117,8 @@ What is the difference between inner class and nested class?
 Algorithms for GC
 
 1. Reference Counting: pro: effective; con: cannot handle circulate referring.
-2. Mark and Sweep: traverse from the root set, if an object cannot be accessible, _mark_ it as garbage, and release its space during _sweep_. Disadvantage: if there are small amounts of objects alive, it will cost large time to mark and delete them.
-3. Copy and Collection: traverse from the root set, if an object is live, copy into into a space. Disadvantage: if there are large amounts of objects alive, copying them is expensive.
+2. Mark and Sweep: traverse from the root set, if an object cannot be accessible, _mark_ it as garbage, and release its space during _sweep_. Disadvantage: if there are small amounts of objects alive, it will cost large time to mark and delete them. Used against Old Gen.
+3. Copy and Collection: traverse from the root set, if an object is live, copy into into a space. Disadvantage: if there are large amounts of objects alive, copying them is expensive. Used against Young Gen.
 
 ## Multi-thread
 
@@ -91,7 +131,7 @@ Explain different ways of creating a thread?
 
 1. Extending the java.lang.Thread class.
 2. Implementing the java.lang.Runnable interface.
-3. Implement `Callable` and use `FutureTask` to create a thread
+3. Implement `Callable` and use `FutureTask` to create a thread. A `FutureTask` can be created by providing its constructor with a Callable. Then the FutureTask object is provided to the constructor of Thread to create the Thread object. Thus, indirectly, the thread is created with a Callable.
 4. Use `ExecutorService`, `Callable` and `Future` to return the result
 
 Which approach would you favor and why?
@@ -111,19 +151,20 @@ How to end a Thread?
 
 Callable vs Runnable
 
-__Note that a thread can't be created with a Callable__
+__Note that a thread can't be created with a Callable, it can only be created with a Runnable__
 
-1. For implementing Runnable, the `run()` method needs to be implemented which does not return anything, while for a Callable, the `call()` method needs to be implemented which returns a result on completion. Note that a thread can't be created with a Callable, it can only be created with a Runnable.
-1. The `call()` method can throw an exception whereas `run()` cannot.
+* Runnable, overrides `run()` method and return nothing
+* Callable, overrides `call()` method and returns a result on completion.
+* The `call()` method can throw an exception whereas `run()` cannot.
 
-`start()` vs `run()`
+What is the difference `start()` vs `run()`
 
 * `start()` is used to start a newly created thread, it calls `run()`
 * `run()` only starts an existing thread
 
 What is Future?
 
-* Future interface has methods to obtain the result generated by a Callable object and manage its state. It represents the result of an asynchronous computation.
+* Future interface has methods to obtain the result generated by a `Callable` object and manage its state. It represents the result of an asynchronous computation.
 
 What is the difference between yield and sleep? What is the difference between the methods `sleep()` and `wait()`?
 
@@ -150,6 +191,20 @@ When shall we use `synchronization`?
 * Using `ReentrantLock`, a thread could exit waiting if too long. It could help to avoid deadlock
 * ReentrantLock could use fail locks. When multiple threads waiting for `ReentrantLock`, they will be granted access according to their application time
 * A `ReentrantLock` could lock multiple objects
+
+What are common locks?
+
+* `ReentrantLock`. `ReentrantLock` is a mutually exclusive lock with the same behavior as the intrinsic/implicit lock accessed via the `synchronized` keyword. As the name suggests, possesses reentrant characteristics. That means a thread that currently owns the lock can acquire it more than once without any problem.
+* `ReadWriteLock`. The read lock may be held by multiple threads simultaneously as long as the write lock is not held by any thread.
+
+Atomic variable
+
+* Atomic classes internally use compare-and-swap instructions. These instructions are generally much faster than locks.
+
+ConcurrentHashMap vs Hashtable vs Synchronized Map
+
+- All methods of Hashtable are synchronized which makes them quite slow due to contention if a number of thread increases. Synchronized Map is also not very different than Hashtable and provides similar performance in concurrent Java programs. The only difference between Hashtable and Synchronized Map is that later is not a legacy and you can wrap any Map to create it's synchronized version by using `Collections.synchronizedMap()` method.
+- On the other hand, `ConcurrentHashMap` is specially designed for concurrent use i.e. more than one thread. By default it simultaneously allows 16 threads to read and write from `Map` without any external synchronization. It is also very scalable because of stripped locking technique used in the internal implementation of ConcurrentHashMap class. Unlike `Hashtable` and `Synchronized Map`, it never locks whole `Map`, instead, it divides the map into segments and locking is done on those. Though it performs better if a number of reader threads are greater than the number of writer threads.
 
 What is deadlock?
 
@@ -196,6 +251,9 @@ What is volatile keyword in Java
 
 * When we use volatile keyword with a variable, all the threads read it’s value directly from the memory instead of temporary registers. This makes sure that the value read is the same as in the memory.
 
+Can we make array volatile in Java?
+* Yes, you can make an array volatile in Java but only the reference which is pointing to an array, not the whole array content.
+
 Which is more preferred – Synchronized method or Synchronized block?
 
 * Synchronized block is more preferred way because it doesn't lock the Object, synchronized methods lock the Object and if there are multiple synchronization blocks in the class, even though they are not related, it will stop them from execution and put them in wait state to get the lock on Object.
@@ -222,7 +280,7 @@ REST vs SOAP
 1. SOAP is a protocol whereas REST is architecture. REST is protocol independent. It's not coupled to HTTP
 1. SOAP exposes behavior which represent logic whereas REST exposes resources
 1. SOAP supports both POST and GET methods. However, GET includes the request in the query string. SOAP requests (XML messages) are usually too complex and verbose to be included in the query string, so almost every implementation (for example JAX-WS) supports only POST
-1. . SOAP can use almost any transport to send the request but REST uses HTTP/HTTPS
+1. SOAP can use almost any transport to send the request but REST uses HTTP/HTTPS
 1. Any SOAP envelope can be used in REST services like generated token but not vice versa. This means that if you have created a token using SOAP then that token can be used in REST (under HTTP header manager section => Authorization). But you can not use REST envelopes in a SOAP request.
 1. SOAP provides good security option. Although SOAP and REST both support SSL (Secure Socket Layer) for data protection, while making the request, SOAP supports Web Services Security for enterprise-level protection which offers protection from the creation of the message to it's consumption. Security and authentication in HTTP are standardized, so that's what you use when doing REST over HTTP
 1. REST is Faster. The statelessness nature of REST makes it faster than a SOAP.
@@ -254,7 +312,6 @@ HTTPS handshake
 * Certificate = Website info + Signature. An SSL certificate is used to authenticate the identify of a website
 * Signature = encrypt(hash(all details))
 * Certificate Authority: A known CA can sign web server requests so that anyone with the CA's public key can verify that requests were signed it by the CA. Browsers have these known CA's public key embedded and verify the information from the Certificate is trustable. This is to avoid _Man-In-The-Middle_ attack and we can find it out the website we are talking is not youtube.com
-
 
 <img src="https_handshake_cn.jpg" alt="https handshake" title="JVM heap memory" width="600" height="1200" />
 
@@ -329,6 +386,17 @@ There are five scopes defined for Spring Beans.
 * telnet: like ssh, to access remote computers 
 
 ## Relational Database
+
+Inner join vs Outer join 
+
+* An inner join finds and returns matching data from tables
+* An outer join finds and returns matching data but also includes other rows for which no corresponding match. 
+
+How many types of outer joins?
+
+* Left Outer Join (or Left Join)
+* Right Outer Join (or Right Join)
+* Full Outer Join (or Full Join)
 
 What are all the different normalizations?
 

@@ -1,4 +1,4 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
 import com.leetcode.util.Reader4;
 

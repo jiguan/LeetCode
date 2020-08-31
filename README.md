@@ -8,6 +8,7 @@
 - [Math](test/com/leetcode/math/README.md)
 - [String](test/com/leetcode/string/README.md)
 - [DP](test/com/leetcode/dp/README.md)
+- [Greedy](test/com/leetcode/greedy/README.md)
 - [Graph](test/com/leetcode/graph/README.md)
 - [BFS/DFS](test/com/leetcode/bfs/README.md)
 

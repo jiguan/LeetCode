@@ -1,4 +1,4 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
 import java.util.ArrayList;
 
@@ -28,13 +28,13 @@ public class ImplementHashMap {
     }
 }
 
+
 class CustomMap<K, V> {
 
-    class MapNode<K, V> {
-
+    class MapNode {
         K key;
         V value;
-        MapNode<K, V> next;
+        MapNode next;
 
         public MapNode(K key, V value) {
             this.key = key;
@@ -45,7 +45,7 @@ class CustomMap<K, V> {
 
     // The bucket array where
     // the nodes containing K-V pairs are stored
-    ArrayList<MapNode<K, V>> buckets;
+    ArrayList<MapNode> buckets;
 
     // No. of pairs stored - n
     int size;
@@ -85,7 +85,7 @@ class CustomMap<K, V> {
         int bucketInd = getBucketInd(key);
 
         // The first node at that index
-        MapNode<K, V> head = buckets.get(bucketInd);
+        MapNode head = buckets.get(bucketInd);
 
         // First, loop through all the nodes present at that index
         // to check if the key already exists
@@ -100,7 +100,7 @@ class CustomMap<K, V> {
         }
 
         // new node with the K and V
-        MapNode<K, V> newElementNode = new MapNode<K, V>(key, value);
+        MapNode newElementNode = new MapNode(key, value);
 
         // The head node at the index
         head = buckets.get(bucketInd);
@@ -143,10 +143,10 @@ class CustomMap<K, V> {
         System.out.println("\n***Rehashing Started***\n");
 
         // The present bucket list is made temp
-        ArrayList<MapNode<K, V>> temp = buckets;
+        ArrayList<MapNode> temp = buckets;
 
         // New bucketList of double the old size is created
-        buckets = new ArrayList<MapNode<K, V>>(2 * numBuckets);
+        buckets = new ArrayList<MapNode>(2 * numBuckets);
 
         for (int i = 0; i < 2 * numBuckets; i++) {
             // Initialised to null
@@ -161,7 +161,7 @@ class CustomMap<K, V> {
         for (int i = 0; i < temp.size(); i++) {
 
             // head of the chain at that index
-            MapNode<K, V> head = temp.get(i);
+            MapNode head = temp.get(i);
 
             while (head != null) {
                 K key = head.key;
@@ -180,14 +180,14 @@ class CustomMap<K, V> {
     public void printMap() {
 
         // The present bucket list is made temp
-        ArrayList<MapNode<K, V>> temp = buckets;
+        ArrayList<MapNode> temp = buckets;
 
         System.out.println("Current HashMap:");
         // loop through all the nodes and print them
         for (int i = 0; i < temp.size(); i++) {
 
             // head of the chain at that index
-            MapNode<K, V> head = temp.get(i);
+            MapNode head = temp.get(i);
 
             while (head != null) {
                 System.out.println("key = " + head.key + ", val = " + head.value);

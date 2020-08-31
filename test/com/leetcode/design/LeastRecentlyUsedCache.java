@@ -1,4 +1,4 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
 import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
@@ -111,7 +111,8 @@ class LRUCache {
             update(node);
         } else {
             if (map.size() >= capacity) {
-                // update map first, since we are getting value by the node
+                // update map first, since we get the key by tail.prev
+                // delete(tail.prev) will change the tail node
                 map.remove(tail.prev.key);
                 delete(tail.prev);
             }

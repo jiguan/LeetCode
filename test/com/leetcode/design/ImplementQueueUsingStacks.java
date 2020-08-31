@@ -1,7 +1,8 @@
-package com.leetcode.implement;
+package com.leetcode.design;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.util.Stack;
-
 import org.junit.Test;
 
 public class ImplementQueueUsingStacks {
@@ -9,16 +10,16 @@ public class ImplementQueueUsingStacks {
     @Test
     public void test0() {
         MyQueue queue = new MyQueue();
-        int[] nums = new int[]{1, 2, 3, 4};
+        int[] nums = new int[] {1, 2, 3, 4};
         for (int num : nums) {
             queue.push(num);
         }
-        while (!queue.empty()) {
-            System.out.print(queue.peek());
+        for (int i = nums.length - 1; i >= 0; --i) {
+            assertEquals(nums[i], queue.peek());
             queue.pop();
         }
+        assertTrue(queue.empty());
     }
-
 }
 
 class MyQueue {

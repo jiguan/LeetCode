@@ -234,3 +234,6 @@ Record the index
 - https://leetcode.com/problems/substring-with-concatenation-of-all-words/
 - https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
 - https://leetcode.com/problems/find-all-anagrams-in-a-string/
+
+### Pattern
+- [Detect Pattern of Length M Repeated K or More Times](https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/) - Easy, very interesting question. Seems pretty hard at first glance
