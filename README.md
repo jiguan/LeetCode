@@ -11,6 +11,7 @@
 - [Greedy](test/com/leetcode/greedy/README.md)
 - [Graph](test/com/leetcode/graph/README.md)
 - [BFS/DFS](test/com/leetcode/bfs/README.md)
+- [Bit](test/com/leetcode/bit/README.md)
 
 ## Frequent questions
 
