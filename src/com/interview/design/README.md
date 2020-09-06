@@ -106,7 +106,7 @@ Web Server <=> Cache <=> Database
 
 ### Load Balancer
 
-Load Balancing Algorithems
+Load Balancing Algorithm
 
 - Random
 - Round robin

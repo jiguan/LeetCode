@@ -1,35 +1,5 @@
 # LeetCode
 
-## Categories
-
-- [Array](test/com/leetcode/array/README.md)
-- [Linked nodes](test/com/leetcode/linkednodes/README.md)
-- [Tree](test/com/leetcode/tree/README.md)
-- [Math](test/com/leetcode/math/README.md)
-- [String](test/com/leetcode/string/README.md)
-- [DP](test/com/leetcode/dp/README.md)
-- [Greedy](test/com/leetcode/greedy/README.md)
-- [Graph](test/com/leetcode/graph/README.md)
-- [BFS/DFS](test/com/leetcode/bfs/README.md)
-- [Bit](test/com/leetcode/bit/README.md)
-
-## Frequent questions
-
-- [LRU Cache](https://leetcode.com/problems/lru-cache/)
-- [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-
-## No clue questions
-
-- [Minimum Area Rectangle](https://leetcode.com/problems/minimum-area-rectangle/)
-
-## Tips
-
-Some questions have special tricks:
-
-- [Valid Square](https://leetcode.com/problems/valid-square/)
-
-
-
 ## General knowledge
 
 - If the cases the limited,  __bucket sort__  is a good option
@@ -40,7 +10,7 @@ Some questions have special tricks:
 int startMax = Math.max(a.start, b.start);
 int endMin = Math.min(a.end, b.end);
 
-if (startMax <= endMin ) {
+if (startMax <= endMin) {
 ```
 
 ```java
@@ -55,6 +25,43 @@ private int gcd(int a, int b) {
 }
 ```
 
+## Coding questions
+
+- [Array](test/com/leetcode/array/README.md)
+- [Linked nodes](test/com/leetcode/linkednodes/README.md)
+- [Tree](test/com/leetcode/tree/README.md)
+- [Math](test/com/leetcode/math/README.md)
+- [String](test/com/leetcode/string/README.md)
+- [DP](test/com/leetcode/dp/README.md)
+- [Greedy](test/com/leetcode/greedy/README.md)
+- [Graph](test/com/leetcode/graph/README.md)
+- [BFS/DFS](test/com/leetcode/bfs/README.md)
+- [Bit](test/com/leetcode/bit/README.md)
+
+### Frequent questions
+
+- [LRU Cache](https://leetcode.com/problems/lru-cache/)
+- [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- Pre order, in order and post order
+- Sliding window
+- [Counting islands](https://leetcode.com/problems/max-area-of-island/)
+- Alien map
+
+### Look back questions
+- Minimum Cost to Cut a Stick
+
+## [Java knowledge](src/com/interview/java/JavaInterviewQuestions.md)
+
+## [System Design](src/com/interview/design/README.md)
+
+- [URL Auto Complete](src/com/interview/design/autocomplete.md)
+- [Distribute DB](src/com/interview/design/distributed_db.md)
+- [Tiny URL](src/com/interview/design/tiny_url.md)
+- [Mobile Pay](src/com/interview/design/mobile_pay.md)
+- [Uber](src/com/interview/design/uber.md)
+
+## [Behavior questions](src/com/interview/behavior/behavior.md)
+
 ## Algorithms
 
 - [HeapSort](test/com/algorithm/HeapSort.java)
@@ -62,9 +69,3 @@ private int gcd(int a, int b) {
 - [QuickSort](test/com/algorithm/QuickSort.java)
 - [SegmentTree](test/com/algorithm/SegmentTreeRangeSum.java)
 - [TrieTree](test/com/algorithm/TrieTree.java)
-
-## Must do to warm up before an interview
-- [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/) - Hard, tricky question
-
-## Look back questions
-- Minimum Cost to Cut a Stick
