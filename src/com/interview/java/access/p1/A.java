@@ -1,4 +1,4 @@
-package com.interview.access.p1;
+package com.interview.java.access.p1;
 
 public class A {
     protected void display() {

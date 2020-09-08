@@ -1,4 +1,4 @@
-package com.hankerrank.dp;
+package com.hackerank.test;
 
 import java.math.BigInteger;
 import java.util.Scanner;

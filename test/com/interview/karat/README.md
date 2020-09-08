@@ -1,8 +1,7 @@
 # Karat
 
-1. Production Analysis, 2. Front-end Web application, 3. System£¬4. OOP, 5. testing
+## OOP concepts
 
-## OOP
 ### Abstraction
 Abstraction is selecting data from a larger pool to show only the relevant details to the object. It helps to reduce programming complexity and effort. In Java, abstraction is accomplished using Abstract classes and interfaces.
  
@@ -31,3 +30,8 @@ A technique whereby one object supplies the dependencies of another object. A de
 ### Testing
 
 - What is mock, pro and cons
+
+## Questions
+
+- ZooKeeper
+<img src="zookeeper.PNG" width="1793" height="727" />

@@ -1,6 +1,6 @@
-package com.interview.access.p2;
+package com.interview.java.access.p2;
 
-import com.interview.access.p1.A;
+import com.interview.java.access.p1.A;
 
 class B extends A {
     public static void main(String args[]) {

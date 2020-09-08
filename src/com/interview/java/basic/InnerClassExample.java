@@ -1,4 +1,4 @@
-package com.basic;
+package com.interview.java.basic;
 
 class Outer_Demo {
     int num;

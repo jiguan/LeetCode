@@ -1,4 +1,4 @@
-package com.interview.java;
+package com.interview.java.basic;
 
 import java.util.List;
 import java.util.stream.Collectors;

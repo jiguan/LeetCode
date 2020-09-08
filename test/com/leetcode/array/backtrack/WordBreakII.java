@@ -2,6 +2,7 @@ package com.leetcode.array.backtrack;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,31 +15,29 @@ import org.junit.Test;
 public class WordBreakII {
 
     public List<String> wordBreak(String s, List<String> wordDict) {
-        Map<String, List<String>> map = new HashMap<>();
-        return search(s, new HashSet<String>(wordDict), map);
+        return dfs(s, wordDict, new HashMap<String, List<String>>());
     }
-
-    private List<String> search(String s, Set<String> wordDict, Map<String, List<String>> map) {
-        if (map.containsKey(s)) {
-            return map.get(s);
+    
+    private List<String> dfs(String s, List<String> wordDict, Map<String, List<String>> cache) {
+        if(cache.containsKey(s)) {
+            return cache.get(s);
         }
-
-        List<String> res = new LinkedList<>();
-        for (String word : wordDict) {
-            if (s.startsWith(word)) {
-                String nextString = s.substring(word.length());
-                if (nextString.isEmpty()) {
-                    // only if we traverse the whole string, we save it into res
+        
+        List<String> res = new ArrayList<>();
+        for(String word : wordDict) {
+            if(s.startsWith(word)) {
+                String next = s.substring(word.length());
+                if(next.isEmpty()) {
                     res.add(word);
                 } else {
-                    List<String> matches = search(nextString, wordDict, map);
-                    for (String match : matches) {
+                    List<String> matches = dfs(next, wordDict, cache);
+                    for(String match : matches) {
                         res.add(word + " " + match);
                     }
                 }
             }
         }
-        map.put(s, res);
+        cache.put(s, res);
         return res;
     }
 

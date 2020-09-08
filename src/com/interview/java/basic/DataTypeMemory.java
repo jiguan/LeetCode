@@ -1,4 +1,4 @@
-package com.basic;
+package com.interview.java.basic;
 
 public class DataTypeMemory {
 	public static void main(String[] args) {

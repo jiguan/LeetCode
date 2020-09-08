@@ -40,12 +40,17 @@ private int gcd(int a, int b) {
 
 ### Frequent questions
 
-- [LRU Cache](https://leetcode.com/problems/lru-cache/)
+- Linked Node: [LRU Cache](https://leetcode.com/problems/lru-cache/)
 - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- Backtracking: [Permutations](https://leetcode.com/problems/permutations/), [Word Break](https://leetcode.com/problems/word-break/), [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
+- Priority Queue: [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 - Pre order, in order and post order
 - Sliding window
 - [Counting islands](https://leetcode.com/problems/max-area-of-island/)
 - Alien map
+- Tree: [Symmetric Tree](https://leetcode.com/problems/symmetric-tree/)
+- Partition: [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array)
+- DP: [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
 ### Look back questions
 - Minimum Cost to Cut a Stick
