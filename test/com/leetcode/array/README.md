@@ -69,10 +69,107 @@ If we need to record the sum till __CURRENT__ element, we need [n + 1], since `s
 
 ## Sliding window
 
+### Stack approach
+
 Some questions have same concept --- having a temporary container to store candidate. When a new element checking in, we do some operations to process our candidates. This conditioner could be a `Stack` or `Array`. Usually what it stores are indexes.
 
 - [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
+### Two pointers approach - works great for at most/minimum questions
+
+Template:
+```java
+int findSubstring(String s){
+    int [] map = new int[128];
+    int counter; // check whether the substring is valid
+    int begin=0, end=0; //two pointers, one point to tail and one  head
+    int minLen; //the length of substring
+
+    for() { /* initialize the hash map here */ }
+
+    while(end< s.length()){
+
+        if(map[s.charAt(end)] > 0){  /* modify counter here */ }
+
+        while(/* counter condition */){ 
+                
+                /* update d here if finding minimum*/
+
+            //increase begin to make it invalid/valid again
+            
+            if(map[s.charAt(start)] > 0){ /*modify counter here*/ }
+        }  
+
+        /* update d here if finding maximum*/
+    }
+    return minLen;
+}
+```
+
+Minimum Window Substring
+
+```java
+public String minWindow(String s, String t) {
+    int[] map = new int[128];
+    
+    for(char ch : t.toCharArray()) {
+        map[ch]++;
+    }
+    
+    int start = 0, end = 0;
+    int minStart = 0, minLen = Integer.MAX_VALUE;
+    int counter = t.length();
+    while(end < s.length()) {
+        char c1 = s.charAt(end);
+        map[c1]--;
+        end++;
+        if(map[c1] >= 0) {
+            counter--;
+        }
+        
+        while(counter == 0) {
+            if(minLen > end - start) {
+                minLen = end - start;
+                minStart = start;
+            }
+            char c2 = s.charAt(start);
+            map[c2]++;
+            start++;
+            if(map[c2] > 0) {
+                counter++;
+            }
+        }
+    }
+    return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+}
+```
+
+Longest Substring - at most K distinct characters
+
+```java
+public int lengthOfLongestSubstringKDistinct(String s, int k) {
+    int[] map = new int[256];
+    int start = 0, end = 0, maxLen = Integer.MIN_VALUE, counter = 0;
+
+    while (end < s.length()) {
+      final char c1 = s.charAt(end);
+      if (map[c1] == 0) counter++;
+      map[c1]++;
+      end++;
+
+      while (counter > k) {
+        final char c2 = s.charAt(start);
+        if (map[c2] == 1) counter--;
+        map[c2]--;
+        start++;
+      }
+
+      maxLen = Math.max(maxLen, end - start);
+    }
+
+    return maxLen;
+}
+```
 
 ## Questions
 

@@ -1,14 +1,11 @@
 package com.leetcode.tree;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
-
 import org.junit.Test;
-
 import com.leetcode.util.TreeNode;
 
 public class BinaryTreePreorderTraversal {
@@ -33,6 +30,20 @@ public class BinaryTreePreorderTraversal {
             }
         }
         return res;
+    }
+
+    public List<Integer> preorderTraversalRecur(TreeNode root) {
+        List<Integer> pre = new LinkedList<Integer>();
+        preHelper(root, pre);
+        return pre;
+    }
+
+    private void preHelper(TreeNode root, List<Integer> pre) {
+        if (root == null)
+            return;
+        pre.add(root.val);
+        preHelper(root.left, pre);
+        preHelper(root.right, pre);
     }
 
     @Test

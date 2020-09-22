@@ -47,11 +47,18 @@ public class CompressFile {
 
     private class TrieNode {
         // line # - next word's node
-        Map<Integer, TrieNode> map = new HashMap<>();
+        private Map<Integer, TrieNode> lineMap = new HashMap<>();
+        private Map<String, TrieNode> wordMap = new HashMap<>();
         String word;
 
         TrieNode(String word) {
             this.word = word;
+        }
+        
+        public void put(String word, int line) {
+            TrieNode node = wordMap.getOrDefault(word, new TrieNode(word));
+            wordMap.put(word, node);
+            lineMap.put(line, node);
         }
     }
 
@@ -65,8 +72,8 @@ public class CompressFile {
             TrieNode next = null;
             for (String word : words) {
                 // get next word in this line
-                next = curr.map.getOrDefault(index, new TrieNode(word));
-                curr.map.put(index, next);
+                next = curr.lineMap.getOrDefault(index, new TrieNode(word));
+                curr.lineMap.put(index, next);
                 curr = next;
             }
         }
@@ -74,8 +81,8 @@ public class CompressFile {
         String get(int index) {
             List<String> list = new ArrayList<>();
             TrieNode node = root;
-            while (node.map.containsKey(index)) {
-                TrieNode next = node.map.get(index);
+            while (node.lineMap.containsKey(index)) {
+                TrieNode next = node.lineMap.get(index);
                 list.add(next.word);
                 node = next;
             }

@@ -46,6 +46,7 @@ class Monitor {
             // timestamp - occurrence
             Queue<Map.Entry<Integer, Integer>> queue = map.get(errorCode);
             while (!queue.isEmpty()) {
+                // drop all counts outside the time window
                 if (timestamp - queue.peek().getKey() > timeWindow) {
                     counts.put(errorCode, counts.get(errorCode) - queue.poll().getValue());
                 } else {

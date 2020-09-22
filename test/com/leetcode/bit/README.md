@@ -10,14 +10,15 @@
 
 ## Bit operations
 
-- Eliminate the last bit: `n & (n - 1)`
+Eliminate the last bit: `n & (n - 1)`
 
-  [Hamming Distance](https://discuss.leetcode.com/topic/72317/java-solution)
+- [Hamming Distance](https://discuss.leetcode.com/topic/72317/java-solution)
 
-- Get the last non-zero bit: `n & -n`
+Get the last non-zero bit: `n & -n`
 
-  [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
-- Get all 1: `~0`
+- [Single Number III](https://leetcode.com/problems/single-number-iii/description/)
+
+Get all 1: `~0`
 
 ## Calculate sqrt root
 

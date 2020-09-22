@@ -11,11 +11,11 @@ public class CloneGraph {
         if (node == null) {
             return null;
         }
-        if(map.containsKey(node.label)) {
-            return map.get(node.label);
+        if(map.containsKey(node.value)) {
+            return map.get(node.value);
         }
-        UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
-        map.put(newNode.label, newNode);
+        UndirectedGraphNode newNode = new UndirectedGraphNode(node.value);
+        map.put(newNode.value, newNode);
         for (UndirectedGraphNode n : node.neighbors) {
             newNode.neighbors.add(cloneGraph(n));
         }

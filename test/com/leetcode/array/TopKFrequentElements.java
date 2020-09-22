@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import org.junit.Test;
 
 public class TopKFrequentElements {
@@ -36,6 +37,27 @@ public class TopKFrequentElements {
                     res.add(buckets[i].get(j));
                 }
             }
+        }
+        return res;
+    }
+    
+    public int[] topKFrequent1(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for(int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        
+        // Even though we want to find out the most frequent, we are still storing increasing order
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((n1, n2) -> (n1.getValue() - n2.getValue()));
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            pq.offer(entry);
+            if (pq.size() > k) pq.poll();
+        }
+        
+        int[] res = new int[k];
+        for(int i = res.length - 1; i>=0;--i) {
+            res[i] = pq.poll().getKey();
         }
         return res;
     }

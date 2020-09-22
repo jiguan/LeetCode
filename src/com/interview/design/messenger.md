@@ -52,7 +52,7 @@ We have a Redis database to store __ACTIVE__ users and their associated server n
 
 For picture or file, save it into a block file system rather than the __ConversationTable__ to optimize the speed
 
-## Fellow up
+## Follow up
 
 * Allow group chat
 * Save the content on the server
