@@ -59,6 +59,7 @@ public class MovingAverage {
     }
 
     // If getMedian is called frequently, O(nLogn)
+    // Heap insert worst O(logn), avg O(1), delete worst O(logn), avg O(logn)
     public double getMedian1() {
         // asec
         PriorityQueue<Integer> upper = new PriorityQueue<>();
