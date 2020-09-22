@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 /*
  * Date: Jul 07, 2018 Problem: Longest word in dictionary Difficulty: Easy Notes:

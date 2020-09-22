@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 /*
  * The knows API is defined in the parent class Relation. boolean knows(int a, int b);

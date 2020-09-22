@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 // Java implementation of finding length of longest 
 // Common substring using Dynamic Programming 

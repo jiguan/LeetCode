@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 public class DiagonalOrder {
     public int[] findDiagonalOrder(int[][] matrix) {

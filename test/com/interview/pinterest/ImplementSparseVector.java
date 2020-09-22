@@ -1,11 +1,11 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class FriendCircle {
+public class ImplementSparseVector {
 
     static class sparseVector {
         Map<Integer, Integer> map;

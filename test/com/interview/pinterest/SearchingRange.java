@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 public class SearchingRange {
     public int[] searchRange(int[] nums, int target) {

@@ -1,4 +1,4 @@
-package com.interview.pinintest;
+package com.interview.pinterest;
 
 import java.util.ArrayList;
 import java.util.List;

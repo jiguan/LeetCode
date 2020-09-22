@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class UndirectedGraphNode {
-    public int label;
-    public List<UndirectedGraphNode> neighbors;
+    public int value;
+    public List<UndirectedGraphNode> neighbors = new ArrayList<UndirectedGraphNode>();
 
     public UndirectedGraphNode(int x) {
-        label = x;
-        neighbors = new ArrayList<UndirectedGraphNode>();
+        value = x;
     }
     
     public static UndirectedGraphNode build(String graph) {

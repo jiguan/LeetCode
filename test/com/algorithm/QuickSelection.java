@@ -22,7 +22,6 @@ public class QuickSelection {
 		}
 		swap(arr, j, end);
 		return j;
-
 	}
 
 	public int quickSelect(int[] nums, int start, int end, int k) {

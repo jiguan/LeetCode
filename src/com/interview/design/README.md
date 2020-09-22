@@ -51,7 +51,7 @@ Such as AuthService, UserService, etc
 | MongoDB / Cassandra | 10 K | NoSQL on disk |
 | Redis / Memcached | 1M | NoSQL in mem |
 
-- SQL vs NoSQL
+### SQL vs NoSQL
 
 | Feature        | SQL | NoSQL | Desc |
 |----------------|:---:|:-----:|------|
@@ -102,9 +102,22 @@ Cache <=> Web Server <=> Database
 
 Web Server <=> Cache <=> Database
 
+
 ## Scale
 
 ### Load Balancer
+
+Nginx, is using non-threaded, event driven architecture
+
+- Revere proxying
+- Caching
+- Load Balancing
+
+Nginx architecture
+<img src="nginx_arch.png" alt="nginx arch" title="Nginx architecture" width="944" height="587" />
+
+- One or more worker process per CUP core
+
 
 Load Balancing Algorithm
 
@@ -146,9 +159,28 @@ Write back: kick current value out of the database and update the database. When
 - Works well when there are distributed caches
 - Works well for critical data
 
+#### Redis vs Memcached
+
+| Feature | Memcached | Redis |
+| ------- | --------- | ----- |
+| Advanced data structures (1) | N | Y |
+| Multithreaded architecture (2) | Y | N |
+| Snapshots (3) | N | Y |
+| Replication (4) | N | Y |
+| Transactions (5) | N | Y |
+| Message Queue (6) | N | Y |
+
+1. In addition to strings, Redis supports lists, sets, sorted sets, hashes, bit arrays, and hyperloglogs. Applications can use these more advanced data structures to support a variety of use cases. For example, you can use Redis Sorted Sets to easily implement a game leaderboard that keeps a list of players sorted by their rank.
+1. Since Memcached is multithreaded, it can make use of multiple processing cores. This means that you can handle more operations by scaling up compute capacity. While Redis only uses single cores while Memcached utilizes multiple cores. 
+1. With Redis you can keep your data on disk with a point in time snapshot which can be used for archiving or recovery.
+1. Redis lets you create multiple replicas of a Redis primary. This allows you to scale database reads and to have highly available clusters.
+1. Redis supports transactions which let you execute a group of commands as an isolated and atomic operation.
+1. Redis supports Pub/Sub messaging with pattern matching which you can use for high performance chat rooms, real-time comment streams, social media feeds, and server intercommunication.
+
+
 ### Sharding
 
-We could share SQL over the IDs
+We could shard SQL over the IDs
 
 Downsides:
 
@@ -189,4 +221,40 @@ NoSQL saves 3 copies on the consistent Hashing loop
 Distribute multiple tables into multiple servers
 
 - Horizontal Sharding
+
+### Message Queue
+
+How microservices communicate with each other?
+
+Synchronous: 
+- Caller waits for a response before sending the next message, and it operates as a REST protocol on top of HTTP
+
+Asynchronous: 
+1. asynchronous communication is non-blocking by definition.
+1. It also supports better scaling than Synchronous operations.
+1. In the event Microservice crashes, Asynchronous communication mechanisms provide various recovery techniques and is generally better at handling errors pertaining to the crash.
+1.  when using brokers instead of a REST protocol, the services receiving communication don’t really need to know each other. A new service can even be introduced after an old one has been running for a long time, i.e better decoupling services.
+
+| Feature | RabbitMQ | Kafka | Redis |
+| ------- | -------- | ----- | ----- |
+| Scale | 50k msg/s  | 1m msg/s | 1m msg/s |
+| Persistency | Both | Yes | No |
+| Message Retention | Acknowledgment based | Policy-Based (e.g. 7 days) |  Published messages are passed directly to subscribers and then dropped |
+| Transactions | No| Yes | 
+| Use Case | Complex Routing | Large Amounts of Data | Short-lived Messages. The latency is very high for larger messages (>1 MB) | 
+| Subscription | push | pull | push |
+| Design |  smart broker / dumb consumer |  dumb broker / smart consumer |  |  
+| Parallelism | multithread | multithread | singlethread |
+| Data Flow | order by receiver | order by sender | |
+
+
+- RabbitMQ guarantees message delivery. Redis doesn’t guarantee message delivery while using its pub/sub mechanism. If a subscriber isn’t active, it won’t receive the messages it subscribed to
+- RabbitMQ allows you to use an additional layer of security by using SSL certificates to encrypt your data
+- Producers publish a message to a Redis Channel. There are two kinds of channels supported by Redis: __Literal Channel__ and __Pattern-Match Channel__.
+
+## Topics
+
+- Design a library system (Chewy)
+- Design a logging system (OCI)
+- Design a system to upload, search and download resumes (Indeed)
 

@@ -49,6 +49,16 @@ table[1]
 table[n-1]
 ```
 
+ArrayList
+
+Add:
+The add operation runs in amortized constant time, that is, adding n elements requires O(n) time.
+
+Grow:
+Each ArrayList instance has a capacity. The capacity is the size of the array used to store the elements in the list. It is always at least as large as the list size. As elements are added to an ArrayList, its capacity grows automatically. The details of the growth policy are not specified beyond the fact that adding an element has constant amortized time cost. [java8 docs](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)
+
+```int newCapacity= (oldCapacity * 3)/2 +1;```
+
 Why is String class considered immutable?
 
 * The String class is immutable, so that once it is created a String object cannot be changed. Since String is immutable it can safely be shared between many threads ,which is considered very important for multithreaded programming.
@@ -133,6 +143,32 @@ Explain different ways of creating a thread?
 2. Implementing the java.lang.Runnable interface.
 3. Implement `Callable` and use `FutureTask` to create a thread. A `FutureTask` can be created by providing its constructor with a Callable. Then the FutureTask object is provided to the constructor of Thread to create the Thread object. Thus, indirectly, the thread is created with a Callable.
 4. Use `ExecutorService`, `Callable` and `Future` to return the result
+
+```java
+public class MyThread {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new RunnableThread());
+        t1.start();
+
+        Thread t2 = new ExtendedThread();
+        t2.run();
+    }
+}
+
+
+class RunnableThread implements Runnable {
+    @Override
+    public void run() {}
+}
+
+
+class ExtendedThread extends Thread {
+    @Override
+    public synchronized void start() {
+        super.start();
+    }
+}
+```
 
 Which approach would you favor and why?
 
@@ -273,6 +309,82 @@ Thread t2 = new Thread(new Runnable()) {
 }
 ```
 
+Singleton
+
+- Early creation
+
+Pros:
+
+* Thread safety without synchronization
+* Easy to implement
+
+Cons:
+
+* Early creation of resource that might not be used in the application.
+* The client application can’t pass any argument, so we can’t reuse it. For example, having a generic singleton class for database connection where client application supplies database server properties.
+
+```java
+class EarlyLoad {
+    private static EarlyLoad instance = new EarlyLoad();
+
+    private EarlyLoad() {};
+
+    public static EarlyLoad getInstance() {
+        return instance;
+    }
+}
+```
+
+- Lazy initialization 
+
+```java
+class LazyInit {
+    private static LazyInit instance;
+
+    private LazyInit() {};
+
+    public static LazyInit getInstance() {
+        if (instance == null) {
+            instance = new LazyInit();
+        }
+        return instance;
+    }
+}
+```
+
+- Double-checked locking
+
+```java
+class DoubleCheck {
+    // Use volatile to avoid partially constructed object situation: A half initialize it but B uses
+    // it before A finish initialization
+    private volatile DoubleCheck instance;
+
+    private DoubleCheck() {
+
+    }
+
+    public DoubleCheck getInstance() {
+        // Still need localRef since when we check null and return it, we don't need to get
+        // access to the volatile variable instance anymore
+        DoubleCheck localRef = instance;
+        if (localRef == null) {
+            // Obtain the lock.
+            synchronized (this) {
+                localRef = instance;
+                // Double-check whether the variable has already been initialized: if another thread
+                // acquired the lock first, it may have already done the initialization. If so,
+                // return the initialized variable.
+                if (localRef == null) {
+                    instance = localRef = new DoubleCheck();
+                }
+            }
+        }
+        return localRef;
+    }
+}
+```
+
 ## Server
 
 REST vs SOAP
@@ -384,6 +496,25 @@ There are five scopes defined for Spring Beans.
 * Request: this is same as prototype scope, however it’s meant to be used for web applications. A new instance of the bean will be created for each HTTP request.
 * Session: a new bean will be created for each HTTP session by the container.
 * Global-session: this is used to create global session beans for Portlet applications
+
+Any Disadvantages of Spring boot?
+
+- Spring MVC uses a Synchronous Programming model, where each request has been mapped to a thread and which is responsible to take the response back to the request socket
+- Requests like, fetch data from a database, fetch a response from another application, file read/write etc., a request thread has to wait to get the desired response
+- The request thread here is blocked, and there is no CPU utilization in this period
+- Spring Webflux has been introduced as part of Spring 5, and with this, it started to support Reactive Programming. It uses an asynchronous programming model
+
+How does Spring WebFlux work?
+
+1. All requests are received on a unique socket, associated with a channel, known as `SocketChannel`. 
+1. There is always a single EventLoop thread associated with a range of `SocketChannels`. So, all requests to that Sockets/SocketChannels are handed over to the same EventLoop. (By default, the application starts with as many EventLoops as it has CPU cores.)
+1. Requests on the EventLoop go through a Channel Pipeline, where a number of Inbound channel handlers or WebFilters are configured for the required processing.
+1. EventLoop delegates the request to a new Worker Thread. Worker Thread perform these long tasks.
+1. After completion, it writes the response to a task and adds that in `ScheduledTaskQueue`.
+1. EventLoop poll tasks in task queue `ScheduledTaskQueue`. If there is any, EventLoop again goes through a number of Outbound Channel handlers for configured processing. 
+1. In the end, EventLoop handed back the response to the same SocketChannel/Socket.
+Repeat Step 1 to Step 6 in a loop.
+1. If there is no any completed tasks inside `ScheduledTaskQueue`, EventLoop continues to poll new requests at `SocketChannel`.
 
 ## Linux commands
 
