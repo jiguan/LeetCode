@@ -33,11 +33,12 @@ import java.util.Set;
  */
 public class RelatedSearchTerm {
 
-    class Pair {
+    // related words occurs maxCount times
+    class Record {
         int maxCount;
         List<String> words;
 
-        public Pair() {
+        public Record() {
             maxCount = 0;
             words = new ArrayList<>();
         }
@@ -47,8 +48,8 @@ public class RelatedSearchTerm {
     Map<String, Set<String>> users = new HashMap<>();
     // term -> related word and times
     Map<String, Map<String, Integer>> relates = new HashMap<>();
-    // cache history
-    Map<String, Pair> ans = new HashMap<>();
+    // store previous, word - related time, max occurrence
+    Map<String, Record> history = new HashMap<>();
 
     // return the most related term
     public String search(String user, String word) {
@@ -58,49 +59,44 @@ public class RelatedSearchTerm {
         if (!relates.containsKey(word)) {
             relates.put(word, new HashMap<>());
         }
-        if (!ans.containsKey(word)) {
-            ans.put(word, new Pair());
+        if (!history.containsKey(word)) {
+            history.put(word, new Record());
         }
 
-        Pair max = ans.get(word);
-
-        // update maps
+        // Get all words this user searched
         for (String term : users.get(user)) {
             // update word -> term
-            if (!relates.get(word).containsKey(term)) {
-                relates.get(word).put(term, 1);
-            } else {
-                relates.get(word).put(term, relates.get(word).get(term) + 1);
-            }
-            
+            // related term - times
             Map<String, Integer> wordRelated = relates.get(word);
             wordRelated.put(term, wordRelated.getOrDefault(term, 0) + 1);
 
-            if (ans.get(word).maxCount == wordRelated.get(term)) {
-                ans.get(word).words.add(term);
-            } else if (ans.get(word).maxCount < wordRelated.get(term)) {
-                ans.put(word, new Pair());
-                ans.get(word).maxCount = wordRelated.get(term);
-                ans.get(word).words.add(term);
+            // any same occurrence word
+            if (history.get(word).maxCount == wordRelated.get(term)) {
+                history.get(word).words.add(term);
+            } else if (history.get(word).maxCount < wordRelated.get(term)) {
+                // a new most frequent word occurs
+                history.put(word, new Record());
+                history.get(word).maxCount = wordRelated.get(term);
+                history.get(word).words.add(term);
             }
 
             // update term -> word
             Map<String, Integer> termRelated = relates.get(term);
             termRelated.put(word, termRelated.getOrDefault(word, 0) + 1);
 
-            if (ans.get(term).maxCount == relates.get(term).get(word))
-                ans.get(term).words.add(word);
-            else if (ans.get(term).maxCount < relates.get(term).get(word)) {
-                ans.put(term, new Pair());
-                ans.get(term).maxCount = relates.get(term).get(word);
-                ans.get(term).words.add(word);
+            if (history.get(term).maxCount == relates.get(term).get(word))
+                history.get(term).words.add(word);
+            else if (history.get(term).maxCount < relates.get(term).get(word)) {
+                history.put(term, new Record());
+                history.get(term).maxCount = relates.get(term).get(word);
+                history.get(term).words.add(word);
             }
         }
         users.get(user).add(word); // do not forget this
 
         StringBuilder sb = new StringBuilder();
-        sb.append(max.maxCount);
-        for (String each : max.words) {
+        sb.append(history.get(word).maxCount);
+        for (String each : history.get(word).words) {
             sb.append(" " + each);
         }
         return sb.toString();
